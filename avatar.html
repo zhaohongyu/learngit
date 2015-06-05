@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>圆形头像的制作</title>
+
+        <style type="text/css">
+            .commentAvatarDiv{
+                width: 60px;
+                height: 60px;
+                padding:2px;
+                background: #ececec;
+                border-radius:32px;
+                box-shadow: 0px 0px 1px rgba(0,0,0,0.4);
+                -moz-border-radius: 32px;
+                -webkit-border-radius: 32px;
+            }
+            .commentAvatarImage{
+                width:60px;
+                height:60px;
+                line-height: 0;	/* remove line-height */ 
+                display: inline-block;	/* circle wraps image */
+                border-radius: 50%;	/* relative value */
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                transition: linear 0.25s;
+            }
+        </style>
+    </head>
+    <body >        
+        <div class='commentAvatarDiv'>
+            <img src="http://ww3.sinaimg.cn/mw690/80548668jw8eqjawm26s4j20e80e774z.jpg" class='commentAvatarImage' />
+        </div>  
+    </body>
+</html>
