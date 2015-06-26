@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PhotoTime</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/swiper.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--主体-->
+        <div class="main">
+            <!--导航-->
+            <div class="nav-div">
+                <ul id="nav">
+                    <li><a href="#" title="Tips">Tips</a></li>
+                    <li><a href="#" title="关于我们">关于我们</a></li>
+                    <li><a href="javascript:;" title="Phototime"><img src="img/img_logo_firstscreen.png" alt=""/></a></li>
+                    <li><a href="#" title="博客">博客</a></li>
+                    <li><a href="#" title="支持">支持</a></li>
+                </ul>
+            </div>
+            <!--导航-->
+            <!--下载图标-->
+            <div class="download">
+                <a href="#"><img src="img/btn/btn_ios_firstscreen.png" alt="IOS下载"/></a>
+                <a href="#"><img src="img/btn/btn_android_firstscreen.png" alt="Android下载"/></a>
+            </div>
+            <!--下载图标-->
+            <!--轮播图-->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="text1">
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">PhotoTime</span>
+                            <h2 class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">你的私人图片搜索引擎</h2>
+                        </div>
+                        <img class="bg" src="img/bg/bg_firtscreen_1.jpg" alt=""/>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="text2">
+                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">我们 能做的</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">智能识别人脸</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">收藏 你、家人、朋友的每一张笑脸</span>
+                        </div>
+                        <img class="bg" src="img/bg/bg_firtscreen_2.jpg" alt=""/>
+                        <div class="intro" ><img src="img/gif/page2.gif" alt=""/></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="text2">
+                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">我们 能做的</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">识别物体</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">猫、花、鞋子、咖喱、建筑、天空</span>
+                        </div>
+                        <img class="bg" src="img/bg/bg_firtscreen_3.jpg" alt=""/>
+                        <div class="intro" ><img src="img/gif/page3.gif" alt=""/></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="text2">
+                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">我们 能做的</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">场景识别</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">大海、雪山、城市、夜景、黄昏</span>
+                        </div>
+                        <img class="bg" src="img/bg/bg_firtscreen_4.jpg" alt=""/>
+                        <div class="intro" ><img src="img/gif/page4.gif" alt=""/></div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="text2">
+                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">甚至</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">识别图片的主题</span>
+                            <br/>
+                            <br/>
+                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">Party、live、聚会、旅行、冒险</span>
+                        </div>
+                        <img class="bg"src="img/bg/bg_firtscreen_5.jpg" alt=""/>
+                        <div class="intro" ><img src="img/gif/page5.gif" alt=""/></div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!--轮播图-->
+        </div>
+        <!--主体-->
+        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="js/swiper.min.js" type="text/javascript"></script>
+        <script src="js/swiper.animate.min.js" type="text/javascript"></script>
+        <script>
+            var mySwiper = new Swiper('.swiper-container', {
+                autoplay: 5000,
+                mousewheelControl: true, //允许使用鼠标翻页
+                direction: 'vertical', //垂直
+                speed: 1000,
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+                onInit: function (swiper) { //Swiper2.x的初始化是onFirstInit
+                    swiperAnimateCache(swiper); //隐藏动画元素 
+                    swiperAnimate(swiper); //初始化完成开始动画
+                },
+                onSlideChangeEnd: function (swiper) {
+                    swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+                }
+            });
+        </script>
+    </body>
+</html>

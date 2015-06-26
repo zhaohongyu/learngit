@@ -1,0 +1,90 @@
+body {text-align: center;}
+img {border:0 none;}
+.main{
+    position:relative;
+}
+
+.swiper-container {
+    width: 1360px;
+    height: 640px;
+    margin: -8px 0 0 -8px;
+}
+
+/*滚动图片样式*/
+.bg{
+    width: 100%;
+    height: 100%;
+    z-index:-100;
+    position:absolute;
+    top:0;
+    left:0;
+}
+/*滚动图片样式*/
+
+/*导航*/
+.nav-div{
+    position:absolute;
+    z-index: 3;
+    font-weight:bold;
+    padding: 0 0 0 235px;
+}
+ul#nav{
+    margin-top: 0px;
+    width:100%;
+    height:60px;
+}
+ul#nav li{
+    display:inline;
+    height:60px;
+} 
+ul#nav li a{
+    display:inline-block;
+    padding:0 25px;
+    height:60px;
+    color:#FFF;
+    font-size:16px;
+    text-decoration:none;
+}
+ul#nav li a:hover{
+    color: blue;
+    opacity: 0.3;
+}/*设置鼠标滑过或悬停时变化的背景颜色*/ 
+/*导航*/
+
+/*图片上的文字*/
+.text1{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 128px 0 0 0;
+    color:white;
+}
+.text1 span{
+    font-size: 110px;
+}
+
+.text2{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px 0 0 0;
+    color:white;
+}
+.text2 span{
+    font-size: 30px;
+}
+/*图片上的文字*/
+
+/*下载图标*/
+.download{
+    position:absolute;
+    z-index:2;
+    padding: 500px 0 0 450px;
+}
+/*下载图标*/
+
+/*动图*/
+.intro{
+}
+.intro img{
+    height: 260px;
+}
+/*动图*/
