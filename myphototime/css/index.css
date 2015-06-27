@@ -79,12 +79,46 @@ ul#nav li a:hover{
     z-index:2;
     padding: 500px 0 0 450px;
 }
+.download a img{
+    padding: 0 30px 0 0;
+}
 /*下载图标*/
 
-/*动图*/
-.intro{
+/*第二屏图片*/
+
+.sec-div{
+    position: absolute;
+    margin: 0 0 0 -8px;
+    background-color: #68c2f0;
 }
-.intro img{
-    height: 260px;
+.sub-nav{
+    position: relative;
+    z-index: 2;
+    float: right;
+    display:inline;
+    padding: 0 260px 0 0 ;
 }
-/*动图*/
+.sub-nav ul{
+    display:inline;
+}
+.sub-nav ul li{
+    display:inline;
+}
+
+.bg2{
+    position: relative;
+    z-index: 1;
+    float: left;
+    display:inline;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: inline;
+}
+/*第二屏图片*/

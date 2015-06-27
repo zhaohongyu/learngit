@@ -36,70 +36,142 @@
                             <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">PhotoTime</span>
                             <h2 class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">你的私人图片搜索引擎</h2>
                         </div>
-                        <img class="bg" src="img/bg/bg_firtscreen_1.jpg" alt=""/>
+                        <img class="bg" id="img_1" src="img/bg/bg_firtscreen_1.jpg" alt=""/>
                     </div>
                     <div class="swiper-slide">
-                        <div class="text2">
-                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">我们 能做的</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">智能识别人脸</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">收藏 你、家人、朋友的每一张笑脸</span>
-                        </div>
-                        <img class="bg" src="img/bg/bg_firtscreen_2.jpg" alt=""/>
-                        <div class="intro" ><img src="img/gif/page2.gif" alt=""/></div>
+                        <img class="bg" id="img_2" src="img/bg/bg_firtscreen_2.jpg" alt=""/>
                     </div>
                     <div class="swiper-slide">
-                        <div class="text2">
-                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">我们 能做的</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">识别物体</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">猫、花、鞋子、咖喱、建筑、天空</span>
-                        </div>
-                        <img class="bg" src="img/bg/bg_firtscreen_3.jpg" alt=""/>
-                        <div class="intro" ><img src="img/gif/page3.gif" alt=""/></div>
+                        <img class="bg" id="img_3" src="img/bg/bg_firtscreen_3.jpg" alt=""/>
                     </div>
                     <div class="swiper-slide">
-                        <div class="text2">
-                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">我们 能做的</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">场景识别</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">大海、雪山、城市、夜景、黄昏</span>
-                        </div>
-                        <img class="bg" src="img/bg/bg_firtscreen_4.jpg" alt=""/>
-                        <div class="intro" ><img src="img/gif/page4.gif" alt=""/></div>
+                        <img class="bg" id="img_4" src="img/bg/bg_firtscreen_4.jpg" alt=""/>
                     </div>
                     <div class="swiper-slide">
-                        <div class="text2">
-                            <span class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">甚至</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">识别图片的主题</span>
-                            <br/>
-                            <br/>
-                            <span class="ani" swiper-animate-effect="fadeInDownBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">Party、live、聚会、旅行、冒险</span>
-                        </div>
-                        <img class="bg"src="img/bg/bg_firtscreen_5.jpg" alt=""/>
-                        <div class="intro" ><img src="img/gif/page5.gif" alt=""/></div>
+                        <img class="bg" id="img_5" src="img/bg/bg_firtscreen_5.jpg" alt=""/>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
             <!--轮播图-->
+            <!--第二屏-->
+            <div class="sec-div">
+                <div class="sub-nav">
+                    <ul>
+                        <li><a href="javascript:;" id="a_0"><img src='img/6/btn_autotagging_selected.png'/></a></li>
+                        <li><a href="javascript:;" id="a_1"><img src='img/6/btn_quicklysearch.png'/></a></li>
+                        <li><a href="javascript:;" id="a_2"><img src='img/6/btn_autofacegrouping.png'/></a></li>
+                        <li><a href="javascript:;" id="a_3"><img src='img/6/btn_bookmark.png'/></a></li>
+                    </ul>
+                </div>
+                <div class="bg2">
+                    <img class="show" src="img/6/img_iphone_autotagging.png" alt=""/>
+                </div>
+            </div>
+            <!--第二屏-->
         </div>
         <!--主体-->
         <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
         <script src="js/swiper.min.js" type="text/javascript"></script>
         <script src="js/swiper.animate.min.js" type="text/javascript"></script>
         <script>
+            $(".sub-nav li a").click(function () {
+                var id = $(this).attr('id');
+                //改变按钮颜色
+                changeBtnColor(id);
+                //改变图片
+                changeImg(id);
+                //改变背景颜色
+                changeBgColor(id);
+            });
+            /*
+             * 改变按钮颜色
+             * @param {type} id
+             */
+            function changeBtnColor(id) {
+                switch (id)
+                {
+                    case 'a_0':
+                        $('#' + id + " img").attr("src", "img/6/btn_autotagging_selected.png");
+                        $("#a_1 img").attr("src", "img/6/btn_quicklysearch.png");
+                        $("#a_2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                        $("#a_3 img").attr("src", "img/6/btn_bookmark.png");
+                        break;
+                    case 'a_1':
+                        $('#' + id + " img").attr("src", "img/6/btn_quicklysearch_selected.png");
+                        $("#a_0 img").attr("src", "img/6/btn_autotagging.png");
+                        $("#a_2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                        $("#a_3 img").attr("src", "img/6/btn_bookmark.png");
+                        break;
+                    case 'a_2':
+                        $('#' + id + " img").attr("src", "img/6/btn_autofacegrouping_selected.png");
+                        $("#a_1 img").attr("src", "img/6/btn_quicklysearch.png");
+                        $("#a_0 img").attr("src", "img/6/btn_autotagging.png");
+                        $("#a_3 img").attr("src", "img/6/btn_bookmark.png");
+                        break;
+                    case 'a_3':
+                        $('#' + id + " img").attr("src", "img/6/btn_bookmark_selected.png");
+                        $("#a_1 img").attr("src", "img/6/btn_quicklysearch.png");
+                        $("#a_2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                        $("#a_0 img").attr("src", "img/6/btn_autotagging.png");
+                        break;
+                    default:
+                        $('#' + id + " img").attr("src", "img/6/btn_autotagging_selected.png");
+                        $("#a_1 img").attr("src", "img/6/btn_quicklysearch.png");
+                        $("#a_2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                        $("#a_3 img").attr("src", "img/6/btn_bookmark.png");
+                }
+            }
+            /*
+             * 改变图片
+             * @param {type} id
+             */
+            function changeImg(id) {
+                switch (id)
+                {
+                    case 'a_0':
+                        $(".bg2 img").attr("src", "img/6/img_iphone_autotagging.png");
+                        break;
+                    case 'a_1':
+                        $(".bg2 img").attr("src", "img/6/img_iphone_quicklysearch.png");
+                        break;
+                    case 'a_2':
+                        $(".bg2 img").attr("src", "img/6/img_iphone_autofacegrouping.png");
+                        break;
+                    case 'a_3':
+                        $(".bg2 img").attr("src", "img/6/img_iphone_bookmark.png");
+                        break;
+                    default:
+                        $(".bg2 img").attr("src", "img/6/img_iphone_autotagging.png");
+                }
+            }
+
+            /*
+             * 改变背景颜色
+             * @param {type} id
+             */
+            function changeBgColor(id) {
+                switch (id)
+                {
+                    case 'a_0':
+                        $(".sec-div").css("background-color", "#68c2f0");
+                        break;
+                    case 'a_1':
+                        $(".sec-div").css("background-color", "#ffb35a");
+                        break;
+                    case 'a_2':
+                        $(".sec-div").css("background-color", "#bdda80");
+                        break;
+                    case 'a_3':
+                        $(".sec-div").css("background-color", "#fd7f62");
+                        break;
+                    default:
+                        $(".sec-div").css("background-color", "#68c2f0");
+                }
+            }
+
+
+
             var mySwiper = new Swiper('.swiper-container', {
                 autoplay: 5000,
                 mousewheelControl: true, //允许使用鼠标翻页
@@ -113,6 +185,23 @@
                 },
                 onSlideChangeEnd: function (swiper) {
                     swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+
+                    var activeIndex = mySwiper.activeIndex + 1;
+                    if (activeIndex !== 1) {
+                        //切换结束的时候显示动态背景图
+                        var imgsrc = "img/gif/page" + activeIndex + ".gif";
+                        var imgid = "img_" + activeIndex;
+                        $("#" + imgid).attr("src", imgsrc);
+                    }
+                },
+                onSlideChangeStart: function (swiper) {
+                    //开始切换的时候显示原背景图
+                    var activeIndex = mySwiper.activeIndex + 1;
+                    if (activeIndex !== 1) {
+                        var imgsrc = "img/bg/bg_firtscreen_" + activeIndex + ".jpg";
+                        var imgid = "img_" + activeIndex;
+                        $("#" + imgid).attr("src", imgsrc);
+                    }
                 }
             });
         </script>
