@@ -1,0 +1,7 @@
+@media screen and (min-width:1024px){
+    div p{
+        height:100px;
+        width:300px;
+        background-color:red;
+    }
+}

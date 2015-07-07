@@ -1,0 +1,141 @@
+.container{
+    margin:0;
+    padding: 0;
+}
+.row{
+    margin: -27px -15px 0 -15px ;
+}
+/*导航*/
+.nav-div{
+    position:absolute;
+    z-index: 3;
+    font-weight:bold;
+    text-align: center;
+    width: 92%;
+    height: 60px;
+}
+#nav li{
+    display:inline;
+} 
+#nav li a{
+    padding:0 25px;
+    color:#FFF;
+    font-size:16px;
+    text-decoration:none;
+}
+#nav li a:hover{
+    color: blue;
+}/*设置鼠标滑过或悬停时变化的背景颜色*/ 
+/*导航*/
+
+/*背景图*/
+#background{
+    padding: 0;
+    position: absolute;
+    z-index: 0;
+}
+#firstbg{
+    border: 0;
+    width: 100%;
+}
+#firstbgpc{
+    border: 0;
+    display: none;
+}
+#firstbgpad{
+    border: 0;
+    display: none;
+}
+/*下载图标*/
+.download{
+    position:absolute;
+    z-index:2;
+    top: 75%;
+    left: 50%;
+    width: 466px;
+    height: 65px;
+    margin-left: -233px;
+    margin-top: -32.5px;
+}
+.download a img{
+    padding: 0 20px 0 0;
+}
+/*下载图标*/
+
+/*进入按钮*/
+#jinru{
+    position: absolute;
+    z-index: 3;
+    top: 60%;
+    left: 50%;
+    height :45px;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -22.5px;
+}
+#jinru button{
+    font-size: 25px;
+    outline:none;
+    width: 200px;
+    border-color: white;
+    border-style:solid;
+    border-radius: 20px;
+    height: 45px;
+    color: white;
+    background-color:transparent;
+}
+/*进入按钮*/
+
+/*pc时候才显示进入按钮*/
+@media screen and (min-width:1024px){}
+/*pad*/
+@media screen and (min-width:768px) and (max-width:1024px){
+    #firstbg{
+        display: none;
+    }
+    #firstbgpad{
+        display: inline;
+        width: 1024px;
+        height: 768px;
+    }
+    #nav li a{
+        padding:0 5px;
+    }
+}
+/*手机*/
+@media screen and (max-width:768px){
+    .nav-div{
+        position: absolute;
+    }
+    #nav li a{
+        padding:0 5px;
+        font-size:16px;
+    }
+    #jinru{
+        display: none;
+    }
+    #phototimelogo{
+        display: none;
+    }
+    .download{
+        position:absolute;
+        z-index:2;
+        top: 65%;
+        width: 200px;
+        margin-left: -100px;
+    }
+    .download a img{
+        padding: 35px 0 0 0;
+    }
+    #firstbg{
+        display: none;
+    }
+    #firstbgpad{
+        display: none;
+    }
+    #firstbgpc{
+        display: inline;
+    }
+}
+
+

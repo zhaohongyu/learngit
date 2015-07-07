@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <title>Phototime</title>
+
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+        <!--导航-->
+        <div class="nav-div">
+            <ul id="nav">
+                <li><a href="#" title="Tips">Tips</a></li>
+                <li><a href="#" title="关于我们">关于我们</a></li>
+                <li><a id="phototimelogo" href="javascript:;" title="Phototime"><img src="img/img_logo_firstscreen.png" alt=""/></a></li>
+                <li><a href="#" title="博客">博客</a></li>
+                <li><a href="#" title="支持">支持</a></li>
+            </ul>
+        </div>
+        <!--导航-->
+
+        <!--背景图-->
+        <div class="container-fluid">
+            <div class="row">
+                <!--进入按钮-->
+                <div id="jinru">
+                    <button onclick="enter();">进入</button>
+                </div>
+                <!--进入按钮-->
+                <!--下载图标-->
+                <div class="download">
+                    <a href="#" target="__blank"><img src="img/btn/btn_ios_firstscreen.png" alt="IOS下载"/></a>
+                    <a href="#" target="__blank"><img src="img/btn/btn_android_firstscreen.png" alt="Android下载"/></a>
+                </div>
+                <!--下载图标-->
+                <div id="background" class="col-lg-12">
+                    <!--电脑背景图片-->
+                    <img id="firstbg" class="img-responsive" src="img/newbg/bg_firstscreen1.jpg" alt=""/>
+                    <!--IPAD背景图片-->
+                    <img id="firstbgpad" class="img-responsive" src="img/newbg/bg_homepageforipad.jpg" alt=""/>
+                    <!--手机背景图片-->
+                    <img id="firstbgpc" class="img-responsive" src="img/newbg/bg_homepage_forphone.jpg" alt=""/>
+                </div>
+            </div>
+        </div>
+        <!--背景图-->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+                        function enter() {
+                            window.location.href = 'banner.html';
+                        }
+        </script>
+    </body>
+</html>

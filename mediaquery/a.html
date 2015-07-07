@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>媒体查询</title>
+        <!--<link  href="css/pc.css" rel="stylesheet" type="text/css" media="screen and (min-width:1024px)"/>-->
+        <!--<link  href="css/pad.css" rel="stylesheet" type="text/css" media="screen and (min-width:768px) and (max-width:1024px)"/>-->
+        <link href="pc.css" rel="stylesheet" type="text/css" media="screen and (min-width:1024px)"/>
+        <link href="pad.css" rel="stylesheet" type="text/css" media="screen and (min-width:768px) and (max-width:1024px)"/>
+        <link href="phone.css" rel="stylesheet" type="text/css" media="screen and (max-width:768px)"/>
+        <style>
+            div p{
+                height:100px;
+                width:400px;
+            }
+            /*
+            @media screen and (min-width:1024px){
+                div{
+                    height:100px;
+                    width:300px;
+                    background-color:blue;
+                }
+            }
+            @media screen and (min-width:768px) and (max-width:1024px){
+                div{
+                    height:100px;
+                    width:200px;
+                    background-color:red;
+                }
+            }*/
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>pc时显示红色</p>
+            <p>pad时显示绿色</p>
+            <p>手机时显示黑色</p>
+        </div>
+    </body>
+</html>

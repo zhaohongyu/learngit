@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <title>Phototime</title>
+
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link href="css/swiper.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/banner.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+
+        <!--导航-->
+        <div class="nav-div">
+            <ul id="nav">
+                <li><a href="#" title="Tips">Tips</a></li>
+                <li><a href="#" title="关于我们">关于我们</a></li>
+                <li><a id="phototimelogo" href="javascript:;" title="Phototime"><img src="img/img_logo_firstscreen.png" alt=""/></a></li>
+                <li><a href="#" title="博客">博客</a></li>
+                <li><a href="#" title="支持">支持</a></li>
+            </ul>
+        </div>
+        <!--导航-->
+
+        <!--下载图标-->
+        <div class="download">
+            <a href="#" target="__blank"><img src="img/btn/btn_ios_firstscreen.png" alt="IOS下载"/></a>
+            <a href="#" target="__blank"><img src="img/btn/btn_android_firstscreen.png" alt="Android下载"/></a>
+        </div>
+        <!--下载图标-->
+
+        <!--轮播图-->
+        <div class="swiper-container" id="banner">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="img/newbg/bg_firstscreen2.jpg" alt=""/>
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="img/newbg/bg_firstscreen3.jpg" alt=""/>
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="img/newbg/bg_firstscreen4.jpg" alt=""/>
+                </div>
+                <div class="swiper-slide">
+                    <img class="img-responsive" src="img/newbg/bg_firstscreen5.jpg" alt=""/>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <!--轮播图-->
+
+        <!--第二屏-->
+        <div>
+            <div class="sub-nav">
+                <ul>
+                    <li><a href="javascript:;" id="a0"><img class="img-responsive" src='img/6/btn_autotagging_selected.png'/></a></li>
+                    <li><a href="javascript:;" id="a1"><img class="img-responsive" src='img/6/btn_quicklysearch.png'/></a></li>
+                    <li><a href="javascript:;" id="a2"><img class="img-responsive" src='img/6/btn_autofacegrouping.png'/></a></li>
+                    <li><a href="javascript:;" id="a3"><img class="img-responsive" src='img/6/btn_bookmark.png'/></a></li>
+                </ul>
+            </div>
+            <div class="bg2">
+                <!--文字-->
+                <div id="text">
+                    <dl id="text0">
+                        <dt class="text-center">智能识别</dt>
+                        <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhotoTime不仅自动标记图片的来源、时间、地点,还能够智能识别图片中的人、物和场景,并标记在图片上。</dd>
+                    </dl>
+                    <dl id="text1" style="display: none;">
+                        <dt class="text-center">便捷搜索</dt>
+                        <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhotoTime通过智能标签帮你快速搜索你想要的图片。在搜索框输入关键字，有相关标签的图片就会立即出现。</dd>
+                    </dl>
+                    <dl id="text2" style="display: none;">
+                        <dt class="text-center">人脸识别</dt>
+                        <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhotoTime智能识别你的照片中的每一张人脸，并将相似的人脸合成合集，只要给每个合集命名，你就可以轻松找到你的朋友。</dd>
+                    </dl>
+                    <dl id="text3" style="display: none;">
+                        <dt class="text-center">定制相册</dt>
+                        <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhotoTime在帮你自动标记照片后,你还可以将拥有相同标签的图片合成你的私人定制相册。</dd>
+                    </dl>
+                </div>
+                <!--文字-->
+                <div id="bannerimg">
+                    <img class="img-responsive" src="img/6/img_iphone_autotagging.png" alt=""/>
+                </div>
+            </div>
+        </div>
+        <!--第二屏-->
+
+        <!--iwatch-->
+        <div id="iwatchbody">
+            <div id="iwatch"  class="text-center" >
+                <img src="img/img_iwatch.png" alt=""/>
+            </div>
+            <div id="iwatchtext">
+                <p>&nbsp;</p>
+                <p>PhotoTime</p>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="img/apple-icon.png" alt=""/>
+                <span>Watch 版本</span>
+                <br/>
+                <br/>
+                <button onclick="jumpToDownPhotoTime4iwatch();">进入下载页面</button>
+            </div>
+        </div>
+        <!--iwatch-->
+
+        <!--相关报道-->
+        <div id="aboutnews">
+            <div id="aboutnewstext" class="text-center">
+                &nbsp;
+                <p id="p1">相关报道</p>
+                <p id="p2">谁关注了我们？</p>
+            </div>
+            <div class="swiper-container" id="xianguangbaodao">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="img-responsive" id="new1" src="img/xiangguanbaodao1.png" alt=""/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img-responsive" id="new2" src="img/xiangguanbaodao2.png" alt=""/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="img-responsive" id="new3" src="img/xiangguanbaodao3.png" alt=""/>
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <div id="xianguangbaodaotitle">
+                <div id="myt1">
+                    <p class="date">2015年7月1日 16:17:53</p>
+                    <p class="title">一张照片的PhotoTime之旅1</p>
+                    <p class="link"><a href="#">http://www.baidu.com?a=asfsdfsdfdfdsfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></p>
+                </div>
+                <div id="myt2" style="display: none;">
+                    <p class="date">2015年7月2日 16:17:53</p>
+                    <p class="title">一张照片的PhotoTime之旅2</p>
+                    <p class="link"><a href="#">http://www.baidu.com?a=asfsdfsdfdfdsfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></p>
+                </div>
+                <div id="myt3" style="display: none;">
+                    <p class="date">2015年7月3日 16:17:53</p>
+                    <p class="title">一张照片的PhotoTime之旅3</p>
+                    <p class="link"><a href="#">http://www.baidu.com?a=asfsdfsdfdfdsfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></p>
+                </div>
+            </div>
+        </div>
+        <!--相关报道-->
+
+        <!--关注我们-->
+        <div id="guanzhuwomen">
+            <div id="weixin">
+                <br/>
+                <br/>
+                <img class="img-responsive" src="img/guanzhu/img_wechat.png" alt="PhotoTime微信二维码"/>
+                <div id="erweima" class="text-center">
+                    <span>扫描二维码关注PhotoTime公众号</span>
+                    <br/>
+                    <img src="img/guanzhu/qrcode.png" alt=""/>
+                </div>
+            </div>
+            <div id="weibo">
+                <br/>
+                <br/>
+                <a target="__blank" href="http://weibo.com/u/5439336060"><img class="img-responsive" src="img/guanzhu/img_weibo.png" alt="PhotoTime微博"/></a>
+                <p class="text-center"><a target="__blank" href="http://weibo.com/u/5439336060">关注PhotoTime官方微博@PhotoTime_APP（为你的记忆加标签）</a></p>
+            </div>
+        </div>
+        <!--关注我们-->
+
+        <!--footer-->
+        <div id="footer" class="text-center">
+            <p>Copyright &COPY; 2014-2015 by Orbeus.lnc.</p>
+        </div>
+        <!--footer-->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/swiper.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+                    var mySwiper = new Swiper('#banner', {
+                        autoplay: 3000,
+                        //mousewheelControl: true, //允许使用鼠标翻页
+                        direction: 'vertical', //垂直
+                        speed: 1000,
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true
+                    });
+
+                    $(".sub-nav li a").click(function () {
+                        var id = $(this).attr('id');
+                        //改变按钮颜色
+                        changeBtnColor(id);
+                        //改变图片
+                        changeImg(id);
+                        //改变背景颜色
+                        changeBgColor(id);
+                        //改变文本
+                        changeText(id);
+                    });
+
+                    /**
+                     * 改变文本
+                     * @param {type} id
+                     */
+                    function changeText(id) {
+                        switch (id)
+                        {
+                            case 'a0':
+                                $("#text0").css("display", "inline");
+                                $("#text1").css("display", "none");
+                                $("#text2").css("display", "none");
+                                $("#text3").css("display", "none");
+                                break;
+                            case 'a1':
+                                $("#text0").css("display", "none");
+                                $("#text1").css("display", "inline");
+                                $("#text2").css("display", "none");
+                                $("#text3").css("display", "none");
+                                break;
+                            case 'a2':
+                                $("#text0").css("display", "none");
+                                $("#text1").css("display", "none");
+                                $("#text2").css("display", "inline");
+                                $("#text3").css("display", "none");
+                                break;
+                            case 'a3':
+                                $("#text0").css("display", "none");
+                                $("#text1").css("display", "none");
+                                $("#text2").css("display", "none");
+                                $("#text3").css("display", "inline");
+                                break;
+                            default:
+                                $("#text0").css("display", "inline");
+                                $("#text1").css("display", "none");
+                                $("#text2").css("display", "none");
+                                $("#text3").css("display", "none");
+                        }
+                    }
+
+                    /*
+                     * 改变按钮颜色
+                     * @param {type} id
+                     */
+                    function changeBtnColor(id) {
+                        switch (id)
+                        {
+                            case 'a0':
+                                $('#' + id + " img").attr("src", "img/6/btn_autotagging_selected.png");
+                                $("#a1 img").attr("src", "img/6/btn_quicklysearch.png");
+                                $("#a2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                                $("#a3 img").attr("src", "img/6/btn_bookmark.png");
+                                break;
+                            case 'a1':
+                                $('#' + id + " img").attr("src", "img/6/btn_quicklysearch_selected.png");
+                                $("#a0 img").attr("src", "img/6/btn_autotagging.png");
+                                $("#a2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                                $("#a3 img").attr("src", "img/6/btn_bookmark.png");
+                                break;
+                            case 'a2':
+                                $('#' + id + " img").attr("src", "img/6/btn_autofacegrouping_selected.png");
+                                $("#a1 img").attr("src", "img/6/btn_quicklysearch.png");
+                                $("#a0 img").attr("src", "img/6/btn_autotagging.png");
+                                $("#a3 img").attr("src", "img/6/btn_bookmark.png");
+                                break;
+                            case 'a3':
+                                $('#' + id + " img").attr("src", "img/6/btn_bookmark_selected.png");
+                                $("#a1 img").attr("src", "img/6/btn_quicklysearch.png");
+                                $("#a2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                                $("#a0 img").attr("src", "img/6/btn_autotagging.png");
+                                break;
+                            default:
+                                $('#' + id + " img").attr("src", "img/6/btn_autotagging_selected.png");
+                                $("#a1 img").attr("src", "img/6/btn_quicklysearch.png");
+                                $("#a2 img").attr("src", "img/6/btn_autofacegrouping.png");
+                                $("#a3 img").attr("src", "img/6/btn_bookmark.png");
+                        }
+                    }
+                    /*
+                     * 改变图片
+                     * @param {type} id
+                     */
+                    function changeImg(id) {
+                        switch (id)
+                        {
+                            case 'a0':
+                                $(".bg2 img").attr("src", "img/6/img_iphone_autotagging.png");
+                                break;
+                            case 'a1':
+                                $(".bg2 img").attr("src", "img/6/img_iphone_quicklysearch.png");
+                                break;
+                            case 'a2':
+                                $(".bg2 img").attr("src", "img/6/img_iphone_autofacegrouping.png");
+                                break;
+                            case 'a3':
+                                $(".bg2 img").attr("src", "img/6/img_iphone_bookmark.png");
+                                break;
+                            default:
+                                $(".bg2 img").attr("src", "img/6/img_iphone_autotagging.png");
+                        }
+                    }
+
+                    /*
+                     * 改变背景颜色
+                     * @param {type} id
+                     */
+                    function changeBgColor(id) {
+                        switch (id)
+                        {
+                            case 'a0':
+                                $(".bg2").css("background-color", "#68c2f0");
+                                break;
+                            case 'a1':
+                                $(".bg2").css("background-color", "#ffb35a");
+                                break;
+                            case 'a2':
+                                $(".bg2").css("background-color", "#bdda80");
+                                break;
+                            case 'a3':
+                                $(".bg2").css("background-color", "#fd7f62");
+                                break;
+                            default:
+                                $(".bg2").css("background-color", "#68c2f0");
+                        }
+                    }
+
+                    function jumpToDownPhotoTime4iwatch() {
+                        alert("PhotoTime4iwatch下载地址！");
+                        //window.location.href="";
+                    }
+
+                    var Swiper2 = new Swiper('#xianguangbaodao', {
+                        direction: 'horizontal',
+                        prevButton: '.swiper-button-prev',
+                        nextButton: '.swiper-button-next',
+                        autoplay: 5000,
+                        mousewheelControl: true, //允许使用鼠标翻页
+                        speed: 1000,
+                        paginationClickable: true,
+                        onSlideChangeStart: function (swiper) {
+                            //每个slide切换结束时
+                            var activeIndex2 = Swiper2.activeIndex + 1;
+                            switch (activeIndex2)
+                            {
+                                case 1:
+                                    $("#myt1").css("display", "inline");
+                                    $("#myt2").css("display", "none");
+                                    $("#myt3").css("display", "none");
+                                    break;
+                                case 2:
+                                    $("#myt1").css("display", "none");
+                                    $("#myt2").css("display", "inline");
+                                    $("#myt3").css("display", "none");
+                                    break;
+                                case 3:
+                                    $("#myt1").css("display", "none");
+                                    $("#myt2").css("display", "none");
+                                    $("#myt3").css("display", "inline");
+                                    break;
+                                default:
+                                    $("#myt1").css("display", "inline");
+                                    $("#myt2").css("display", "none");
+                                    $("#myt3").css("display", "none");
+                            }
+                        }
+                    });
+        </script>
+    </body>
+</html>
