@@ -1,0 +1,69 @@
+/* reset */
+html{color:#000;background:#fff;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;}
+img{border:none;}
+em,strong{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+table {border-collapse:collapse;border-spacing:0;}
+h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4, h5, h6{font-size:100%;}
+
+q:before,q:after{content:'';}/* 消除q前后的内容 */
+button,input,select,textarea{font-size:100%;}/* 使得表单元素在 ie 下能继承字体大小 */
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+address,cite,dfn,em,var{font-style:normal;} /* 将斜体扶正 */
+
+/* link */
+a{color:#36c;text-decoration:none;}
+a:hover{color:#f60;text-decoration:underline;}
+
+
+.container{
+	width: 150px;
+	background-color: #f8f8f8;
+	border:1px solid #bbb;
+}
+.container ul li{
+	display: block;
+	font-size: 15px;
+	font-weight: 300;
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	border-bottom:1px solid #dedede;
+}
+.container li i{
+	display:inline;
+	width:30px;
+	height:24px;
+	float: left;
+	background-image: url("../img/sidebar.png");
+	margin:3px 10px 0 0 ;
+}
+.c1{
+	background-position: 0 0;
+}
+.c2{
+	background-position: 0 -24px;	
+}
+.c3{
+	background-position: 0 -48px;
+}
+.c4{
+	background-position: 0 -72px;
+}
+.c5{
+	background-position: 0 -96px;
+}
+.c6{
+	background-position: 0 -120px;
+}
+.c7{
+	background-position: 0 -144px;
+}
+.c8{
+	background-position: 0 -168px;
+}
