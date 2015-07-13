@@ -67,7 +67,7 @@ $toolbar-size:52px;
 .toolbar{
 	position: fixed;
 	right: 0;
-	bottom: 90px;
+	top:35%;
 	margin-left: -$toolbar-size / 2;
 }
 .toolbar-item,.toolbar-btn,.toolbar-icon,.toolbar-text{
