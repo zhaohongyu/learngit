@@ -1,0 +1,180 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+@import "mixin";
+
+.banner{
+	position: absolute;
+	width: 100%;
+	height: 768px;
+	overflow: hidden;
+}
+/*背景颜色*/
+.bgcolor{
+	position: absolute;
+	right:33%;
+	// right:25%;
+	// right:17%;
+	// right:8%;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	@include transition(all .5s ease-in);
+	@include scale(35);
+	background-color: #68c2f0;
+}
+/*背景颜色*/
+/*背景图片*/
+.bgimg{
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	@include transition(all .8s ease-in);
+	@include transform(translate(0));
+	@include animation(animations .8s ease-out);
+}
+
+@-webkit-keyframes animations{
+	0%{-webkit-transform:translate(55px);@include opacity(0);}
+	100%{-webkit-transform:translate(0);@include opacity(1);}
+}
+@-moz-keyframes animations{
+	0%{-moz-transform:translate(55px);@include opacity(0);}
+	100%{-moz-transform:translate(0);@include opacity(1);}
+}
+@-o-keyframes animations{
+	0%{-o-transform:translate(55px);@include opacity(0);}
+	100%{-o-transform:translate(0);@include opacity(1);}
+}
+@-ms-keyframes animations{
+	0%{-ms-transform:translate(55px);@include opacity(0);}
+	100%{-ms-transform:translate(0);@include opacity(1);}
+}
+@keyframes animations{
+	0%{transform:translate(55px);@include opacity(0);}
+	100%{transform:translate(0);@include opacity(1);}
+}
+
+/*背景图片*/
+/*四个小按钮*/
+.bar{
+	position: absolute;
+	height:80px;
+	right:10%;
+	z-index: 2;
+}
+.bar ul{
+	list-style: none;
+}
+.bar ul li{
+	float: left;
+	margin-left: 60px;
+}
+
+.bar ul li a{
+	display: inline-block;
+	width:52px;
+	height:52px;
+	cursor: pointer;
+}
+
+.icon-1{
+	background: url(../img/btn_autotagging.png) no-repeat center center;
+	&:hover{
+		background: url(../img/btn_autotagging_selected.png) no-repeat center center;
+	}
+}
+.icon-2{
+	background: url(../img/btn_quicklysearch.png) no-repeat center center;
+	&:hover{
+		background: url(../img/btn_quicklysearch_selected.png) no-repeat center center;
+	}
+}
+.icon-3{
+	background: url(../img/btn_autofacegrouping.png) no-repeat center center;
+	&:hover{
+		background: url(../img/btn_autofacegrouping_selected.png) no-repeat center center;
+	}
+}
+.icon-4{
+	background: url(../img/btn_bookmark.png) no-repeat center center;
+	&:hover{
+		background: url(../img/btn_bookmark_selected.png) no-repeat center center;
+	}
+}
+
+/*四个小按钮*/
+
+/*文本*/
+.text{
+	position: absolute;
+	width:400px;
+	height:150px;
+	top: 15%;
+	right:10%;
+	font-weight: 800;
+	color:#fff;
+	line-height: 1.8;
+	z-index: 3;
+	@include transition(all .8s ease-in);
+}
+
+.text dt{
+	text-align: center;
+	font-size: 24px;
+	@include transform(translateY(0));
+	@include animation(animations_text_up .8s ease-out);
+}
+.text dd{
+	text-align: left;
+	font-size: 20px;
+	@include transform(translateY(15px));
+	@include animation(animations_text_down .8s ease-out);
+}
+
+@-webkit-keyframes animations_text_up{
+	0%{-webkit-transform:translateY(15px);@include opacity(0);}
+	100%{-webkit-transform:translateY(0);@include opacity(1);}
+}
+@-moz-keyframes animations_text_up{
+	0%{-moz-transform:translateY(15px);@include opacity(0);}
+	100%{-moz-transform:translateY(0);@include opacity(1);}
+}
+@-o-keyframes animations_text_up{
+	0%{-o-transform:translateY(15px);@include opacity(0);}
+	100%{-o-transform:translateY(0);@include opacity(1);}
+}
+@-ms-keyframes animations_text_up{
+	0%{-ms-transform:translateY(15px);@include opacity(0);}
+	100%{-ms-transform:translateY(0);@include opacity(1);}
+}
+@keyframes animations_text_up{
+	0%{transform:translateY(15px);@include opacity(0);}
+	100%{transform:translateY(0);@include opacity(1);}
+}
+
+@-webkit-keyframes animations_text_down{
+	0%{-webkit-transform:translateY(0);@include opacity(0);}
+	100%{-webkit-transform:translateY(15px);@include opacity(1);}
+}
+@-moz-keyframes animations_text_down{
+	0%{-moz-transform:translateY(0);@include opacity(0);}
+	100%{-moz-transform:translateY(15px);@include opacity(1);}
+}
+@-o-keyframes animations_text_down{
+	0%{-o-transform:translateY(0);@include opacity(0);}
+	100%{-o-transform:translateY(15px);@include opacity(1);}
+}
+@-ms-keyframes animations_text_down{
+	0%{-ms-transform:translateY(0);@include opacity(0);}
+	100%{-ms-transform:translateY(15px);@include opacity(1);}
+}
+@keyframes animations_text_down{
+	0%{transform:translateY(0);@include opacity(0);}
+	100%{transform:translateY(15px);@include opacity(1);}
+}
+
+/*文本*/

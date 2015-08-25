@@ -1,0 +1,119 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	width:100%;
+	height:100%;
+	background-color: #C8F0BF
+}
+.square{
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	background-color: red;
+}
+.rectangle {
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	background-color: red;
+}
+.circle {
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	-moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+	background-color: red;
+}
+.oval {
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	-moz-border-radius: 100px / 50px;
+    -webkit-border-radius: 100px / 50px;
+	background-color: red;
+}
+.triangle-up{
+	width: 0;
+    height: 0;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 180px solid red;
+}
+.triangle-down{
+	width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid red;
+}
+
+
+.box{
+	position: relative;
+	width:100%;
+	height: 500px;
+	background-color: #A1A4A9;
+	text-align: center;
+	overflow: hidden;
+}
+.bg1,.bg2{
+	position: absolute;
+	top:50%;
+	width: 75px;
+	height:75px;
+	border-radius: 50%;
+	-webkit-transition:all .5s ease-in;
+	-moz-transition:all .5s ease-in;
+	-ms-transition:all .5s ease-in;
+	-o-transition:all .5s ease-in;
+	transition:all .5s ease-in;
+}
+.bg1{
+	left:40%;
+}
+.bg2{
+	left:60%;
+}
+.normal{
+	display: inline-block;
+	top:50%;
+	position: absolute;
+	width: 75px;
+	height:75px;
+	border:2px solid #FFFFFF;
+	border-radius: 50%;
+	text-indent: -9999px;
+	cursor:default;
+	background-repeat: no-repeat;
+	background-position: center center;
+	z-index: 1;
+}
+.weibo{
+	left:40%;
+	background-image: url(../img/icon-share-sina-2x-hover.png);
+}
+.qqzone{
+	left:60%;
+	background-image: url(../img/icon-share-qqzone-2x-hover.png);
+
+}
+.normal:hover{
+	background-color: white;
+}
+.weibo:hover ~ .bg1{
+	-webkit-transform:scale(30);
+	-moz-transform:scale(30);
+	-ms-transform:scale(30);
+	-o-transform:scale(30);
+	transform:scale(30);
+	background-color: yellow;
+}
+.qqzone:hover ~ .bg2{
+	-webkit-transform:scale(30);
+	-moz-transform:scale(30);
+	-ms-transform:scale(30);
+	-o-transform:scale(30);
+	transform:scale(30);
+	background-color: blue;
+}

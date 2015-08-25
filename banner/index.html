@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>PhotoTime轮播图</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".bar li a").mouseover(function () {
+            var id = $(this).attr('id');
+            //改变背景颜色
+            changeBgColor(id);
+            //改变文本
+            changeText(id);
+            //改变图片
+            changeImg(id);
+        });
+        /*
+         * 改变背景颜色
+         * @param {type} id
+         */
+        function changeBgColor(id) {
+            switch (id)
+            {
+                case 'a0':
+                    $(".bgcolor").css("background-color", "#68c2f0");
+                    $(".bgcolor").css("right", "33%");
+                    break;
+                case 'a1':
+                    $(".bgcolor").css("background-color", "#ffb35a");
+                    $(".bgcolor").css("right", "25%");
+                    break;
+                case 'a2':
+                    $(".bgcolor").css("background-color", "#bdda80");
+                    $(".bgcolor").css("right", "17%");
+                    break;
+                case 'a3':
+                    $(".bgcolor").css("background-color", "#fd7f62");
+                    $(".bgcolor").css("right", "8%");
+                    break;
+                default:
+                    $(".bgcolor").css("background-color", "#68c2f0");
+                    $(".bgcolor").css("right", "33%");
+            }
+            $(".bgcolor").css("transform", "scale(.3)");
+            setTimeout(function(){
+            	$(".bgcolor").css("transform", "scale(35)");
+            },500);
+        }
+        /**
+         * 改变文本
+         * @param {type} id
+         */
+        function changeText(id) {
+            switch (id)
+            {
+                case 'a0':
+                    $("#text0").css("display", "inline");
+                    $("#text1").css("display", "none");
+                    $("#text2").css("display", "none");
+                    $("#text3").css("display", "none");
+                    break;
+                case 'a1':
+                    $("#text0").css("display", "none");
+                    $("#text1").css("display", "inline");
+                    $("#text2").css("display", "none");
+                    $("#text3").css("display", "none");
+                    break;
+                case 'a2':
+                    $("#text0").css("display", "none");
+                    $("#text1").css("display", "none");
+                    $("#text2").css("display", "inline");
+                    $("#text3").css("display", "none");
+                    break;
+                case 'a3':
+                    $("#text0").css("display", "none");
+                    $("#text1").css("display", "none");
+                    $("#text2").css("display", "none");
+                    $("#text3").css("display", "inline");
+                    break;
+                default:
+                    $("#text0").css("display", "inline");
+                    $("#text1").css("display", "none");
+                    $("#text2").css("display", "none");
+                    $("#text3").css("display", "none");
+            }
+        }
+
+
+        /*
+         * 改变图片
+         * @param {type} id
+         */
+        function changeImg(id) {
+        	$(".bgimg").remove();
+        	var html='';
+            switch (id)
+            {
+                case 'a0':
+                	html='<div class="bgimg"><img src="img/img_iphone_autotagging.png"></div>';
+                    break;
+                case 'a1':
+                	html='<div class="bgimg"><img src="img/img_iphone_quicklysearch.png"></div>';
+                    break;
+                case 'a2':
+                	html='<div class="bgimg"><img src="img/img_iphone_autofacegrouping.png"></div>';
+                    break;
+                case 'a3':
+                	html='<div class="bgimg"><img src="img/img_iphone_bookmark.png"></div>';
+                    break;
+                default:
+                	html='<div class="bgimg"><img src="img/img_iphone_autotagging.png"></div>';
+            }
+            $('.bgcolor').after(html);
+        }
+
+	});
+	</script>
+</head>
+<body>
+	<div class="banner">
+		<div class="bgcolor"></div>
+		<div class="bgimg"><img src="img/img_iphone_autotagging.png"></div>
+		<div class="bar">
+			<ul>
+				<li>
+					<a id="a0" class="icon-1"></a>
+				</li>
+				<li>
+					<a id="a1" class="icon-2"></a>
+				</li>
+				<li>
+					<a id="a2" class="icon-3"></a>
+				</li>
+				<li>
+					<a id="a3" class="icon-4"></a>
+				</li>
+			</ul>
+		</div>
+		<div class="text">
+			<dl id="text0" style="display: inline;">
+                <dt>智能识别</dt>
+                <dd>
+                &nbsp;&nbsp;
+                PhotoTime不仅自动标记图片的来源、时间、地点,还能够智能识别图片中的人、物和场景,并标记在图片上。
+                </dd>
+            </dl>
+            <dl id="text1" style="display: none;">
+                <dt>便捷搜索</dt>
+                <dd>
+                &nbsp;&nbsp;
+                PhotoTime通过智能标签帮你快速搜索你想要的图片。在搜索框输入关键字，有相关标签的图片就会立即出现。
+                </dd>
+            </dl>
+            <dl id="text2" style="display: none;">
+                <dt>人脸识别</dt>
+                <dd>
+                &nbsp;&nbsp;
+                PhotoTime智能识别你的照片中的每一张人脸，并将相似的人脸合成合集，只要给每个合集命名，你就可以轻松找到你的朋友。
+                </dd>
+            </dl>
+            <dl id="text3" style="display: none;">
+                <dt>定制相册</dt>
+                <dd>
+                &nbsp;&nbsp;
+                PhotoTime在帮你自动标记照片后,你还可以将拥有相同标签的图片合成你的私人定制相册。
+                </dd>
+            </dl>
+		</div>
+	</div>
+</body>
+</html>
