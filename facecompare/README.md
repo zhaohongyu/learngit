@@ -1,6 +1,6 @@
-##::Face Verification
-###::FaceVerification compares the faces in multiple different images and analyze their similarity.
-##Usage notes :
+##Face Verification
+###FaceVerification compares the faces in multiple different images and analyze their similarity.
+###Usage notes :
 > You need to upload a photo with only 1 face in as your base image. The face will be used to compare with faces in other images.
 
 > Face Verification GET Example :
@@ -25,7 +25,7 @@ https://rekognition.com/func/api/?api_key=1234&api_secret=1234&jobs=face_compare
   curl_close($ch);
 ?>
 ```
-> Response sample (json):
+###Response sample (json):
 
 ```
 {
