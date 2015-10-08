@@ -1,6 +1,7 @@
 <?php
 /**
- * gzip off;
+ * 关闭nginx的gzip off;
+ * 循环输出
  */
 set_time_limit(0);
 ob_end_clean();

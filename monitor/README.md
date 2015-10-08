@@ -1,5 +1,7 @@
 # Monitor
 
+> 监控cassandra数据库，报警够发送邮件
+
 1、部署的时候更改一下config.php中的$GLOBALS['LIB_ROOT']的路径,
 是thrift的文件路径
 

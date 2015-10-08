@@ -1,13 +1,15 @@
-::Face Verification
-::FaceVerification compares the faces in multiple different images and analyze their similarity.
-Usage notes :
-You need to upload a photo with only 1 face in as your base image. The face will be used to compare with faces in other images.
+##::Face Verification
+###::FaceVerification compares the faces in multiple different images and analyze their similarity.
+##Usage notes :
+> You need to upload a photo with only 1 face in as your base image. The face will be used to compare with faces in other images.
 
-Face Verification GET Example :
+> Face Verification GET Example :
 https://rekognition.com/func/api/?api_key=1234&api_secret=1234&jobs=face_compare&urls=https://rekognition.com/static/img/sample/brad_pitt_01.jpg&urls_compare=https://rekognition.com/static/img/sample/brad_pitt_02.jpg
 
-Face Verification POST example: (post to http://rekognition.com/func/api/)
+> Face Verification POST example: (post to http://rekognition.com/func/api/)
 如果想使用本地图片，就把 urls 改成 base64, urls_compare 改成 base64_compare.对应的value改成图片的base64 data即可
+
+```
 <?php
   $ch = curl_init();
   $data = array('api_key' => '1234', 
@@ -22,9 +24,10 @@ Face Verification POST example: (post to http://rekognition.com/func/api/)
   curl_exec($ch);
   curl_close($ch);
 ?>
+```
+> Response sample (json):
 
-Response sample (json):
-
+```
 {
     "face_detection": [
         {
@@ -99,3 +102,4 @@ ERROR:
     "api_id":"On7QxkJMCOiyTt7k"
   }
 }
+```
