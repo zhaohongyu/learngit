@@ -24,7 +24,9 @@ if ($_GET['act'] == "rt") {
     }
     function displayData(dataJSON)
     {
-        var res = "time=" + dataJSON.time + " rand=" + dataJSON.rand+"<br/>";
+        var res = "time=" + dataJSON.time + " rand=" + dataJSON.rand+"<br/><div style='height:10px;'></div>";
+        var scrollHeight=window.document.body.scrollHeight;
+        $('body').scrollTop(scrollHeight);
         document.write(res);
     }
 -->
