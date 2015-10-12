@@ -9,7 +9,7 @@ if ($_GET['act'] == "rt") {
         "data4" => "data4",
     );
     $jarr = json_encode($arr);
-    echo $_GET['callback'], '(', $jarr, ')';
+    echo $_GET['callback'] . '(' . $jarr . ')';
     exit;
 }
 ?>
