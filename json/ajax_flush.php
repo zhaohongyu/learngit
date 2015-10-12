@@ -3,10 +3,8 @@ error_reporting(0);
 //ajax调用实时刷新
 if ($_GET['act'] == "rt") {
     $arr = array(
-        "data1" => "data1",
-        "data2" => "data2",
-        "data3" => "data3",
-        "data4" => "data4",
+        "time" => time(),
+        "rand" => rand(1, 1000),
     );
     $jarr = json_encode($arr);
     echo $_GET['callback'] . '(' . $jarr . ')';
@@ -26,8 +24,8 @@ if ($_GET['act'] == "rt") {
     }
     function displayData(dataJSON)
     {
-        console.log(dataJSON);
-        //document.write(dataJSON);
+        var res = "time=" + dataJSON.time + " rand=" + dataJSON.rand+"<br/>";
+        document.write(res);
     }
 -->
 </script>
