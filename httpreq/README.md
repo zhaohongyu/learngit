@@ -1,1 +1,1 @@
-##JAVA简单GET/POST请求类
+##JAVA简单GET/POST请求类。
