@@ -4,11 +4,17 @@
 Send_Sms/
 
 ├── Curl/  
+
 ├── data/               短信接收人和短信接口地址
+
 ├── Cron_Mission.php    定时任务调用脚本
+
 ├── Send_Msg.php        发送短信文件
+
 ├── Socketlog.php       DEBUG
+
 ├── define.php          常量定义
+
 ├── index.php           入口文件
 
 #使用注意
