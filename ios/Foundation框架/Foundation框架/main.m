@@ -8,22 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma mark 函数声明
 
+void mydic();
 NSUInteger countCodeLine(NSString *str_url);
 void myrect();
 void mypoint();
 void myrange();
 
+#pragma mark 主函数
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        // NSString *str_url = @"/Library/WebServer/Documents/learngit/ios/Foundation框架/Foundation框架/main.m";
         
-        NSString *str_url = @"/Library/WebServer/Documents/learngit/ios/";
+        // mydic();
         
-        NSUInteger countLines = countCodeLine(str_url);
+        // NSString *str_url = @"/Library/WebServer/Documents/learngit/ios/";
         
-        NSLog(@"代码总行数是:%ld",countLines);
+        // NSUInteger countLines = countCodeLine(str_url);
+        
+        // NSLog(@"代码总行数是:%ld",countLines);
         
         // myrect();
         
@@ -37,11 +42,47 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-/**
- 统计代码行数
- 
- 
- */
+#pragma mark 函数实现
+
+// 字典操作
+void mydic(){
+    // 创建不可变字典
+    // NSDictionary *dic = [NSDictionary dictionaryWithObject:@"honyuzhao" forKey:@"name"];
+    
+    // 编译器特性创建不可变字典
+    NSDictionary *dic2 = @{@"name1":@"honyuzhao1",@"name2":@"honyuzhao22",@"name3":@"honyuzhao333",};
+    
+    // 遍历字典
+    NSArray *key_arr = [dic2 allKeys];
+    for (int i=0; i<dic2.count; i++) {
+        // NSString *key = [key_arr objectAtIndex:i];
+        NSString *key = key_arr[i];
+        
+        NSLog(@"%@",key);
+        NSLog(@"%@",dic2[key]);
+    }
+    
+    
+    // 遍历字典
+    for (id obj in dic2) {
+        NSLog(@"%@",obj);
+        NSLog(@"%@",[dic2 objectForKey:obj]);
+    }
+    
+    // 遍历字典
+    [dic2 enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSLog(@"key=%@,obj=%@",key,obj);
+    }];
+    
+    
+    // NSLog(@"dic=%@",dic2);
+    
+    // NSLog(@"dic[0]=%@",[dic2 objectForKey:@"name3"]);
+    // NSLog(@"dic[0]=%@",dic2[@"name2"]);
+    
+}
+
+// 统计代码行数
 NSUInteger countCodeLine(NSString *str_url){
     
     NSFileManager *mgr = [NSFileManager defaultManager];

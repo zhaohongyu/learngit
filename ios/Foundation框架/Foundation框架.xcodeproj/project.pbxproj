@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		7B83AA441C704DFC007E8A3C /* Foundation框架 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Foundation框架"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B83AA471C704DFC007E8A3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B83AA471C704DFC007E8A3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; usesTabs = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +237,7 @@
 				7B83AA4D1C704DFC007E8A3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
