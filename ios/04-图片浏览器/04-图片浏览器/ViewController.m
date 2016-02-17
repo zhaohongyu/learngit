@@ -34,7 +34,6 @@
 - (IBAction)night:(UISwitch *)sender {
     
     // 设置背景颜色
-    NSLog(@"%@",sender);
     if(YES == sender.on){
         self.view.backgroundColor = [UIColor blackColor];
     }else{
