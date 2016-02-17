@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>0</key>
+	<array>
+		<string>apple.jpg</string>
+		<string>苹果大法好哈哈哈</string>
+	</array>
+	<key>1</key>
+	<array>
+		<string>facebook.jpg</string>
+		<string>facebook.jpg哈哈哈</string>
+	</array>
+	<key>2</key>
+	<array>
+		<string>google.png</string>
+		<string>google.pngfdsfdsfsfssfd</string>
+	</array>
+	<key>3</key>
+	<array>
+		<string>ios1.jpg</string>
+		<string>ios1kjsdfksdjfksjfklsfkfjss</string>
+	</array>
+	<key>4</key>
+	<array>
+		<string>jd.jpg</string>
+		<string>京东京东京东京东京东京东京东京东</string>
+	</array>
+	<key>5</key>
+	<array>
+		<string>microsoft.jpg</string>
+		<string>microsoft.jpg师德师风时好时坏是反的</string>
+	</array>
+	<key>6</key>
+	<array>
+		<string>twitter.png</string>
+		<string>twitter.pngdsf适当放松的方式斯蒂芬森</string>
+	</array>
+</dict>
+</plist>

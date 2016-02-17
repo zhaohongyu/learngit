@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hqs-J6-qVl">
+                                <rect key="frame" x="81" y="274" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.396078431372549" green="1" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="btn_up.jpg"/>
+                                <connections>
+                                    <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pFw-Pr-VFj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="biO-3d-31r">
+                                <rect key="frame" x="36" y="321" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.31811518469972278" green="1" blue="0.30797875468584002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="btn_left.jpg"/>
+                                <connections>
+                                    <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="35I-aU-uDJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aOX-hS-Q0w">
+                                <rect key="frame" x="122" y="321" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17619648447013669" green="1" blue="0.10333588392111248" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="btn_right.jpg"/>
+                                <connections>
+                                    <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uV3-hx-zhK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ila-4j-PpE">
+                                <rect key="frame" x="201" y="288" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17967702112850548" green="1" blue="0.070516450982163525" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="btn_add.jpg"/>
+                                <connections>
+                                    <action selector="scale:" destination="BYZ-38-t0r" eventType="touchUpInside" id="19e-JH-GXQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Spg-Tv-M7X">
+                                <rect key="frame" x="255" y="296" width="37" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="btn_minus.jpg"/>
+                                <connections>
+                                    <action selector="scale:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZW-hQ-eBX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q0d-wc-bDB">
+                                <rect key="frame" x="201" y="342" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.16636547883175767" green="1" blue="0.22793642663160563" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="左旋转"/>
+                                <connections>
+                                    <action selector="rotate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZBw-cY-GmK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wy7-IJ-ffL">
+                                <rect key="frame" x="255" y="342" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.19119033404254904" green="1" blue="0.22849541640714455" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="右旋转"/>
+                                <connections>
+                                    <action selector="rotate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aUC-XZ-UIl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gV3-rS-NzG">
+                                <rect key="frame" x="102" y="87" width="105" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.23665425143323693" blue="0.70291320992226014" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="google.png"/>
+                                <state key="highlighted" backgroundImage="apple.jpg"/>
+                                <connections>
+                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sms-6j-Wdx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h1m-5R-hnZ">
+                                <rect key="frame" x="81" y="366" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.19059783239376171" green="1" blue="0.11183526915310749" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="btn_down.jpg"/>
+                                <connections>
+                                    <action selector="move:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JVf-wG-6Sr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="gV3-rS-NzG" id="fsp-BK-vgJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="374"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="apple.jpg" width="960" height="600"/>
+        <image name="btn_add.jpg" width="45" height="44"/>
+        <image name="btn_down.jpg" width="34" height="45"/>
+        <image name="btn_left.jpg" width="46" height="33"/>
+        <image name="btn_minus.jpg" width="43" height="12"/>
+        <image name="btn_right.jpg" width="46" height="34"/>
+        <image name="btn_up.jpg" width="33" height="45"/>
+        <image name="google.png" width="680" height="450"/>
+    </resources>
+</document>
