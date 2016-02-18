@@ -31,7 +31,7 @@
     NSBundle *bun = [NSBundle mainBundle];
     NSString *path = [bun pathForResource:@"image" ofType:@"plist"];
     _imageDatas = [NSArray arrayWithContentsOfFile:path];
-    // NSLog(@"%@",_imageDatas);
+     NSLog(@"%@",path);
     [self settingViewWithColumns:2 isAdd:YES];
     
 }
