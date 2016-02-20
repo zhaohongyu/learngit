@@ -23,6 +23,7 @@
     
     mykeyBoard = [MyKeyBoard keyBoard];
     // 添加监听事件
+    mykeyBoard.closeKeyBoard.action = @selector(exitKeyBoard4ToolBar:);
     
     // 添加操作项到键盘上
     _name.inputAccessoryView = mykeyBoard;
@@ -41,7 +42,7 @@
 }
 
 - (void)exitKeyBoard4ToolBar:(UIBarButtonItem *)sender {
-    // NSLog(@"退出键盘");
+    // NSLog(@"退出键盘%@",sender);
     [self.view endEditing:YES];
 }
 
