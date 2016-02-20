@@ -12,7 +12,7 @@
 #define kDuration 0.5
 #define kRowH 60
 
-// 匿名分类
+// 类扩展，匿名分类
 @interface ViewController ()
 {
     NSArray *_allNames;

@@ -14,7 +14,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="西门庆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaL-Ov-roV">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gml-SX-2CF">
@@ -29,9 +29,9 @@
             <color key="backgroundColor" red="1" green="0.84821326829999999" blue="0.85563679169999995" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="concatName" destination="NaL-Ov-roV" id="cA3-i6-O5I"/>
-                <outlet property="deleteBtn" destination="Gml-SX-2CF" id="fKE-m6-QNL"/>
-                <outlet property="icon" destination="eey-yS-HOH" id="gjr-WI-j1D"/>
+                <outlet property="concatName" destination="NaL-Ov-roV" id="7Ft-gB-Pd8"/>
+                <outlet property="deleteBtn" destination="Gml-SX-2CF" id="Hk0-av-aGV"/>
+                <outlet property="icon" destination="eey-yS-HOH" id="rV1-eL-oW8"/>
             </connections>
             <point key="canvasLocation" x="105" y="325"/>
         </view>
