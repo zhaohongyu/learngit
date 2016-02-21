@@ -90,8 +90,11 @@
     NSString *title = [NSString stringWithFormat:@"修改商品-%@",mytext];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
-
-    __block ViewController *myviewController = self;
+    
+    __weak typeof(self) myviewController = self;
+    //这里需要防止循环引用（可以通过新建一个自己的控制器继承UIAlertController，在dealloc中打印信息，验证是否有最终释放）
+    __weak typeof(alertController) weakAlert = alertController;
+    
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.clearButtonMode = UITextFieldViewModeAlways;
         textField.text = mytext;
@@ -100,7 +103,7 @@
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+        [[NSNotificationCenter defaultCenter] removeObserver:myviewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
     }];
     UIAlertAction *defult = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *mytextField = alertController.textFields.firstObject;
@@ -111,12 +114,14 @@
         allShops[indexPath.row] = shop;
         // 重新载入一行数据
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:myviewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
     }];
     
     
     [alertController addAction:cancelAction];
     [alertController addAction:defult];
-
+    
     // 定义全局变量保存确定按钮
     secureTextAlertAction = defult;
     
@@ -147,7 +152,7 @@
         // 可以在这里对textfield进行定制，例如改变背景色
         // textField.backgroundColor = [UIColor orangeColor];
     }];
-
+    
     
     // 添加按钮
     [alertController addAction:cancelAction];
@@ -188,7 +193,7 @@
     
     UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"你点击了确定按钮");
-
+        
         // Stop listening for text changed notifications.
         [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
     }];
