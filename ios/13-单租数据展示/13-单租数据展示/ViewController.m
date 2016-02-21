@@ -61,7 +61,11 @@
 
 // 每一行显示什么样的数据
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"c1"];
+    if(nil == cell){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"c1"];
+    }
     
     Shop *shop = allShops[indexPath.row];
     
@@ -86,12 +90,13 @@
     NSString *title = [NSString stringWithFormat:@"修改商品-%@",mytext];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
+
+    __block ViewController *myviewController = self;
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.clearButtonMode = UITextFieldViewModeAlways;
         textField.text = mytext;
         // 监听文本框输入
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
+        [[NSNotificationCenter defaultCenter] addObserver:myviewController selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -108,14 +113,14 @@
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
     }];
     
+    
     [alertController addAction:cancelAction];
     [alertController addAction:defult];
-    
+
     // 定义全局变量保存确定按钮
     secureTextAlertAction = defult;
     
     [self presentViewController:alertController animated:YES completion:nil];
-    
 }
 
 
