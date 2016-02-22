@@ -76,9 +76,6 @@
                       ];
         [allShops addObject:shop];
     }
-    
-    // TODO 存在性能问题
-    
 }
 
 
@@ -123,28 +120,28 @@
     
     MyAlertController *alertController = [MyAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-    __weak typeof(self) myviewController = self;
+    __weak typeof(self) weakViewController = self;
     __weak typeof(alertController) weakAlert = alertController;
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.clearButtonMode = UITextFieldViewModeAlways;
         textField.text = mytext;
         
-        [[NSNotificationCenter defaultCenter] addObserver:myviewController selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
+        [[NSNotificationCenter defaultCenter] addObserver:weakViewController selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [[NSNotificationCenter defaultCenter] removeObserver:myviewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
+        [[NSNotificationCenter defaultCenter] removeObserver:weakViewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
     }];
     
     UIAlertAction *defult = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *mytextField = alertController.textFields.firstObject;
+        UITextField *mytextField = weakAlert.textFields.firstObject;
         Shop *shop = allShops[indexPath.row];
         shop.title = mytextField.text;
         allShops[indexPath.row] = shop;
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
         
-        [[NSNotificationCenter defaultCenter] removeObserver:myviewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
+        [[NSNotificationCenter defaultCenter] removeObserver:weakViewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
     }];
     
     
