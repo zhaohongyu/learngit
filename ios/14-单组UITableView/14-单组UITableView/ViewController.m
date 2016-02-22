@@ -5,9 +5,50 @@
 //  Created by 赵洪禹 on 16/2/21.
 //  Copyright © 2016年 赵洪禹. All rights reserved.
 //
+/*
+ [viewWillAppear」当收到视图在视窗将可见时的通知会呼叫的方法
+ 
+ 「viewDidAppear」当收到视图在视窗已可见时的通知会呼叫的方法
+ 
+ 「viewWillDisappear」当收到视图将去除、被覆盖或隐藏于视窗时的通知会呼叫的方法
+ 
+ 「viewDidDisappear」当收到视图已去除、被覆盖或隐藏于视窗时的通知会呼叫的方法
+ 
+ 「didReceiveMemoryWarning」收到系统传来的内存警告通知后会执行的方法
+ 
+ 「shouldAutorotateToInterfaceOrientation」是否支持不同方向的旋转视图
+ 
+ 「willAnimateRotationToInterfaceOrientation」在进行旋转视图前的会执行的方法（用于调整旋转视图之用）
+ 
+ 当一个视图控制器被创建，并在屏幕上显示的时候。 代码的执行顺序
+ 
+ 1、 alloc                                   创建对象，分配空间
+ 
+ 2、init (initWithNibName) 初始化对象，初始化数据
+ 
+ 3、loadView                          从nib载入视图 ，通常这一步不需要去干涉。除非你没有使用xib文件创建视图
+ 
+ 4、viewDidLoad                   载入完成，可以进行自定义数据以及动态创建其他控件
+ 
+ 5、viewWillAppear              视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了
+ 
+ 6、viewDidAppear               视图已在屏幕上渲染完成
+ 
+ 当一个视图被移除屏幕并且销毁的时候的执行顺序，这个顺序差不多和上面的相反
+ 
+ 1、viewWillDisappear            视图将被从屏幕上移除之前执行
+ 
+ 2、viewDidDisappear             视图已经被从屏幕上移除，用户看不到这个视图了
+ 
+ 3、dealloc                                 视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放
+ 
+ */
 
 #import "ViewController.h"
 #import "Shop.h"
+#import "MyAlertController.h"
+
+#define rowH 78
 
 @interface ViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -49,9 +90,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
+    static NSString *ID = @"cell1";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if(nil == cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell1"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
     
     Shop *shop = allShops[indexPath.row];
@@ -70,11 +113,15 @@
     [self myalert:shop.title indexPath:indexPath tableView:tableView];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return rowH;
+}
+
 #pragma mark 弹出框
 - (void)myalert:(NSString *)mytext indexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView{
     NSString *title = [NSString stringWithFormat:@"修改商品-%@",mytext];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    MyAlertController *alertController = [MyAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     __weak typeof(self) myviewController = self;
     __weak typeof(alertController) weakAlert = alertController;

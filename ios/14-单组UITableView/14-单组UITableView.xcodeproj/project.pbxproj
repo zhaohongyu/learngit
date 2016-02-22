@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BB211361C7AC1CF004A67E8 /* MyAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB211351C7AC1CF004A67E8 /* MyAlertController.m */; };
 		7BC206331C79E78C005A7995 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC206321C79E78C005A7995 /* main.m */; };
 		7BC206361C79E78C005A7995 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC206351C79E78C005A7995 /* AppDelegate.m */; };
 		7BC206391C79E78C005A7995 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC206381C79E78C005A7995 /* ViewController.m */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7BB211341C7AC1CF004A67E8 /* MyAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertController.h; sourceTree = "<group>"; };
+		7BB211351C7AC1CF004A67E8 /* MyAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertController.m; sourceTree = "<group>"; };
 		7BC2062E1C79E78C005A7995 /* 14-单组UITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "14-单组UITableView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BC206321C79E78C005A7995 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7BC206341C79E78C005A7995 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				7BC2063F1C79E78C005A7995 /* LaunchScreen.storyboard */,
 				7BC206421C79E78C005A7995 /* Info.plist */,
 				7BC206311C79E78C005A7995 /* Supporting Files */,
+				7BB211341C7AC1CF004A67E8 /* MyAlertController.h */,
+				7BB211351C7AC1CF004A67E8 /* MyAlertController.m */,
 			);
 			path = "14-单组UITableView";
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				7BC206361C79E78C005A7995 /* AppDelegate.m in Sources */,
 				7BC206331C79E78C005A7995 /* main.m in Sources */,
 				7BC2065C1C79E7DD005A7995 /* Shop.m in Sources */,
+				7BB211361C7AC1CF004A67E8 /* MyAlertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +347,7 @@
 				7BC206471C79E78C005A7995 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
