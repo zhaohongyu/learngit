@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BB211391C7AD2CD004A67E8 /* MyAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB211381C7AD2CD004A67E8 /* MyAlertController.m */; };
 		7BD874E01C7376CC00CAFA75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD874DF1C7376CC00CAFA75 /* main.m */; };
 		7BD874E31C7376CC00CAFA75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD874E21C7376CC00CAFA75 /* AppDelegate.m */; };
 		7BD874E61C7376CC00CAFA75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD874E51C7376CC00CAFA75 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7BB211371C7AD2CD004A67E8 /* MyAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlertController.h; sourceTree = "<group>"; };
+		7BB211381C7AD2CD004A67E8 /* MyAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlertController.m; sourceTree = "<group>"; };
 		7BD874DB1C7376CC00CAFA75 /* 03-通过代码创建控件.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "03-通过代码创建控件.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD874DF1C7376CC00CAFA75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7BD874E11C7376CC00CAFA75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 				7BD874EC1C7376CC00CAFA75 /* LaunchScreen.storyboard */,
 				7BD874EF1C7376CC00CAFA75 /* Info.plist */,
 				7BD874DE1C7376CC00CAFA75 /* Supporting Files */,
+				7BB211371C7AD2CD004A67E8 /* MyAlertController.h */,
+				7BB211381C7AD2CD004A67E8 /* MyAlertController.m */,
 			);
 			path = "03-通过代码创建控件";
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB211391C7AD2CD004A67E8 /* MyAlertController.m in Sources */,
 				7BD874E61C7376CC00CAFA75 /* ViewController.m in Sources */,
 				7BD874E31C7376CC00CAFA75 /* AppDelegate.m in Sources */,
 				7BD874E01C7376CC00CAFA75 /* main.m in Sources */,
@@ -307,6 +313,7 @@
 				7BD874F41C7376CC00CAFA75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

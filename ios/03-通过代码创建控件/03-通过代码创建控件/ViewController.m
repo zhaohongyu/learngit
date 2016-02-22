@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "MyAlertController.h"
 
 @interface ViewController ()
 
@@ -73,11 +73,54 @@
 
 - (void)btnClick:(UIButton *)button{
     
-    NSBundle *bun = [NSBundle mainBundle];
-    NSString *mypath = [bun pathForResource:@"google" ofType:@"png"];
-    NSLog(@"%@",mypath);
+    // NSBundle *bun = [NSBundle mainBundle];
+    // NSString *mypath = [bun pathForResource:@"google" ofType:@"png"];
+    // NSLog(@"%@",mypath);
     
-    NSLog(@"%@",button);
+    // NSLog(@"%@",button);
+    
+    MyAlertController *myAlertController = [MyAlertController alertControllerWithTitle:@"提示" message:@"这里的山路十八弯" preferredStyle:UIAlertControllerStyleAlert];
+    
+    __weak typeof(myAlertController) weakAlert = myAlertController;
+    __weak typeof(self) weakViewController = self;
+    
+    // typeof(myAlertController) weakAlert = myAlertController;
+    // typeof(self) weakViewController = self;
+    
+    // 添加文本框
+    [myAlertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        
+        textField.text = @"测试文本1111";
+        textField.clearButtonMode = UITextFieldViewModeAlways;
+        
+        // 添加观察
+        [[NSNotificationCenter defaultCenter] addObserver:weakViewController selector:@selector(changeText:) name:UITextFieldTextDidChangeNotification object:textField];
+        
+    }];
+    
+    [myAlertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"你点击了取消按钮");
+        
+        // 移除通知
+        [[NSNotificationCenter defaultCenter] removeObserver:weakViewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
+    }]];
+    
+    [myAlertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"你点击了确定按钮");
+        UITextField *textField = weakAlert.textFields.firstObject;
+        NSLog(@"文本框内容是----%@",textField.text);
+        // 移除通知
+        [[NSNotificationCenter defaultCenter] removeObserver:weakViewController name:UITextFieldTextDidChangeNotification object:weakAlert.textFields.firstObject];
+    }]];
+    
+    [self presentViewController:myAlertController animated:YES completion:nil];
+    
+}
+
+- (void)changeText:(NSNotification *)notification{
+    UITextField *textField = notification.object;
+    
+    NSLog(@"%@",textField.text);
 }
 
 @end
