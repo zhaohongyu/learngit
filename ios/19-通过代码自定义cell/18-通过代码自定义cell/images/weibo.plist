@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>content</key>
+		<string>休闲零食,酒水饮料,进口食品,地方特产,休闲零食,酒水饮料,进口食品,地方特产,休闲零食,酒水饮料,进口食品,地方特产,休闲零食,酒水饮料,进口食品,地方特产,休闲零食,酒水饮料,进口食品,地方特产,休闲零食,酒水饮料,进口食品,地方特产</string>
+		<key>icon</key>
+		<string>food.jpg</string>
+		<key>nickname</key>
+		<string>美食</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>模型玩具,积木拼插,娃娃玩具,电动玩具,模型玩具,积木拼插,娃娃玩具,电动玩具,模型玩具,积木拼插,娃娃玩具,电动玩具</string>
+		<key>icon</key>
+		<string>toy.jpg</string>
+		<key>nickname</key>
+		<string>玩具</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>清洁剂,纸制品,清洁用具,一次性用品</string>
+		<key>icon</key>
+		<string>home.jpg</string>
+		<key>nickname</key>
+		<string>家居</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>电脑整机,打印机,数码影音,数码影像</string>
+		<key>icon</key>
+		<string>mechine.jpg</string>
+		<key>nickname</key>
+		<string>生活电器</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>小说,文艺,教育,科技,杂志,社科</string>
+		<key>icon</key>
+		<string>book.jpg</string>
+		<key>nickname</key>
+		<string>音像图书</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>女包,男包,旅行箱包,钱包卡套,儿童箱包,腰包</string>
+		<key>icon</key>
+		<string>bag.jpg</string>
+		<key>nickname</key>
+		<string>箱包</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>精品女装,品质男装,童装童鞋,运动户外,鞋靴</string>
+		<key>icon</key>
+		<string>clothe.jpg</string>
+		<key>nickname</key>
+		<string>服装</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>手机充值,鲜花速递,旅游服务,教育培训,摄像服务</string>
+		<key>icon</key>
+		<string>life.jpg</string>
+		<key>nickname</key>
+		<string>生活服务</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>哺育喂养,洗护清洁,孕妈专区,婴幼家纺,宝宝服饰</string>
+		<key>icon</key>
+		<string>baby.jpg</string>
+		<key>nickname</key>
+		<string>母婴用品</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>女性护理,口腔护理,沐浴用品,男士护理,魅力香氛,美容工具,精油芳疗</string>
+		<key>icon</key>
+		<string>buty.jpg</string>
+		<key>nickname</key>
+		<string>美容化妆</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>手表,钻石,翡翠玉石,黄金/k金/铂金,贵重宝石,天然珍珠</string>
+		<key>icon</key>
+		<string>decoration.jpg</string>
+		<key>nickname</key>
+		<string>珠宝饰品</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>衣物清洁护理,家庭清洁护理,纸制品,一次性用品,清洁用具,厨具锅具,餐具水具</string>
+		<key>icon</key>
+		<string>clean.jpg</string>
+		<key>nickname</key>
+		<string>厨卫清洁</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>手机通讯,运营商,手机配件,数码影像,时尚影音,数码配件</string>
+		<key>icon</key>
+		<string>phone.jpg</string>
+		<key>nickname</key>
+		<string>手机数码</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>炒锅,汤锅,平底锅,套装锅,蒸锅,奶锅,煲,压力锅</string>
+		<key>icon</key>
+		<string>knife.jpg</string>
+		<key>nickname</key>
+		<string>锅具餐具</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>content</key>
+		<string>宠物日用品,宠物医护美容,出行装备,宠物玩具,水族宠物</string>
+		<key>icon</key>
+		<string>pet.jpg</string>
+		<key>nickname</key>
+		<string>宠物园艺</string>
+		<key>time</key>
+		<string>2016-03-05 16:50:13</string>
+		<key>source</key>
+		<string>小霸王学习机</string>
+		<key>vip</key>
+		<integer>1</integer>
+	</dict>
+</array>
+</plist>
