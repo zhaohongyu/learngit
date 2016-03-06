@@ -59,7 +59,7 @@
     // 内容
     CGFloat contentX = iconX;
     CGFloat contentY = MAX(CGRectGetMaxY(_iconF), CGRectGetMaxY(_timeF)) + kCellBorder;
-    CGFloat contentW = _viewWidth - 2 * kCellBorder;
+    CGFloat contentW = _viewWidth - 2 * kCellBorder; 
     // iOS7中用以下方法替代过时的iOS6中的sizeWithFont:constrainedToSize:lineBreakMode:方法
     CGRect tmpRect = [_weibo.content boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT)
                                                   options:NSStringDrawingUsesLineFragmentOrigin

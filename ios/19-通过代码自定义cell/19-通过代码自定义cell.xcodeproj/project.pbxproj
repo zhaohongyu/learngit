@@ -103,21 +103,8 @@
 		7B1C37D41C8AC9B700B0F0AD /* 19-通过代码自定义cell */ = {
 			isa = PBXGroup;
 			children = (
-				7B1C37D81C8AC9B700B0F0AD /* AppDelegate.h */,
-				7B1C37D91C8AC9B700B0F0AD /* AppDelegate.m */,
-				7B1C37DB1C8AC9B700B0F0AD /* ViewController.h */,
-				7B1C37DC1C8AC9B700B0F0AD /* ViewController.m */,
-				7B1C37DE1C8AC9B700B0F0AD /* Main.storyboard */,
-				7B1C37E11C8AC9B700B0F0AD /* Assets.xcassets */,
-				7B1C37E31C8AC9B700B0F0AD /* LaunchScreen.storyboard */,
-				7B1C37E61C8AC9B700B0F0AD /* Info.plist */,
+				7BFE4C451C8C7CC9006AB106 /* Classes */,
 				7B1C37D51C8AC9B700B0F0AD /* Supporting Files */,
-				7B1C37EF1C8AD2EB00B0F0AD /* Weibo.h */,
-				7B1C37F01C8AD2EB00B0F0AD /* Weibo.m */,
-				7B1C38171C8ADC8C00B0F0AD /* WeiboFrame.h */,
-				7B1C38181C8ADC8C00B0F0AD /* WeiboFrame.m */,
-				7B1C381A1C8ADECA00B0F0AD /* WeiboCell.h */,
-				7B1C381B1C8ADECA00B0F0AD /* WeiboCell.m */,
 			);
 			name = "19-通过代码自定义cell";
 			path = "18-通过代码自定义cell";
@@ -126,6 +113,10 @@
 		7B1C37D51C8AC9B700B0F0AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B1C37E61C8AC9B700B0F0AD /* Info.plist */,
+				7B1C37E31C8AC9B700B0F0AD /* LaunchScreen.storyboard */,
+				7B1C37DE1C8AC9B700B0F0AD /* Main.storyboard */,
+				7B1C37E11C8AC9B700B0F0AD /* Assets.xcassets */,
 				7B1C37F21C8AD4C300B0F0AD /* images */,
 				7B1C37D61C8AC9B700B0F0AD /* main.m */,
 			);
@@ -155,6 +146,55 @@
 				7B1C38021C8AD4C300B0F0AD /* toy.jpg */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		7BFE4C451C8C7CC9006AB106 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7BFE4C491C8C7CE8006AB106 /* Other */,
+				7BFE4C481C8C7CDF006AB106 /* View */,
+				7BFE4C471C8C7CD9006AB106 /* Model */,
+				7BFE4C461C8C7CD1006AB106 /* Controller */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		7BFE4C461C8C7CD1006AB106 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B1C37DB1C8AC9B700B0F0AD /* ViewController.h */,
+				7B1C37DC1C8AC9B700B0F0AD /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7BFE4C471C8C7CD9006AB106 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B1C37EF1C8AD2EB00B0F0AD /* Weibo.h */,
+				7B1C37F01C8AD2EB00B0F0AD /* Weibo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7BFE4C481C8C7CDF006AB106 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B1C38171C8ADC8C00B0F0AD /* WeiboFrame.h */,
+				7B1C38181C8ADC8C00B0F0AD /* WeiboFrame.m */,
+				7B1C381A1C8ADECA00B0F0AD /* WeiboCell.h */,
+				7B1C381B1C8ADECA00B0F0AD /* WeiboCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7BFE4C491C8C7CE8006AB106 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				7B1C37D81C8AC9B700B0F0AD /* AppDelegate.h */,
+				7B1C37D91C8AC9B700B0F0AD /* AppDelegate.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

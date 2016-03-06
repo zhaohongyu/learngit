@@ -12,46 +12,51 @@
 #import "WeiboFrame.h"
 
 @interface ViewController ()
-{
-    NSMutableArray *allFrames;
-}
+
+@property (nonatomic, strong) NSMutableArray *allFrames;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    allFrames = [NSMutableArray array];
-    NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weibo.plist" ofType:nil]];
-    CGFloat viewWidth = self.view.frame.size.width;
-    for (NSDictionary *dict in arr) {
-        WeiboFrame *frame = [[WeiboFrame alloc] initWithWidth:viewWidth];
-        Weibo *weibo = [Weibo weiboWithDict:dict];
-        frame.weibo = weibo;
-        [allFrames addObject:frame];
-    }
-    
 }
 
+- (NSMutableArray *)allFrames{
+    
+    if (nil == _allFrames) {
+        _allFrames = [NSMutableArray array];
+        NSArray *arr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weibo.plist" ofType:nil]];
+        CGFloat viewWidth = self.view.frame.size.width;
+        for (NSDictionary *dict in arr) {
+            WeiboFrame *frame = [[WeiboFrame alloc] initWithWidth:viewWidth];
+            Weibo *weibo = [Weibo weiboWithDict:dict];
+            frame.weibo = weibo;
+            [_allFrames addObject:frame];
+        }
+        
+    }
+    
+    return _allFrames;
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return allFrames.count;
+    return self.allFrames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *ID = @"CELL";
-    WeiboCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if(nil == cell){
-        cell = [[WeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
     
-    cell.weiboFrame = allFrames[indexPath.row];
+    WeiboCell *cell = [WeiboCell weiboCellWithTableView:tableView];
+    
+    cell.weiboFrame = self.allFrames[indexPath.row];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;{
-    WeiboFrame *weiboFrame = allFrames[indexPath.row];
+    WeiboFrame *weiboFrame = self.allFrames[indexPath.row];
     return weiboFrame.cellHeight;
 }
 

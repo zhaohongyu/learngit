@@ -32,6 +32,15 @@
 
 @implementation WeiboCell
 
++(instancetype)weiboCellWithTableView:(UITableView *)tableView{
+    static NSString *ID = @"CELL";
+    WeiboCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if(nil == cell){
+        cell = [[WeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    return cell;
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
@@ -96,6 +105,8 @@
     _nickname.text = _weiboFrame.weibo.nickname;
     if (_weiboFrame.weibo.vip) {
         _nickname.textColor = [UIColor redColor];
+    }else{
+        _nickname.textColor = [UIColor blackColor];
     }
     
     // vip图标
@@ -116,7 +127,10 @@
     
     // 图片
     if (_weiboFrame.weibo.contentImage) {
+        _contentImage.hidden = NO;
         _contentImage.image = [UIImage imageNamed:_weiboFrame.weibo.contentImage];
+    }else{
+        _contentImage.hidden = YES;
     }
 }
 

@@ -14,4 +14,6 @@
 
 @property (nonatomic , strong) WeiboFrame *weiboFrame;
 
++ (instancetype)weiboCellWithTableView:(UITableView *)tableView;
+
 @end
