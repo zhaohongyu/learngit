@@ -111,7 +111,7 @@
     
     // vip图标
     if(_weiboFrame.weibo.vip){
-        _vip.image = [UIImage imageNamed:@"weibo_vip.png"];
+        _vip.image = [UIImage imageNamed:@"weibo_vip"];
     }else{
         _vip.image = [UIImage imageNamed:@"weibo_not_vip.png"];
     }
