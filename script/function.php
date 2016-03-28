@@ -152,6 +152,7 @@ if (!function_exists('downLocalFile')) {
             $type     = getMimeType($file_name);
             $showname = $file['show_name'];
             // 下载文件需要用到的头
+            ob_end_clean();
             header("Content-Description: File Transfer");
             header('Content-type: ' . $type);
             header('Content-Length:' . $length);
