@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试vue</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="interest">
+    贷款申请金额<input type="text" value="200" v-model="loanMoney"/>
+
+    <label class="radio-inline">
+        <input v-model="remote_interest" v-on:click="calc(0.1)" class="myradio" data-rate="0.1" type="radio"
+               name="Loan-period"
+               id="product_id_4" value="4"> 3个月
+    </label>
+    <label class="radio-inline">
+        <input v-model="remote_interest" v-on:click="calc(0.2)" class="myradio" data-rate="0.2" type="radio"
+               name="Loan-period"
+               id="product_id_3" value="3"> 2个月
+    </label>
+    <label class="radio-inline">
+        <input v-model="remote_interest" v-on:click="calc(0.3)" class="myradio" data-rate="0.3" type="radio"
+               name="Loan-period"
+               id="product_id_2" value="2"> 1个月
+    </label>
+    <p></p>
+    利息总额:<p>{{calc_interest}}</p>
+</div>
+
+<script>
+
+    var interest = new Vue({
+        el: '#interest',
+        data: {
+            calc_interest: ''
+        },
+        methods: {
+            calc: function (rate) {
+                if (rate) {
+                    this.calc_interest = rate * this.loanMoney;
+                }
+            }
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>
