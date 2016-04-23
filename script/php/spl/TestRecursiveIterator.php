@@ -142,12 +142,49 @@ $mri = new TestRecursiveIterator($arr);
 //echo $arrayObj->offsetGet(4);
 
 
-$array = array(
-    array('name' => 'butch', 'sex' => 'm', 'breed' => 'boxer'),
-    array('name' => 'fido', 'sex' => 'm', 'breed' => 'doberman'),
-    array('name' => 'girly', 'sex' => 'f', 'breed' => 'poodle'),
-);
+//$array = array(
+//    array('name' => 'butch', 'sex' => 'm', 'breed' => 'boxer'),
+//    array('name' => 'fido', 'sex' => 'm', 'breed' => 'doberman'),
+//    array('name' => 'girly', 'sex' => 'f', 'breed' => 'poodle'),
+//);
+//
+//foreach (new RecursiveIteratorIterator(new RecursiveArrayIterator($array)) as $key => $value) {
+//    echo $key . ' -- ' . $value . '<br />';
+//}
 
-foreach (new RecursiveIteratorIterator(new RecursiveArrayIterator($array)) as $key => $value) {
-    echo $key . ' -- ' . $value . '<br />';
+
+class fibonacci_sequence {
+
+
+    public function fib1($n) {
+        if ($n < 1) {
+            return -1;
+        }
+        if ($n == 1 || $n == 2) {
+            return 1;
+        }
+        return $this->fib1($n - 1) + $this->fib1($n - 2);
+    }
+
+    public function fib2($n) {
+        $arr[1] = $arr[2] = 1;
+        for ($i = 3; $i <= $n; $i++) {
+            $arr[$i] = $arr[$i - 1] + $arr[$i - 2];
+        }
+        return $arr[$n];
+    }
+
 }
+
+
+$test = new fibonacci_sequence();
+
+echo $test->fib1(6);
+echo $test->fib2(6);
+
+
+$arr[1] = 1;
+for ($i = 2; $i < 100; $i++) {
+    $arr[$i] = $arr[$i - 1] + $arr[$i - 2];
+}
+echo join(",", $arr);//将数组合并为一个字符串输出
