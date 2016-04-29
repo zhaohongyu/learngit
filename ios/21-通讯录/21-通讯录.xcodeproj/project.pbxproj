@@ -17,6 +17,7 @@
 		7BD114DA1C9C4D800069AC5F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD114D91C9C4D800069AC5F /* MBProgressHUD.m */; };
 		7BD115051C9C554F0069AC5F /* MBProgressHUD+HY.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD115041C9C554F0069AC5F /* MBProgressHUD+HY.m */; };
 		7BD115071C9C56BB0069AC5F /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BD115061C9C56BB0069AC5F /* MBProgressHUD.bundle */; };
+		D5B7A971FAE5EE9665258C7A /* libPods-21-通讯录.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC7CCC4719963DE86C25775 /* libPods-21-通讯录.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,9 @@
 		7BD115031C9C554F0069AC5F /* MBProgressHUD+HY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HY.h"; sourceTree = "<group>"; };
 		7BD115041C9C554F0069AC5F /* MBProgressHUD+HY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HY.m"; sourceTree = "<group>"; };
 		7BD115061C9C56BB0069AC5F /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		8EC7CCC4719963DE86C25775 /* libPods-21-通讯录.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-21-通讯录.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E847C710DEA26FFB343C3C9 /* Pods-21-通讯录.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-21-通讯录.debug.xcconfig"; path = "Pods/Target Support Files/Pods-21-通讯录/Pods-21-通讯录.debug.xcconfig"; sourceTree = "<group>"; };
+		BFD7D1DF6EC5AED7ECBB8BE0 /* Pods-21-通讯录.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-21-通讯录.release.xcconfig"; path = "Pods/Target Support Files/Pods-21-通讯录/Pods-21-通讯录.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,17 +48,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B7A971FAE5EE9665258C7A /* libPods-21-通讯录.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051FDD01D0ECB050A2556E89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E847C710DEA26FFB343C3C9 /* Pods-21-通讯录.debug.xcconfig */,
+				BFD7D1DF6EC5AED7ECBB8BE0 /* Pods-21-通讯录.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7BD114AC1C9C37370069AC5F = {
 			isa = PBXGroup;
 			children = (
 				7BD114B71C9C37380069AC5F /* 21-通讯录 */,
 				7BD114B61C9C37380069AC5F /* Products */,
+				051FDD01D0ECB050A2556E89 /* Pods */,
+				EA32E425C1B5D45AC58895D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +161,14 @@
 			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		EA32E425C1B5D45AC58895D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EC7CCC4719963DE86C25775 /* libPods-21-通讯录.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BD114CC1C9C37380069AC5F /* Build configuration list for PBXNativeTarget "21-通讯录" */;
 			buildPhases = (
+				49BC598ACCDAF186C0B99C09 /* 📦 Check Pods Manifest.lock */,
 				7BD114B11C9C37380069AC5F /* Sources */,
 				7BD114B21C9C37380069AC5F /* Frameworks */,
 				7BD114B31C9C37380069AC5F /* Resources */,
+				CD4CA9593F9D26B681BA18AB /* 📦 Embed Pods Frameworks */,
+				2EB04F24DAC613AB0336C6B4 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,6 +238,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2EB04F24DAC613AB0336C6B4 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-21-通讯录/Pods-21-通讯录-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49BC598ACCDAF186C0B99C09 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4CA9593F9D26B681BA18AB /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-21-通讯录/Pods-21-通讯录-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7BD114B11C9C37380069AC5F /* Sources */ = {
@@ -330,6 +405,7 @@
 		};
 		7BD114CD1C9C37380069AC5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E847C710DEA26FFB343C3C9 /* Pods-21-通讯录.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -344,6 +420,7 @@
 		};
 		7BD114CE1C9C37380069AC5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFD7D1DF6EC5AED7ECBB8BE0 /* Pods-21-通讯录.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

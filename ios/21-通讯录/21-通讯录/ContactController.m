@@ -7,6 +7,7 @@
 //
 
 #import "ContactController.h"
+#import <AFNetworking.h>
 
 @interface ContactController ()
 
@@ -24,6 +25,24 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    // 模拟发送网络请求
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"http://zhaohongyu.ngrok.natapp.cn/json/test.php" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        
+        
+        
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +72,7 @@
                                                               [self.navigationController popViewControllerAnimated:YES];
                                                           }];
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
+                                                         handler:^(UIAlertAction * action) {}];
     
     [alert addAction:defaultAction];
     [alert addAction:cancelAction];
