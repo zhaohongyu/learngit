@@ -110,7 +110,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="登录"/>
                                 <connections>
-                                    <action selector="submit:" destination="s92-h7-UEg" eventType="touchUpInside" id="0Ao-3n-QGV"/>
+                                    <action selector="submit" destination="s92-h7-UEg" eventType="touchUpInside" id="Br3-W7-RIU"/>
                                 </connections>
                             </button>
                         </subviews>
