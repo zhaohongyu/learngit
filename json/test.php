@@ -24,8 +24,9 @@ function response_json($code, $msg = '', $data = array()) {
 }
 
 $arr = array(
-    "time" => time(),
-    "rand" => rand(1, 1000),
+    "time"                => time(),
+    "rand"                => rand(1, 1000),
+    'request_origin_data' => $_REQUEST,
 );
 
 response_json(10086, '获取数据成功', $arr);
