@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B4745CA1CD4507E002A5DBF /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4745C91CD4507E002A5DBF /* Test.m */; };
 		7B4745CD1CD4BC80002A5DBF /* AddController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4745CC1CD4BC80002A5DBF /* AddController.m */; };
 		7B4745D01CD4C032002A5DBF /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4745CF1CD4C032002A5DBF /* Contact.m */; };
 		7BD114BA1C9C37380069AC5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD114B91C9C37380069AC5F /* main.m */; };
@@ -24,8 +23,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7B4745C81CD4507E002A5DBF /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		7B4745C91CD4507E002A5DBF /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		7B4745CB1CD4BC80002A5DBF /* AddController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddController.h; sourceTree = "<group>"; };
 		7B4745CC1CD4BC80002A5DBF /* AddController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddController.m; sourceTree = "<group>"; };
 		7B4745CE1CD4C032002A5DBF /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
@@ -146,8 +143,6 @@
 		7BD114D21C9C376E0069AC5F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7B4745C81CD4507E002A5DBF /* Test.h */,
-				7B4745C91CD4507E002A5DBF /* Test.m */,
 				7B4745CE1CD4C032002A5DBF /* Contact.h */,
 				7B4745CF1CD4C032002A5DBF /* Contact.m */,
 			);
@@ -311,7 +306,6 @@
 				7BD114BD1C9C37380069AC5F /* AppDelegate.m in Sources */,
 				7BD114DA1C9C4D800069AC5F /* MBProgressHUD.m in Sources */,
 				7BD114D61C9C3AD10069AC5F /* ContactController.m in Sources */,
-				7B4745CA1CD4507E002A5DBF /* Test.m in Sources */,
 				7BD115051C9C554F0069AC5F /* MBProgressHUD+HY.m in Sources */,
 				7BD114BA1C9C37380069AC5F /* main.m in Sources */,
 				7B4745D01CD4C032002A5DBF /* Contact.m in Sources */,

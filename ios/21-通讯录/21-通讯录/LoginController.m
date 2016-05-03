@@ -126,6 +126,7 @@
     [userDefults setBool:self.rmbSwitch.isOn forKey:@"rmbSwitch"];
     [userDefults synchronize];
 }
+
 -(void)storeState4autologinSwitch{
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [userDefults setBool:self.autologinSwitch.isOn forKey:@"autologinSwitch"];

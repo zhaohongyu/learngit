@@ -8,7 +8,6 @@
 
 #import "ContactController.h"
 #import <AFNetworking.h>
-#import "Test.h"
 #import "Contact.h"
 
 @interface ContactController ()
@@ -17,122 +16,49 @@
 
 @property (nonatomic,strong) NSArray *contacts;
 
-
 @end
 
 @implementation ContactController
 
 
+-(NSString *)getStoreFileName{
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    
+    NSString *fileName = [path stringByAppendingPathComponent:@"contact.plist"];
+    
+    return fileName;
+}
+
 
 -(NSArray *)contacts{
     // 从文件中读取对象
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    NSString *fileName = [path stringByAppendingPathComponent:@"contact.plist"];
+    NSString *fileName = [self getStoreFileName];
     
     NSMutableArray *arrContacts = [NSMutableArray  arrayWithContentsOfFile:fileName];
-    
     NSMutableArray *arr = [NSMutableArray array];
-    
     for (NSDictionary *dict in arrContacts) {
         Contact *contact = [Contact contactWithDict:dict];
         [arr addObject:contact];
     }
-    _contacts = arr;
     
-    return _contacts;
+    return _contacts = arr;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // [self upload];
-    // [self testAF];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.tableView reloadData];
 }
 
-
-
--(void) testAF{
-    NSString *strUrl = @"http://zhaohongyu.ngrok.natapp.cn/json/test.php";
-    
-    NSMutableDictionary *mDict = [NSMutableDictionary dictionary];
-    mDict[@"key1"] = @"key_val1";
-    mDict[@"key2"] = @"key_val2";
-    
-    // 模拟发送网络请求
-    
-    // Get
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager
-     GET:strUrl
-     parameters:mDict
-     progress:nil
-     success:^(NSURLSessionTask *task, id responseObject) {
-         Test *test = [Test testWithDict:responseObject];
-         NSLog(@"response: %@", test);
-     }
-     failure:^(NSURLSessionTask *operation, NSError *error) {
-         NSLog(@"Error: %@", error);
-     }
-     ];
-    
-    //Post
-    
-    [manager
-     POST:strUrl
-     parameters:mDict
-     progress:^(NSProgress * _Nonnull uploadProgress) {
-         NSLog(@" %@....%@", @"处理中。。。。",uploadProgress);
-     }
-     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         Test *test = [Test testWithDict:responseObject];
-         NSLog(@"%@",test);
-     }
-     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-         NSLog(@"Error: %@", error);
-     }
-     ];
-    
-}
-
-- (void)upload{
-    
-    NSString *strUrl = @"http://zhaohongyu.ngrok.natapp.cn/json/test.php";
-    
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    [mgr
-     POST:strUrl
-     parameters:nil
-     constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-         
-         // 这是最简单的版本，只要设置请求的URL、给出文件路径和name，便可将文件上传到服务器，后面有代码介绍其它方式
-         [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"/Users/zhaohongyu/Documents/测试文件/apple.jpg"] name:@"file" error:nil];
-         
-     } success:^(NSURLSessionDataTask *task, id responseObject) {
-         
-         // 文件上传成功来到这段代码，注意responseObject的实际类型，AFN默认解析过
-         NSLog(@"------%@", responseObject);
-         
-     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-         
-         NSLog(@"failure");
-     }];
-}
-
-
 #pragma mark - Table view data source
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.contacts.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
     static NSString *ID = @"contact";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -149,6 +75,7 @@
 }
 
 #pragma mark - 退出登录
+
 - (IBAction)logoutClick:(id)sender {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"确定要注销吗？"
                                                                    message:nil

@@ -10,6 +10,5 @@
 
 @interface LoginController : UIViewController
 
-
 @end
 

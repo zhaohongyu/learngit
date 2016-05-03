@@ -21,17 +21,7 @@
 
 - (IBAction)clickAddBtn{
     
-    // 存储
-    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
-    
-    dict[@"name"] = self.nameField.text;
-    dict[@"phone"] = self.phoneField.text;
-    
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    
-    NSString *fileName = [path stringByAppendingPathComponent:@"contact.plist"];
-    
-    
+    NSString *fileName = [self getStoreFileName];
     
     // 先读取，没有再创建
     NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:fileName];
@@ -39,12 +29,25 @@
         array = [NSMutableArray array];
     }
     
-    [array addObject:dict];
+    // 存储
+    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
+    dict[@"name"] = self.nameField.text;
+    dict[@"phone"] = self.phoneField.text;
     
+    [array addObject:dict];
     [array writeToFile:fileName atomically:YES];
     
     // 关闭当前控制器
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+-(NSString *)getStoreFileName{
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    
+    NSString *fileName = [path stringByAppendingPathComponent:@"contact.plist"];
+    
+    return fileName;
+}
+
 @end
