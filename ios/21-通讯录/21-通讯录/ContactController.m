@@ -9,22 +9,51 @@
 #import "ContactController.h"
 #import <AFNetworking.h>
 #import "Test.h"
+#import "Contact.h"
 
 @interface ContactController ()
 
 - (IBAction)logoutClick:(id)sender;
 
+@property (nonatomic,strong) NSArray *contacts;
+
+
 @end
 
 @implementation ContactController
+
+
+
+-(NSArray *)contacts{
+    // 从文件中读取对象
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    NSString *fileName = [path stringByAppendingPathComponent:@"contact.plist"];
+    
+    NSMutableArray *arrContacts = [NSMutableArray  arrayWithContentsOfFile:fileName];
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    for (NSDictionary *dict in arrContacts) {
+        Contact *contact = [Contact contactWithDict:dict];
+        [arr addObject:contact];
+    }
+    _contacts = arr;
+    
+    return _contacts;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // [self upload];
     // [self testAF];
-    
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
+
+
 
 -(void) testAF{
     NSString *strUrl = @"http://zhaohongyu.ngrok.natapp.cn/json/test.php";
@@ -79,32 +108,44 @@
      POST:strUrl
      parameters:nil
      constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        
-        // 这是最简单的版本，只要设置请求的URL、给出文件路径和name，便可将文件上传到服务器，后面有代码介绍其它方式
-        [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"/Users/zhaohongyu/Documents/测试文件/apple.jpg"] name:@"file" error:nil];
-        
-    } success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        // 文件上传成功来到这段代码，注意responseObject的实际类型，AFN默认解析过
-        NSLog(@"------%@", responseObject);
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        NSLog(@"failure");
-    }];
+         
+         // 这是最简单的版本，只要设置请求的URL、给出文件路径和name，便可将文件上传到服务器，后面有代码介绍其它方式
+         [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"/Users/zhaohongyu/Documents/测试文件/apple.jpg"] name:@"file" error:nil];
+         
+     } success:^(NSURLSessionDataTask *task, id responseObject) {
+         
+         // 文件上传成功来到这段代码，注意responseObject的实际类型，AFN默认解析过
+         NSLog(@"------%@", responseObject);
+         
+     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+         
+         NSLog(@"failure");
+     }];
 }
 
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.contacts.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    static NSString *ID = @"contact";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    if(nil == cell){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        Contact *contact = self.contacts[indexPath.row];
+        
+        cell.textLabel.text = contact.name;
+        cell.detailTextLabel.text = contact.phone;
+    }
+    
+    return  cell;
 }
 
 #pragma mark - 退出登录

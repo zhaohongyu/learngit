@@ -56,7 +56,7 @@
     self.submitBtn.enabled = self.usernameField.text.length && self.pwdField.text.length;
 }
 
-#pragma --mark switch按钮change事件
+#pragma mark - switch按钮change事件
 
 - (IBAction)rmbChange:(id)sender {
     
@@ -81,7 +81,7 @@
     [self storeState4rmbSwitch];
 }
 
-#pragma --mark 提交登录
+#pragma mark - 提交登录
 
 - (IBAction)submit {
     if (![self.usernameField.text isEqualToString:@"zhaohongyu"]) {
@@ -106,7 +106,7 @@
     });
 }
 
-#pragma --mark 存储按钮状态
+#pragma mark - 存储按钮状态
 
 -(void)storeState4rmbSwitch{
     
