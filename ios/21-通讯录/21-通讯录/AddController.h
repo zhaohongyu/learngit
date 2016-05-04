@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class AddController,Contact;
+
+@protocol AddControllerDelegate <NSObject>
+
+@optional
+
+-(void)addController:(AddController *)addController didClickAddBtn:(Contact *)contact;
+
+@end
+
+
 @interface AddController :UIViewController
+
+@property (nonatomic, weak) id<AddControllerDelegate> delegate;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AddController.h"
+#import "Contact.h"
 
 @interface AddController()
 
@@ -21,33 +22,16 @@
 
 - (IBAction)clickAddBtn{
     
-    NSString *fileName = [self getStoreFileName];
-    
-    // 先读取，没有再创建
-    NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:fileName];
-    if(nil == array){
-        array = [NSMutableArray array];
-    }
-    
-    // 存储
-    NSMutableDictionary *dict =[NSMutableDictionary dictionary];
-    dict[@"name"] = self.nameField.text;
-    dict[@"phone"] = self.phoneField.text;
-    
-    [array addObject:dict];
-    [array writeToFile:fileName atomically:YES];
-    
     // 关闭当前控制器
     [self.navigationController popViewControllerAnimated:YES];
     
+    if([self.delegate respondsToSelector:@selector(addController:didClickAddBtn:)]){
+        Contact *contact = [[Contact alloc] init];
+        contact.name = self.nameField.text;
+        contact.phone = self.phoneField.text;
+        [self.delegate addController:self didClickAddBtn:contact];
+    }
 }
 
--(NSString *)getStoreFileName{
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    
-    NSString *fileName = [path stringByAppendingPathComponent:@"contact.plist"];
-    
-    return fileName;
-}
 
 @end

@@ -106,6 +106,21 @@
     });
 }
 
+/**
+ *  执行segue后,跳转之前会调用这个方法
+ *  一般在这里给下一个控制器传递数据
+ */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // 1.取得目标控制器(联系人列表控制器)
+    UIViewController *contactVc = segue.destinationViewController;
+    
+    // 2.设置标题
+    contactVc.title = [NSString stringWithFormat:@"%@的联系人列表", self.usernameField.text];
+    // contactVc.title 等价于 contactVc.navigationItem.title
+    // contactVc.navigationItem.title = [NSString stringWithFormat:@"%@的联系人列表", self.accountField.text];
+}
+
 #pragma mark - 存储按钮状态
 
 -(void)storeState4rmbSwitch{

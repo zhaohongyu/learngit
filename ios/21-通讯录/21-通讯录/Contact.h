@@ -15,7 +15,7 @@
 @property (nonatomic,copy) NSString *phone;
 
 
--(instancetype)initWitcDict:(NSDictionary *)dict;
+-(instancetype)initWithDict:(NSDictionary *)dict;
 +(instancetype)contactWithDict:(NSDictionary *)dict;
 
 @end
