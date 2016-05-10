@@ -11,6 +11,7 @@ require_once('classes/Model.class.php');
 
 /**
  * 数据库操作函数
+ *
  * @return \mysqli
  */
 function M() {
@@ -37,7 +38,7 @@ function C($name = null, $value = null) {
             return;
         }
         // 二维数组设置和获取支持
-        $name = explode('.', $name);
+        $name    = explode('.', $name);
         $name[0] = strtolower($name[0]);
         if (is_null($value))
             return isset($_config[$name[0]][$name[1]]) ? $_config[$name[0]][$name[1]] : null;
@@ -52,10 +53,10 @@ function C($name = null, $value = null) {
 }
 
 function ajaxReturn($data = null, $message = "", $status) {
-    $ret = array();
-    $ret["data"] = $data;
+    $ret            = array();
+    $ret["data"]    = $data;
     $ret["message"] = $message;
-    $ret["status"] = $status;
+    $ret["status"]  = $status;
     echo json_encode($ret);
     die();
 }
@@ -94,6 +95,7 @@ function dump($var, $echo = true, $label = null, $strict = true) {
 
 /**
  * 调试输出
+ *
  * @param type $msg
  */
 function _debug($msg) {
@@ -103,7 +105,7 @@ function _debug($msg) {
 
 function _log($filename, $msg) {
     $time = date("Y-m-d H:i:s");
-    $msg = "[$time]\n$msg\r\n";
+    $msg  = "[$time]\n$msg\r\n";
     if (C("log")) {
         $fd = fopen($filename, "a+");
         fwrite($fd, $msg);
@@ -113,12 +115,13 @@ function _log($filename, $msg) {
 
 /**
  * 日志记录
+ *
  * @param type $str
  */
 function L($msg) {
-    $time = date("Y-m-d H:i:s");
+    $time     = date("Y-m-d H:i:s");
     $clientIP = $_SERVER['REMOTE_ADDR'];
-    $msg = "[$time $clientIP] $msg\r\n";
+    $msg      = "[$time $clientIP] $msg\r\n";
     $log_file = C("LOGFILE");
     _log($log_file, $msg);
 }
@@ -156,32 +159,29 @@ function getServerAddrAndPort() {
     return $protocol . $host;
 }
 
-/**
- * 制作输出函数 打印并退出
- */
-function show_msg($msg, $color = 'green') {
-    header("Content-type:text/html;charset=utf-8;");
-    echo "<pre style='color:{$color};'>";
-    print_r($msg);
-    echo "</pre>";
-    //exit("数据打印完毕");
-    exit();
+if (!function_exists('show_msg')) {
+    /**
+     * 输出函数
+     *
+     * @param mix     $data   输出的数据
+     * @param boolean $isExit 是否退出
+     * @param string  $color  颜色
+     *
+     * @author hongyu_zhao <hongyu_zhao@eventown.com>
+     */
+    function show_msg($data, $isExit = true, $color = 'green') {
+        header("Content-type:text/html;charset=utf-8;");
+        echo "<div style='margin-left:220px;margin-top:53px;'><pre style='color:{$color};'>";
+        print_r($data);
+        echo "</pre>#####################################数据打印完毕##########################################################################<br/></div>";
+        if ($isExit) {
+            exit();
+        }
+    }
 }
 
-/**
- * 简化 文件写入函数,主要用来显示数据值
- * @param type $data 记录的数据
- */
-function file_log($data) {
-    file_put_contents("D:/MyLog.log", $data);
-}
-
-/**
- * 制作输出函数 打印并退出
- */
-function show_msg_not_exit($msg, $color = 'green') {
-    header("Content-type:text/html;charset=utf-8;");
-    echo "<pre style='color:{$color};'>";
-    print_r($msg);
-    echo "</pre>";
+if (!function_exists('mylog')) {
+    function mylog($data, $path = '/tmp/debug.log') {
+        file_put_contents($path, serialize($data) . "\r\n", FILE_APPEND);
+    }
 }

@@ -1,53 +1,54 @@
 <?php
-require 'simple_html_dom.php';
 
-if (!function_exists('show_msg')) {
-    /**
-     * 输出函数
-     *
-     * @param mix     $data   输出的数据
-     * @param boolean $isExit 是否退出
-     * @param string  $color  颜色
-     *
-     * @author hongyu_zhao <hongyu_zhao@eventown.com.cn>
-     */
-    function show_msg($data, $isExit = true, $color = 'green') {
-        header("Content-type:text/html;charset=utf-8;");
-        echo "<div style='margin-left:220px;margin-top:53px;'><pre style='color:{$color};'>";
-        print_r($data);
-        echo "</pre>#####################################数据打印完毕##########################################################################<br/></div>";
-        if ($isExit) {
-            exit();
+require 'Fetch.php';
+
+function myfetch($target_url) {
+    $t1    = time();
+    $fetch = new Fetch();
+    $all   = $fetch->fetch_4493($target_url);
+    foreach ($all as $k => $v) {
+        $sub_url = $v['href'];
+        $n       = 0;
+        while ($n < 50) {
+            $res = $fetch->fetch_4493_single($sub_url);
+            if (empty($res)) {
+                break;
+            }
+            $tmp[$n]['sub_url'] = $sub_url;
+            $tmp[$n]['img_url'] = $res;
+            $sub_url            = $fetch->get_4493_sub_next_page($sub_url);
+            $n++;
+            sleep(1);
+        }
+        if (empty(!$tmp)) {
+            $all[$k]['sub_img'] = $tmp;
         }
     }
-}
 
-if (!function_exists('mylog')) {
-    function mylog($data, $path = '/tmp/debug.log') {
-        file_put_contents($path, serialize($data) . "\r\n", FILE_APPEND);
+    $sql = 'insert into `test`.`img` (`title`, `date`, `like`, `href`, `img_url`,`code`) values ';
+    foreach ($all as $key => $value) {
+        $random_code = md5(uniqid(time()));
+        $sql .= "( '{$value['title']}', '{$value['date']}', {$value['like']}, '{$value['href']}', '{$value['cover']}','{$random_code}'),";
+        if (is_array($value['sub_img']) && !empty($value['sub_img'])) {
+            foreach ($value['sub_img'] as $v) {
+                $sql .= "( '{$value['title']}', '{$value['date']}', {$value['like']}, '{$v['sub_url']}', '{$v['img_url']}','{$random_code}'),";
+            }
+        }
     }
-}
+    $sql = rtrim($sql, ',');
 
-function fetch_4493($target_url) {
-    $html = new simple_html_dom();
-    $html->load_file($target_url);
-    $list = array();
-    foreach ($html->find('div.piclist ul li') as $post) {
-        $item['href']  = $post->find('a', 0)->getAttribute('href');// 套图链接
-        $item['img']   = $post->find('a img', 0)->getAttribute('src');// 缩略图地址
-        $item['title'] = mb_convert_encoding($post->find('a span', 0)->innertext, 'UTF-8', 'GB2312');// 标题
-        $item['date']  = $post->find('.b1', 0)->innertext;// 上传日期
-        $item['like']  = $post->find('.b2', 0)->innertext;// 喜欢人数
-        $list[]        = $item;
+    $mysqli = new mysqli('127.0.0.1', 'root', '', 'test');
+    /* check connection */
+    if ($mysqli->connect_errno) {
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
     }
-    $html->clear();
-    unset($html);
-    return $list;
+    /* 插入数据 */
+    if ($mysqli->query($sql) === TRUE) {
+        $t2  = time();
+        $log = date('Y-m-d H:i:s') . " 抓取页面{$target_url},插入数据成功,耗时" . ($t2 - $t1) . '秒,插入了' . $mysqli->affected_rows . "条记录.";
+        file_put_contents('./sql.log', $sql . "\r\n", FILE_APPEND);
+        file_put_contents('./log.log', $log . "\r\n", FILE_APPEND);
+    }
+    $mysqli->close();
 }
-
-//$target_url = "./a.html";
-$target_url = "http://www.4493.com/siwameitui/index-4.htm";
-
-$res = fetch_4493($target_url);
-
-show_msg($res);

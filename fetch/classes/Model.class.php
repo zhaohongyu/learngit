@@ -23,7 +23,7 @@ class Model {
     protected $error = '';
 
     public function __construct($config = '', $linkNum = 0) {
-        $this->db = $this->connect($config,$linkNum);
+        $this->db = $this->connect($config, $linkNum);
     }
 
     /**
@@ -37,7 +37,7 @@ class Model {
                     'password' => C('DB_PWD'),
                     'hostname' => C('DB_HOST'),
                     'hostport' => C('DB_PORT'),
-                    'database' => C('DB_NAME')
+                    'database' => C('DB_NAME'),
                 );
             $this->linkID[$linkNum] = new mysqli($config['hostname'], $config['username'], $config['password'], $config['database'], $config['hostport'] ? intval($config['hostport']) : 3306);
             $this->linkID[$linkNum]->set_charset('utf8');
@@ -59,8 +59,11 @@ class Model {
 
     /**
      * 获得所有的查询数据
+     *
      * @access private
-     * @param string $sql  sql语句
+     *
+     * @param string $sql sql语句
+     *
      * @return array
      */
     public function select($sql) {
@@ -68,7 +71,7 @@ class Model {
         if (!$this->db)
             return false;
         $query = $this->db->query($sql);
-        $list = array();
+        $list  = array();
         if (!$query)
             return $list;
         while ($rows = $query->fetch_assoc()) {
@@ -137,8 +140,11 @@ class Model {
 
     /**
      * 执行语句 ， 例如插入，更新操作
+     *
      * @access public
-     * @param string $str  sql指令
+     *
+     * @param string $str sql指令
+     *
      * @return integer
      */
     public function execute($str) {
@@ -154,7 +160,7 @@ class Model {
             $this->error();
             return false;
         } else {
-            $this->numRows = $this->db->affected_rows;
+            $this->numRows   = $this->db->affected_rows;
             $this->lastInsID = $this->db->insert_id;
             return $this->numRows;
         }
@@ -162,8 +168,11 @@ class Model {
 
     /**
      * 获得所有的查询数据
+     *
      * @access private
-     * @param string $sql  sql语句
+     *
+     * @param string $sql sql语句
+     *
      * @return array
      */
     private function getAll() {
