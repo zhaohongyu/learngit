@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="doT.min.js"></script>
+</head>
+<body>
+
+<div id="interpolation"></div>
+
+<script id="interpolationtmpl" type="text/x-dot-template">
+    <div>Hi {{=it.name}}!</div>
+    <div>{{=it.age || ''}}</div>
+</script>
+<script>
+    var dataInter = {"name": "Jake", "age": 31};
+    var interText = doT.template($("#interpolationtmpl").text());
+    $("#interpolation").html(interText(dataInter));
+</script>
+
+
+<div id="evaluation"></div>
+
+<script id="evaluationtmpl" type="text/x-dot-template">
+    {{ for(var prop in it) { }}
+    <div>键:{{=prop }}---值:{{=it[prop] }}</div>
+    {{ } }}
+</script>
+
+<script>
+
+    var dataEval = {
+        "name": "Jake",
+        "age": 31,
+        "interests": ["basketball", "hockey", "photography"],
+        "contact": {"email": "jake@xyz.com", "phone": "999999999"}
+    };
+    var evalText = doT.template($("#evaluationtmpl").text());
+    $("#evaluation").html(evalText(dataEval));
+
+</script>
+
+
+</body>
+</html>
