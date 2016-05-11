@@ -18,7 +18,7 @@ function myfetch($target_url) {
             $tmp[$n]['img_url'] = $res;
             $sub_url            = $fetch->get_4493_sub_next_page($sub_url);
             $n++;
-            sleep(1);
+            sleep(5);
         }
         if (empty(!$tmp)) {
             $all[$k]['sub_img'] = $tmp;
