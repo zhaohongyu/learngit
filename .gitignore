@@ -2,6 +2,4 @@ nbproject
 /toolbar/img/Thumbs.db
 .idea
 httpreq/httpreq.iml
-httpreq/out/production/httpreq/httpreq.iml
-httpreq/out/production/httpreq/README.md
-httpreq/out/production/httpreq/httpreq/HttpRequest.class
+httpreq/out/

@@ -7,7 +7,11 @@ import org.codehaus.xfire.client.Client;
  * Created by zhaohongyu on 16/5/11.
  */
 public class WebServiceClient {
-    public static void main(String[] args) throws MalformedURLException, Exception {
+    public static void main(String[] args) throws Exception, Exception {
+        mylearnsoap();
+    }
+
+    public static void mylearnsoap() throws Exception {
         //XFire client
         URL    url    = new URL("http://mylearngit.com/script/php/soap/wsdl/Server.php?wsdl");
         Client client = new Client(url);
