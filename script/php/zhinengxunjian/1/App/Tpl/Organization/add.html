@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title><{$Think.lang.organization_tpl_show_breadcrumb_add}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />    
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_add}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Organization/index')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <form class="form-horizontal" role="form"action="<{:getUrl('Organization/add')}>" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="name"  placeholder="请输入职位名称"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">职位描述</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="title" placeholder="请输入职位描述"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">上级职位</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="pid">
+                            <option value="0">添加顶级职位</option>
+                            <volist name='job_list' id='vo' key='index'>
+                                <option value="<{$vo.id}>"><{$vo.name}></option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属部门</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="dept_id">
+                            <option value="0">请选择所属部门</option>
+                            <volist name='dept_list' id='vo' key='index'>
+                                <option value="<{$vo.id}>"><{$vo.name}></option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-primary" type="submit" value="添加职位">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

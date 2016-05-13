@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>指定巡检时间</title>
+        <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+    <import file="admin.My97DatePicker.WdatePicker" />
+</head>
+<body>
+    <ol class="breadcrumb" style="background-color: #E8F2FC;">
+        <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+        <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_workset}></a></li>
+        <li>
+            <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+        </li>
+    </ol>
+    <div>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Check/complete')}>" method="post">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">选择巡检开始时间</label>
+                <div class="col-sm-3">
+                    <!--<input class="form-control" type="text" name="start_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', minDate: '%y-%M-{%d}'})" value="<{:formatTime(time(),'Y-m-d H:i:s',1)}>">-->
+                    <input class="form-control" type="text" name="start_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})" value="<{:formatTime(time(),'Y-m-d H:i:s',1)}>">
+                    <input type="hidden" name="id" value="<{$id}>"/>
+                    <input type="hidden" name="position_id" value="<{$position_id}>"/>
+                    <input type="hidden" name="device_ids" value="<{$device_ids}>"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">选择巡检结束时间</label>
+                <div class="col-sm-3">
+                    <!--<input class="form-control" type="text" name="end_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', minDate: '%y-%M-{%d}'})" value="<{:formatTime(time()+3600,'Y-m-d H:i:s',1)}>">-->
+                    <input class="form-control" type="text" name="end_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})" value="<{:formatTime(time()+3600,'Y-m-d H:i:s',1)}>">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class="btn btn-primary" type="submit" value="提交任务">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

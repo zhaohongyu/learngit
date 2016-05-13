@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title><{$Think.lang.device_tpl_show_breadcrumb_update}>--[ <{$device_info.code}> ]</title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.position_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.device_tpl_show_breadcrumb_update}>--[ <{$device_info.code}> ]</a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <php> 
+                    $url_back=getUrl('Position/index',array("page"=>$page_now));
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <form class="form-horizontal" role="form"action="<{:getUrl('Device/update')}>" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">设备编码</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="code" value="<{$device_info.code}>" placeholder="请输入设备编码" readonly/>
+                        <input type="hidden" name="id" value="<{$device_info.id}>" />
+                        <input type="hidden" name="page" value="<{$page_now}>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">设备名称</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="name" placeholder="请输入设备名称" value="<{$device_info.name}>" placeholder="请输入设备名称"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">设备参考值</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="reference_value" placeholder="请输入设备参考值" value="<{$device_info.reference_value}>" placeholder="请输入设备参考值"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">巡检标准</label>
+                    <div class="col-sm-3">
+                        <textarea name="check_standard" class="form-control" rows="3" placeholder="请输入巡检标准" ><{$device_info.check_standard}></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">设备状态选项</label>
+                    <div class="col-sm-3">
+                        <input type="radio" name="status" value="1" <eq name="device_info.status" value="1">checked</eq> />
+                        正常
+                        <input type="radio" name="status" value="0" <eq name="device_info.status" value="0">checked</eq>/>
+                        异常
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否需要输入数值</label>
+                    <div class="col-sm-3">
+                        <input type="radio" name="need_input_value" value="1" <eq name="device_info.need_input_value" value="1">checked</eq> />
+                        需要
+                        <input type="radio" name="need_input_value" value="0" <eq name="device_info.need_input_value" value="0">checked</eq> />
+                        不需要
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="col-sm-2 control-label">设备的巡检频率</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" value="<{$device_info.frequency}>" type="text" name="frequency" placeholder="请输入巡检频率" onKeyUp="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  maxlength="2" />
+                    </div>
+                </div> -->
+                <!-- <div class="form-group">
+                    <label class="col-sm-2 control-label">需要巡检的次数</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" value="<{$device_info.times}>" type="text" name="times" placeholder="请输入需要的巡检次数" onKeyUp="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  maxlength="2" />
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">设备备注</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" value="<{$device_info.remark}>" type="text" name="remark" placeholder="请输入备注"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-primary" type="submit" value="更新设备">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

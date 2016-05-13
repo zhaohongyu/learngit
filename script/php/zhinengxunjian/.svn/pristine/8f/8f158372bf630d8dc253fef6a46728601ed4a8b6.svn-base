@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title><{$Think.lang.role_tpl_show_breadcrumb_add}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />    
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.role_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.role_tpl_show_breadcrumb_add}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Role/index')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <form class="form-horizontal" role="form" action="<{:getUrl('Role/add')}>" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">角色名称</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="name" placeholder="请输入角色名称"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">角色备注</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="remark" placeholder="请输入角色备注"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-primary" type="submit" value="添加角色">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

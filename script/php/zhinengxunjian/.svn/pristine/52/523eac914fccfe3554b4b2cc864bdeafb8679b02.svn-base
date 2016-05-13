@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>职位结构图</title>
+    <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+    <import file="admin.jOrgChart-master.css.jquery-jOrgChart" type="css"/>
+    <import file="admin.jOrgChart-master.css.custom" type="css"/>
+    <import file="admin.jOrgChart-master.css.prettify" type="css"/>
+    <import file="admin.jOrgChart-master.prettify" />
+    <import file="admin.jOrgChart-master.jquery-jOrgChart" />
+    <script>
+    jQuery(document).ready(function() {
+        $("#org").jOrgChart({
+            chartElement : '#chart',
+            dragAndDrop  : true
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <!-- <ol class="breadcrumb" style="background-color: #E8F2FC;">
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_manager}></a></li>
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_index}></a></li>
+        <li>
+            <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+        <li>
+            <a style="text-decoration: none;" href="<{:getUrl('Organization/add')}>" target="right">【<{$Think.lang.organization_tpl_show_breadcrumb_add}>】</a>
+        </li>
+        </li>
+        <li>
+            <a style="text-decoration: none;" href="<{:getUrl('Organization/index')}>" target="right">【返回】</a>
+        </li>
+    </ol> -->
+    <ul id="org" style="display:none">
+        <li oid="<{$root_organization.id}>">
+            <br/>
+            <{$root_organization.name}>
+            <ul>
+                <volist name="organization_level2_list" id="v2">
+                    <li oid="<{$v2.id}>">
+                         <br/>
+                         <{$v2.name}>
+                         <ul>
+                            <volist name="organization_level3_list" id="v3">
+                                <eq name="v2.id" value="$v3.pid">
+                                    <li oid="<{$v3.id}>">
+                                         <br/>
+                                         <{$v3.name}>
+                                         <ul>
+                                            <volist name="organization_level4_list" id="v4">
+                                                <eq name="v3.id" value="$v4.pid">
+                                                    <li oid="<{$v4.id}>">
+                                                         <br/>
+                                                         <{$v4.name}>
+                                                         <ul>
+                                                            <?php foreach ($organization_level5_list as $v5): ?>
+                                                                <eq name="v4.id" value="$v5.pid">
+                                                                    <li oid="<{$v5.id}>">
+                                                                        <br/>
+                                                                        <{$v5.name}>
+                                                                        <ul>
+                                                                            <?php foreach ($organization_level6_list as $v6): ?>
+                                                                                <eq name="v5.id" value="$v6.pid">
+                                                                                    <li oid="<{$v6.id}>">
+                                                                                        <br/>
+                                                                                        <{$v6.name}>
+                                                                                        <ul>
+                                                                                            <?php foreach ($organization_level7_list as $v7): ?>
+                                                                                                <eq name="v6.id" value="$v7.pid">
+                                                                                                    <li oid="<{$v7.id}>">
+                                                                                                        <br/>
+                                                                                                        <{$v7.name}>
+                                                                                                        <ul>
+                                                                                                            <?php foreach ($organization_level8_list as $v8): ?>
+                                                                                                                <eq name="v7.id" value="$v8.pid">
+                                                                                                                    <li oid="<{$v8.id}>">
+                                                                                                                        <br/>
+                                                                                                                        <{$v8.name}>
+                                                                                                                        <ul>
+                                                                                                                            <?php foreach ($organization_level9_list as $v9): ?>
+                                                                                                                                <eq name="v8.id" value="$v9.pid">
+                                                                                                                                    <li oid="<{$v9.id}>">
+                                                                                                                                        <br/>
+                                                                                                                                        <{$v9.name}>
+                                                                                                                                        <ul>
+                                                                                                                                            <?php foreach ($organization_level10_list as $v10): ?>
+                                                                                                                                                <eq name="v9.id" value="$v10.pid">
+                                                                                                                                                    <li oid="<{$v10.id}>">
+                                                                                                                                                        <br/>
+                                                                                                                                                        <{$v10.name}>
+
+                                                                                                                                                    </li>
+                                                                                                                                                </eq>
+                                                                                                                                            <?php endforeach ?>
+                                                                                                                                        </ul>
+                                                                                                                                    </li>
+                                                                                                                                </eq>
+                                                                                                                            <?php endforeach ?>
+                                                                                                                        </ul>
+                                                                                                                    </li>
+                                                                                                                </eq>
+                                                                                                            <?php endforeach ?>
+                                                                                                        </ul>
+                                                                                                    </li>
+                                                                                                </eq>
+                                                                                            <?php endforeach ?>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                </eq>
+                                                                            <?php endforeach ?>
+                                                                        </ul>
+                                                                    </li>
+                                                                </eq>
+                                                            <?php endforeach ?>
+                                                        </ul>
+                                                    </li>
+                                                </eq>
+                                            </volist>
+                                        </ul>
+                                    </li>
+                                </eq>
+                            </volist>
+                        </ul>
+                    </li>
+                </volist>
+            </ul>
+        </li>
+    </ul>
+    <div id="chart" class="orgChart"></div>
+    <!-- Modal -->
+    <div style="color:black" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          </div>
+          <div class="modal-body">
+            <!--员工信息-->
+            <div id="dt">
+                <!--显示指定职位下的员工信息-->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <php>
+        $url_getUserByOid=getUrl('Organization/getUserByOid');
+    </php>
+    <input id="url_getUserByOid" type="hidden" value="<{:$url_getUserByOid}>"/>
+</body>
+</html>

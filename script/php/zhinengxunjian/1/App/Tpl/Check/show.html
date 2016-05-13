@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title>选择员工</title>
+         <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#">选择员工</a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+        </ol>
+        <h4 class="col-md-offset-2 ">选择搜索条件以快速定位要指定任务的员工</h4>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Check/serach')}>" method="post">
+            <div class="col-xs-2">
+                <select class="form-control" name="dept_id" >
+                    <option value="0">全部部门</option>
+                    <volist name='dept_list' id='vo' key='index'>
+                            <option value="<{$vo.id}>" <eq name="vo.id" value="$dept_id">selected</eq>>
+                                <{$vo.name}>
+                            </option>
+                    </volist>
+                </select>
+            </div>
+            <div class="col-xs-2">
+                <select class="form-control" name="specialty_id" >
+                    <option value="0">全部专业</option>
+                    <volist name='specialty_list' id='vo' key='index'>
+                            <option value="<{$vo.id}>" <eq name="vo.id" value="$specialty_id">selected</eq>>
+                                <{$vo.name}>
+                            </option>
+                    </volist>
+                </select>
+            </div> 
+            <div class="col-xs-2">
+                <select class="form-control" name="organization_id" >
+                    <option value="0">全部职位</option>
+                    <volist name='organization_list' id='vo' key='index'>
+                        <option value="<{$vo.id}>" <eq name="vo.id" value="$organization_id">selected</eq>>
+                                <{$vo.name}>
+                            </option>
+                    </volist>
+                </select>
+            </div>
+            <input class="input-sm" type="text" name="real_name" placeholder="输入员工姓名搜索" value="<{$real_name}>"/>
+            <input class="btn btn-success" type="submit" value="搜索">
+        </form>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>工号</th>
+                                <th>姓名</th>
+                                <th>部门</th>
+                                <th>专业</th>
+                                <th>职务</th>
+                                <th>电话</th>
+                                <th>最后登录时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="user_list" id="vo" key="index">
+                                <if condition="$vo['id'] neq 1 && $vo['name'] neq 'admin' && $vo['real_name'] neq '超级管理员'">
+                                    <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                        <th><{$vo.job_number}></th>
+                                        <th><{$vo.real_name}></th>
+                                        <th><{$vo.dept_name}></th>
+                                        <th><{$vo.specialty_name}></th>
+                                        <th><{$vo.organization_name}></th>
+                                        <th><{$vo.mobile}></th>
+                                        <th><{:formatTime($vo['login_time'],'',2)}></th>
+                                        <td>
+                                            <php> 
+                                                $url_workset=getUrl('Check/workset',array("id"=>$vo['id']));
+                                            </php>
+                                            <div class="btn-group-xs">
+                                                <a class="btn btn-primary" href="<{:$url_workset}>">设定巡检点</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </if>
+                            </volist>
+                        </tbody>
+                    </table>
+		</div>
+            </div>
+        </div>
+        <center><{:$page}></center>
+    </body>
+</html>

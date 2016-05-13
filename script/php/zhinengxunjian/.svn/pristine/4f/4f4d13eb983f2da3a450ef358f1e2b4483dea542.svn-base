@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dth">
+<html>
+    <head>
+        <title>问答</title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />    
+    </head>
+    <body>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Test/liNing')}>" method="post">
+            <div class="col-xs-2">
+                <input class="input-sm form-control" type="text" name="Pc_content" value="<{$Pc_content}>"/>
+            </div>
+            <input class="btn btn-success" type="submit" value="搜索"/>
+        </form>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <tbody><tr style="font-weight: bold;">
+                                <th>pc_Id</th>
+                                <th>C_id</th>
+                                <th>Pc_unionId</th>
+                                <th>Pc_title</th>
+                                <th>Pc_content</th>
+                                <th>pc_order</th>
+                                <th>Pc_times</th>
+                                <th>pc_creater</th>
+                                <th>pc_createTime</th>
+                                <th>pc_reporter</th>
+                            </tr>
+                            <volist name="putdown_content_list" id="vo" key="index">
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                    <th><{$vo.pc_Id}></th>
+                                    <th><{$vo.C_id}></th>
+                                    <th><{$vo.Pc_unionId}></th>
+                                    <th><{$vo.Pc_title}></th>
+                                    <th><{$vo.Pc_content}></th>
+                                    <th><{$vo.pc_order}></th>
+                                    <th><{$vo.Pc_times}></th>
+                                    <th><{$vo.pc_order}></th>
+                                    <th><{$vo.pc_creater}></th>
+                                    <th><{$vo.pc_createTime}></th>
+                                    <th><{$vo.pc_reporter}></th>
+                                </tr>
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                    <th>答案:</th>
+                                    <th><{$vo.answer.C_id}></th>
+                                    <th><{$vo.answer.Pc_unionId}></th>
+                                    <th><{$vo.answer.Pc_title}></th>
+                                    <th><{$vo.answer.Pc_content}></th>
+                                    <th><{$vo.answer.pc_order}></th>
+                                    <th><{$vo.answer.Pc_times}></th>
+                                    <th><{$vo.answer.pc_order}></th>
+                                    <th><{$vo.answer.pc_creater}></th>
+                                    <th><{$vo.answer.pc_createTime}></th>
+                                    <th><{$vo.answer.pc_reporter}></th>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <include file="Public:foot" />
+    </body>
+</html>

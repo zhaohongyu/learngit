@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv=content-type content="text/html; charset=utf-8" />
+        <link href="<{$Think.const.HOUTAI_CSS_URL}>admin.css" type="text/css" rel="stylesheet" />
+        <include file="Public:bootstrap" />
+        <script>
+            function starttime() {
+                var t = new Date();
+                //getFullYear 方法以绝对数字的形式返回年份值。例如，1976 年的返回值就是 1976。这样可以避免出现 2000 年问题，从而不会将 2000 年1月1日以后的日期与 1900 年1月1日以后的日期混淆起来。
+                var y = t.getFullYear();
+                var m = t.getMonth() + 1;
+                var d = t.getDate();
+                var h = t.getHours();
+                var i = t.getMinutes();
+                var s = t.getSeconds();
+                //以下这段代码是为了防止时分秒个位数时在前面加上0
+                h = h < 10 ? "0" + h : h;
+                i = i < 10 ? "0" + i : i;
+                s = s < 10 ? "0" + s : s;
+                //innerHTML，是在块中加html代码
+                //document.getElementByIdx_x("nowtime"),写上这句可以增加支持火狐兼容性
+                document.getElementById("nowtime").innerHTML = (+y + "-" + m + "-" + d + " " + h + ":" + i + ":" + s);
+                setTimeout("starttime()", 1000);//设定函数自动执行starttime()的方法时间为 1000 ms(1s)
+            }
+        </script>
+    </head>
+    <body onload="starttime()">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <table cellspacing=0 cellpadding=0 width="90%" align=center border=0>
+            <tr height=100>
+                <td align=middle width=100>
+                    <img height=100 src="<{$Think.const.HOUTAI_IMG_URL}>admin_p.gif" width="90">
+                </td>
+                <td width=60>&nbsp;</td>
+                <td>
+                    <table height=100 cellspacing=0 cellpadding=0 width="100%" border=0>
+                        <tr>
+                            <td>
+                                当前时间：
+                                <span id="nowtime"><!--将被加载时间的块--></span>
+                            </td>
+                        </tr>
+                        <empty name="user_info">
+                                <tr>
+                                    <td style="font-weight: bold; font-size: 16px"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        您还未登录!
+                                    </td>
+                                </tr>
+                            <else/>
+                                <tr>
+                                    <td style="font-weight: bold; font-size: 16px">
+                                        <br/>
+                                        <{$user_info.username}>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        欢迎进入网站管理中心！
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        <a  class="badge" style="text-decoration: none" href="<{:getUrl('User/online')}>" target='right'>点击查看在线人员</a>
+                                        当前在线人数:
+                                        &nbsp;
+                                        <if condition="$countOnline eq '' OR $countOnline eq 0 " >
+                                                0
+                                            <else/>
+                                                <span id="countOnline" class="badge" style="background-color: blue;">
+                                                    <{$countOnline}>
+                                                </span>
+                                        </if>
+                                        &nbsp;人
+                                    </td>
+                                </tr>
+                        </empty>
+                        <tr>
+                            <td>
+                                <br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <{:L('server_info')}>
+                            </td>
+                        </tr>
+                        <volist name="system_info" id="vo" key="index">
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('framework_core_version')}>；<{$vo[L('framework_core_version')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('server_system_php_version')}>；<{$vo[L('server_system_php_version')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('server_operating_system')}>；<{$vo[L('server_operating_system')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('upload_max_filesize')}>；<{$vo[L('upload_max_filesize')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('server_time')}>；<{$vo[L('server_time')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('server_domain_ip')}>；<{$vo[L('server_domain_ip')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('server_disk_space')}>；<{$vo[L('server_disk_space')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('database_version')}>；<{$vo[L('database_version')]}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>
+                                    <{:L('database_using')}>；<{$vo[L('database_using')]}>
+                                </td>
+                            </tr>
+                        </volist>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3 height=10></td>
+            </tr>
+        </table>
+        <empty name="user_info">
+            <table cellspacing=0 cellpadding=0 width="95%" align=center border=0>
+                <tr height=20>
+                    <td></td>
+                </tr>
+                <tr height=22>
+                    <td style="padding-left: 20px; font-weight: bold; color: #ffffff" align="middle" background="<{$Think.const.HOUTAI_IMG_URL}>title_bg2.jpg">
+                        您还未登录!<a style="color: #fff" href="<{:getUrl('Public/login')}>"target="main">【 登陆 】</a>
+                    </td>
+                </tr>
+                <tr bgcolor=#ecf4fc height=12>
+                    <td></td>
+                </tr>
+                <tr height=20>
+                    <td></td>
+                </tr>
+            </table>
+            <else/>
+                <table cellspacing=0 cellpadding=0 width="95%" align=center border=0>
+                    <tr height=20>
+                        <td></td>
+                    </tr>
+                    <tr height=22>
+                        <td style="padding-left: 20px; font-weight: bold; color: #ffffff" align="middle" background="<{$Think.const.HOUTAI_IMG_URL}>title_bg2.jpg">
+                            您的相关信息
+                        </td>
+                    </tr>
+                    <tr bgcolor=#ecf4fc height=12>
+                        <td></td>
+                    </tr>
+                    <tr height=20>
+                        <td></td>
+                    </tr>
+                </table>
+                <table cellspacing="0" cellpadding="2" width="95%" align="center" border="0" style="margin-left: 14.5%;">
+                    <tr>
+                        <td align=right width=100>登陆帐号：</td>
+                        <td style="color: #880000"><{$user_info.username}></td>
+                    </tr>
+                    <tr>
+                        <td align=right>真实姓名：</td>
+                        <td style="color: #880000"><{$user_info.real_name}></td>
+                    </tr>
+                    <tr>
+                        <td align=right>注册时间：</td>
+                        <td style="color: #880000"><{:formatTime($user_info['register_time'])}></td>
+                    </tr>
+                    <tr>
+                        <td align=right>登陆次数：</td>
+                        <td style="color: #880000"><{$user_info.login_count}> 次</td>
+                    </tr>
+                    <tr>
+                        <td align=right>上次登录时间：</td>
+                        <td style="color: #880000"><{:formatTime($user_info['login_time'],'',2)}></td>
+                    </tr>
+                    <tr>
+                        <td align=right>上次登录ip地址：</td>
+                        <td style="color: #880000">
+                            <{$user_info.login_ip}>&nbsp;
+                            <{$ip_info.area}>&nbsp;
+                            <{$ip_info.region}>&nbsp;
+                            <{$ip_info.city}>&nbsp;
+                            <{$ip_info.county}>&nbsp;
+                            <{$ip_info.isp}>&nbsp;
+                        </td>
+                    </tr>
+                </table>
+        </empty>
+
+
+        <!--jquery右下角pop弹窗start -->
+        <script type="text/javascript" >
+            //记得加载jquery
+            //使用参数：1.标题，2.链接地址，3.内容简介
+            <php>
+            if (!(($countException==0||$countException=='')&&($countHiddentrouble==0||$countHiddentrouble==''))) {
+            </php>
+                window.onload=function(){
+                    var pop=new Pop(
+                        "<{$title}>",
+                        "<{$url}>",
+                        "<{$content}>"
+                    );
+                    $("#pop").append("<embed id='alarm'  src='<{$Think.const.HOUTAI_POP_URL}>Alarm.mp3' autostart=1 loop=false width=0 height=0 >");
+                    $("#popClose").on('click',function(){
+                        $("#alarm").remove();
+                    });
+                }
+            <php>
+            };
+            </php>
+        </script>
+        <import type="js" file="admin.pop.pop" />
+        <div id="pop" style="display:none;">
+            <style type="text/css">
+            *{margin:0;padding:0;}
+            #pop{background:#fff;width:260px;border:1px solid #e0e0e0;font-size:12px;position: fixed;right:10px;bottom:10px;}
+            #popHead{line-height:32px;background:#f6f0f3;border-bottom:1px solid #e0e0e0;position:relative;font-size:12px;padding:0 0 0 10px;}
+            #popHead h2{font-size:14px;color:#666;line-height:32px;height:32px;color:red;}
+            #popHead #popClose{position:absolute;right:10px;top:1px;}
+            #popHead a#popClose:hover{color:#f00;cursor:pointer;}
+            #popContent{padding:5px 10px;}
+            #popTitle a{line-height:24px;font-size:14px;font-family:'微软雅黑';color:#333;font-weight:bold;text-decoration:none;}
+            #popTitle a:hover{color:#f60;}
+            #popIntro{text-indent:24px;line-height:160%;margin:5px 0;color:#666;font-size: 14px;}
+            #popMore{text-align:right;border-top:1px dotted #ccc;line-height:24px;margin:8px 0 0 0;}
+            #popMore a{color:#f60;}
+            #popMore a:hover{color:#f00;}
+            </style>
+            <div id="popHead">
+            <a id="popClose" title="关闭">关闭</a>
+            <h2>报警信息提示</h2>
+            </div>
+            <div id="popContent">
+            <dl>
+                <dt id="popTitle"><a href="http://yanue.info/" target="_blank">这里是参数</a></dt>
+                <dd id="popIntro">这里是内容简介</dd>
+            </dl>
+            <p id="popMore"><a href="#" target="right">去处理 »</a></p>
+            </div>
+        </div>
+        <!--右下角pop弹窗 end-->
+    </body>
+</html>

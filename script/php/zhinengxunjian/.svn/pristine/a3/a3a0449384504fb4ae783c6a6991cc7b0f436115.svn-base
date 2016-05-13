@@ -1,0 +1,413 @@
+登出---退出用户登录--请求格式
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"logout",
+		"RequestParam":{
+			"UserToken":"a52bb12d9a4c38edf7e8e538c3cb908e",
+			"UserName":"huangyang19847",
+			"UserId":"237"
+		}
+	}
+}
+
+获取用户信息--请求格式
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"getUserInfo",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3"
+		}
+	}
+}
+
+
+获取我的任务--请求格式
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"getMyTask",
+		"RequestParam":{
+			"UserToken":"8abfd104a272baa6ceadbfa6ba2d0a20",
+			"UserName":"test",
+			"UserId":"3",
+			"SearchTime":"2014-07-02",
+			"Page":"2"
+		}
+	}
+}                                        
+
+添加点位编码---
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"addPosition",
+		"RequestParam":{
+			"Position":[
+				{
+					"PositionNumber":"22333444444",
+					"PositionCode":"test1223234242",
+					"PositionName":""
+				},
+				{
+					"PositionNumber":"2233344",
+					"PositionCode":"test66666666",
+					"PositionName":""
+				}
+			]
+		}
+	}
+}
+
+获取通知---不传参数默认查询最新10条通知
+必须验证,要传递用户名,用户id,用户的token
+SearchTime-- 格式 2014-07-02 必须是这种格式  可选参数
+Page--  查询的当前页1,2,3 数字这种 可选参数
+
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"getNotice",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3",
+			"SearchTime":"2014-07-02",
+			"Page":"1"
+		}
+	}
+}
+
+初始化数据---获取所有点位与点位下的设备信息
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"getPositionAndDevice",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3"
+		}
+	}
+}
+
+--上传正常/异常巡检信息
+
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"addRecord",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3",
+			"TaskId":"1",
+			"Status":"1",
+			"DescribesException":"很好啊没有问题",
+			"NeedInputValue":"1",
+			"InputValue":"这11111",
+			"DeviceIds":"7,8,9",
+			"DeviceId":"9"
+		}
+	}
+}                      
+
+---根据通知公告id获取通知详情
+                               
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f"
+	},
+	"Body":{
+		"Action":"getNoticeDetail",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3",
+			"NoticeId":"3"
+		}
+	}
+}
+
+
+--添加隐患信息
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"addHiddenTrouble",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3",
+			"HiddenTroubleDescribesException":"这个设备可能存在隐患",
+			"DeviceImageSrc":"/Public/upload/images/2014-07-02/m_53b404ebc1775.JPG,/Public/upload/images/2014-07-02/m_53b4183035d08.JPG",
+			"DeviceVideoSrc":"/Public/upload/videos/2014-07-02/53b4183c2afec.flv,/Public/upload/videos/2014-07-02/53b424ea7c727.flv",
+			"DeviceId":"8"
+		}
+	}
+}                               
+
+2014年7月10日 11:33:57
+2014-7-12 23:36:05 更新了本地化时间上传 如果提供SubmitTime字段即保存记录的时间则使用保存记录的时间
+不会使用系统时间
+--上传异常/正常信息--新版
+{
+    "Header": {
+        "DeviceId": "q54rq654erqq65468",
+        "SimCard": "13522165858",
+        "ClientType": "iphone",
+        "ClientVersion": "1.0",
+        "ClientId": "231dfa5sd1f3a21d2f",
+	"Size":"555"
+    },
+    "Body": {
+        "Action": "submitRecord",
+        "RequestParam": {
+            "UserToken": "dbcc3334ed58fa14fe03ba45160ba93e",
+            "UserName": "test",
+            "UserId": "3",
+            "FinishTaskId": "9",
+            "Status": "1",
+            "DescribesException": "很正常",
+            "DeviceId": "3",
+            "NeedInputValue": "1",
+            "InputValue": "输入值888",
+            "SubmitTime": "1405521600"
+        }
+    }
+}
+--获取我的已经领取的巡检任务列表
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"getMyTaskList",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3"
+		}
+	}
+}
+--根据专业获取 任务列表 为领取任务做准备
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"getTaskListBySpecialty",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"3"
+		}
+	}
+}
+--领取任务
+{
+	"Header":{
+		"DeviceId":"q54rq654erqq65468",
+		"SimCard":"13522165858",
+		"ClientType":"iphone",
+		"ClientVersion":"1.0",
+		"ClientId":"231dfa5sd1f3a21d2f",
+		"Size":"555"
+	},
+	"Body":{
+		"Action":"receiveTask",
+		"RequestParam":{
+			"UserToken":"3939990156880282d15f9953bddfceac",
+			"UserName":"test",
+			"UserId":"133",
+			"TaskId":"25"
+		}
+	}
+}
+
+--检查软件版本 
+{
+    "Body": {
+        "Action": "checkVersion",
+        "RequestParam": {
+            "ClientVersion": "1.0"
+        }
+    },
+    "Header": {
+        "ClientId": "231dfa5sd1f3a21d2f",
+        "ClientType": "iphone",
+        "ClientVersion": "1.0",
+        "DeviceId": "q54rq654erqq65468",
+        "SimCard": "13522165858",
+	"Size":"555"
+    }
+}
+--获取指定日期内的流量
+{
+    "Body": {
+        "Action": "count",
+        "RequestParam": {
+            "EndTime": "2014-07-19 01:49:05",
+            "StartTime": "2014-07-01 00:00:00",
+            "UserId": "3",
+            "UserName": "test",
+            "UserToken": "3939990156880282d15f9953bddfceac"
+        }
+    },
+    "Header": {
+        "ClientId": "231dfa5sd1f3a21d2f",
+        "ClientType": "iphone",
+        "ClientVersion": "1.0",
+        "DeviceId": "q54rq654erqq65468",
+        "SimCard": "13522165858",
+        "Size": "555"
+    }
+}
+--更新隐患信息图片路径
+{
+    "Body": {
+        "Action": "updateHiddenTrouble",
+        "RequestParam": {
+            "HiddenTtroubleList": [
+                {
+                    "DeviceImageSrc": "/Public/upload/images/2014-07-25/m_53d25554afece.jpg",
+                    "HiddenTroubleId": "8",
+                    "UserId": "3"
+                },
+                {
+                    "DeviceImageSrc": "/Public/upload/images/2014-07-25/m_53d25554afece.jpg",
+                    "HiddenTroubleId": "8",
+                    "UserId": "3"
+                },
+                {
+                    "DeviceImageSrc": "/Public/upload/images/2014-07-25/m_53d25554afece.jpg",
+                    "HiddenTroubleId": "7",
+                    "UserId": "3"
+                }
+            ]
+        }
+    },
+    "Header": {
+        "ClientId": "231dfa5sd1f3a21d2f",
+        "ClientType": "iphone",
+        "ClientVersion": "1.0",
+        "DeviceId": "q54rq654erqq65468",
+        "SimCard": "13522165858",
+        "Size": "555"
+    }
+}
+
+--submitRecordMultiple 点位巡检之--上传异常/正常信息 新版
+--2014-8-8 12:28:47 支持多条记录同时上传
+
+{
+    "Body": {
+        "Action": "submitRecordMultiple",
+        "RequestParam": {
+            "FinishTaskList": [
+                {
+                    "DescribesException": "很正常四大皆空还是觉得好就是看",
+                    "DeviceId": "285",
+                    "FinishTaskId": "955",
+                    "InputValue": "输入值000000000000",
+                    "NeedInputValue": "1",
+                    "Status": "0",
+                    "SubmitTime": "1405521600"
+                },
+                {
+                    "DescribesException": "很正常",
+                    "DeviceId": "293",
+                    "FinishTaskId": "955",
+                    "InputValue": "输入值888",
+                    "NeedInputValue": "1",
+                    "Status": "1",
+                    "SubmitTime": "1405521600"
+                }
+            ],
+            "UserId": "2",
+            "UserName": "zhaohongyu",
+            "UserToken": "3939990156880282d15f9953bddfceac"
+        }
+    },
+    "Header": {
+        "ClientId": "231dfa5sd1f3a21d2f",
+        "ClientType": "iphone",
+        "ClientVersion": "1.0",
+        "DeviceId": "q54rq654erqq65468",
+        "SimCard": "13522165858",
+        "Size": "555"
+    }
+}

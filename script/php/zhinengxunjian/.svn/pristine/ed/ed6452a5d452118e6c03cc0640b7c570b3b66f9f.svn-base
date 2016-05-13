@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.My97DatePicker.WdatePicker" />
+        <import file="admin.css.css01" type="css" />
+        <script>
+            $(function(){
+                $("th abbr").on("click",function(){
+                    var $position_names_arr_id=$(this).attr("position_names_arr_id");
+                    var $html=$("#"+$position_names_arr_id).html();
+                    $("#dt").html($html);
+                    $("#myModal").modal();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></a></li>
+            <li>
+                <php> 
+                    $url_taskstatustubiao=getUrl(
+                        'Check/taskstatus',
+                        array(
+                            "page"=>$page_now,
+                            "specialty_id"=>$specialty_id,
+                            "search_time"=>$search_time,
+                            "task_name"=>$task_name,
+                            "status"=>$status,
+                            "random"=>mt_rand(),
+                        ));
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_taskstatustubiao}>" target="right">【图标显示】</a>
+            </li>
+            <li class="active">
+                <php>
+                    $arr=array(
+                        "page"=>$page_now,
+                        "specialty_id"=>$specialty_id,
+                        "search_time"=>$search_time,
+                        "task_name"=>$task_name,
+                        "status"=>$status,
+                        "random"=>mt_rand(),
+                    );
+                    $url_export=getUrl('Check/exportExcel',$arr);
+                </php>
+                <a class="text-right"style="text-decoration: none" href="<{$url_export}>" title="<{$Think.lang.check_complete_advance}>"><{$Think.lang.check_complete_exportexcel}></a>
+            </li>
+<!--            <li class="active">
+                <php>
+                    $arr=array(
+                        "page"=>$page_now,
+                        "specialty_id"=>$specialty_id,
+                        "search_time"=>$search_time,
+                        "task_name"=>$task_name,
+                        "status"=>$status,
+                        "random"=>mt_rand(),
+                    );
+                    $url_export=getUrl('Check/exportExcelNotReceive',$arr);
+                </php>
+                <a class="text-right"style="text-decoration: none" href="<{$url_export}>" title="<{$Think.lang.check_complete_advance}>">【导出未领取任务到EXCEL】</a>
+            </li>-->
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Check/taskstatus')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <center>
+            <div class="clear"></div>
+            <!-- <h5>
+                <empty name="search_time"><else/><span class="label label-primary"><{$search_time}></span></empty>
+                <empty name="task_name"><else/>&nbsp;<span class="label label-primary">任务名:<{$task_name}></span></empty>
+				<empty name="specialty_name"><else/>&nbsp;<span class="label label-primary"><{$specialty_name}></span></empty>
+				<eq name="status" value="0">&nbsp;<span class="label label-danger">未完成</span></eq>
+                <eq name="status" value="1">&nbsp;<span class="label label-success">已完成</span></eq>
+                <eq name="status" value="2">&nbsp;<span class="label label-primary">全部</span></eq>
+                &nbsp;<span class="label label-primary">巡检任务情况</span>
+            </h5> -->
+        </center>
+        <p>&nbsp;</p>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Check/taskstatusliebiao')}>" method="post">
+            <div class="col-xs-3">
+                <input class="form-control" type="text" name="search_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" <empty name="search_time">value="<{:formatTime(time(),'Y-m-d',1)}>"<else/>value="<{$search_time}>"</empty>>
+            </div>
+            <div class="col-xs-2">
+                <select class="form-control" name="status" >
+                    <option value="2" <eq name="status" value="2">selected</eq>>全部</option>
+                    <option value="1" <eq name="status" value="1">selected</eq>>已完成</option>
+                    <option value="0" <eq name="status" value="0">selected</eq>>未完成</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <input class="input-sm form-control" type="text" name="task_name" placeholder="请输入任务名称来搜索" value="<{$task_name}>"/>
+            </div>
+            <input type="hidden" name="specialty_id" value="<{$specialty_id}>">
+            <input type="hidden" name="type" value="liebiao">
+            <input class="btn btn-success" type="submit" value="搜索"/>
+        </form>
+        <p>&nbsp;</p>
+        <empty name="specialty_name">
+            <else/>
+                <center>
+                    <button type="button" class="btn btn-primary btn-large">
+                        <{$specialty_name}>已领取:<{:count($received_ids)}>未领取:<{:count($not_receive_ids)}>
+                    </button>
+                    <b>图&nbsp;例:&nbsp;</b>
+                    <span class="label label-success">已完成</span>&nbsp;
+                    <span class="label label-danger">未完成</span>&nbsp;
+                    <!-- <span class="label label-warning">超时完成</span>&nbsp; -->
+                    <!--<span class="label label-default">未领取的任务</span>&nbsp;-->
+                </center>
+        </empty>
+        <div class="clear"></div>
+        <p>&nbsp;</p>
+        <!--已经领取的任务-->
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>专业</th>
+                                <th>任务名称</th>
+                                <th>点位名称</th>
+                                <th>巡检时间段</th>
+                                <th>任务领取时间</th>
+                                <th>完成时间</th>
+                                <th>领取人</th>
+                                <th>是否超时</th>
+                                <th>超时时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="task_status_list" id="vo" key="index">
+                                <tr <eq name='vo.status' value='0'>class="danger"<else/><eq name="vo.is_overtime" value="0">style="background-color: #F0AD4E;"<else/>style="background-color: #5CB85C;"</eq></eq>>
+                                    <th><{$vo.specialty_name}></th>
+                                    <th><{$vo.task_name}></th>
+                                    <th>
+                                        <abbr title='<{$vo.position_names}>' position_names_arr_id="<{$index}>">
+                                            <{$vo.position_names_short}>
+                                        </abbr>
+                                        <div style="display: none;" id="<{$index}>">
+                                            <table class="table table-condensed table-hover table-bordered">
+                                                <thead><tr><th>点位名称</th></tr></thead>
+                                                <tbody>
+                                                    <volist name="vo.position_names_arr" id="voo" key="index2">
+                                                        <tr <eq name='index2%2' value='0'>class="success"<else/>class="active"</eq>>
+                                                            <th><{$voo}></th>
+                                                        </tr>
+                                                    </volist>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </th>
+                                    <th><{$vo.start_time}>--<{$vo.end_time}></th>
+                                    <th><{:formatTime($vo['receive_time'],'m-d H:i',1)}></th>
+                                    <th><{:formatTime($vo['finish_time'],'m-d H:i',1)}></th>
+                                    <th><{$vo.real_name}></th>
+                                    <th><eq name="vo.is_overtime" value="0">未按时完成</eq><eq name="vo.is_overtime" value="1">未超时</eq></th>
+                                    <th><{$vo.overtime}></th>
+                                    <th>
+                                        <eq name='vo.status' value='0'>
+                                            <span class="label label-danger"><i class="glyphicon glyphicon-remove">未完成</i></span>
+                                            <else/>
+                                            <eq name="vo.is_overtime" value="0">
+                                                    <span class="label label-success" style="background-color: #F0AD4E;"><i class="glyphicon glyphicon-ok">超时</i></span>
+                                                <else/>
+                                                    <span class="label label-success"><i class="glyphicon glyphicon-ok">已完成</i></span>
+                                            </eq>
+                                        </eq>
+                                    </th>
+                                    <th>
+                                        <php> 
+                                            $url_finishTaskDetail4liebiao=getUrl(
+                                                'Check/finishTaskDetail4liebiao',
+                                                    array(
+                                                        "finish_task_id"=>$vo['finish_task_id'],
+                                                        "page_now"=>$page_now,
+                                                        "specialty_id"=>$specialty_id,
+                                                        "search_time"=>$search_time,
+                                                        "task_name"=>$task_name,
+                                                        "status"=>$status,
+                                                        "random"=>mt_rand(),
+                                                    ));
+                                        </php>
+                                        <div class="btn-group-xs">
+                                            <a class="btn btn-primary" href="<{$url_finishTaskDetail4liebiao}>">详情</a>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </volist>
+                            <!--未领取的任务-->
+                            <volist name="task_list" id="vo" key="index">
+                                <tr class="danger">
+                                    <th><{$vo.specialty_name}></th>
+                                    <th><{$vo.task_name}></th>
+                                    <th>
+                                        <abbr title='<{$vo.position_names}>' position_names_arr_id="_not_receive<{$index}>">
+                                            <{$vo.position_names_short}>
+                                        </abbr>
+                                        <div style="display: none;" id="_not_receive<{$index}>">
+                                            <table class="table table-condensed table-hover table-bordered">
+                                                <thead><tr><th>点位名称</th></tr></thead>
+                                                <tbody>
+                                                    <volist name="vo.position_names_arr" id="voo" key="index2">
+                                                        <tr <eq name='index2%2' value='0'>class="success"<else/>class="active"</eq>>
+                                                            <th><{$voo}></th>
+                                                        </tr>
+                                                    </volist>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </th>
+                                    <th><{$vo.start_time}>--<{$vo.end_time}></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>
+                                        <span class="label label-danger"><i class="glyphicon glyphicon-remove">未领取</i></span>
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <center><{:$page}></center>
+        <!-- Modal 显示缩略信息详情-->
+        <div style="color:black" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+              <div class="modal-body">
+                <!--显示缩略信息详情-->
+                <div id="dt">
+                    <!--显示缩略信息详情-->
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>&nbsp;</p>
+        
+        <include file="Public:foot" />
+    </body>
+</html>

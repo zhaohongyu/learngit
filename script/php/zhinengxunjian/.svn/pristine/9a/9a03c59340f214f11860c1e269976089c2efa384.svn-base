@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title><{$Think.lang.check_tpl_show_breadcrumb_update}></title>
+    <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+    <import file="admin.My97DatePicker.WdatePicker" />
+</head>
+<body>
+    <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_update}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a class="text-right"style="text-decoration: none" style="text-decoration: none;" href="<{:getUrl('Check/taskList',array('page'=>$page_now))}>" target="right">【返回】</a>
+            </li>
+    </ol>
+    <div>
+        <form class="form-horizontal" role="form"action="<{:getUrl('Check/update')}>" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">任务编号</label>
+                <div class="col-sm-3">
+<!--                  <input class="form-control" type="text" name="task_code" value="<{$task_info.task_code}>"placeholder="请输入任务编号" onKeyUp="if (isNaN(value))
+                                    execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  maxlength="2" />-->
+                    <input class="form-control" type="text" name="task_code" value="<{$task_info.task_code}>"placeholder="请输入任务编号"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">任务名称</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="task_name" value="<{$task_info.task_name}>" placeholder="请输入任务名称"/>
+                    <input type="hidden" name="id" value="<{$task_info.id}>"/>
+                    <input type="hidden" name="page" value="<{$page_now}>"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">巡检时间段</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="start_time" onClick="WdatePicker({dateFmt: 'HH:mm'})" value="<{$task_info.start_time}>">
+                    <br/>
+                    <input class="form-control" type="text" name="end_time" onClick="WdatePicker({dateFmt: 'HH:mm'})" value="<{$task_info.end_time}>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">专业</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="specialty_id" readonly>
+                        <option value="<{$specialty_info.id}>" selected><{$specialty_info.name}></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选择点位</label>
+                <div class="col-sm-4">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>点位编号</th>
+                                <th>点位名称</th>
+                            </tr>
+                        </thead>
+                        <tbody id="positionList">
+                            <{$html}>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input class="btn btn-primary" type="submit" value="更新任务">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

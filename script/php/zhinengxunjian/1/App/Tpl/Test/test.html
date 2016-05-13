@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>测试页面</title>
+        <meta charset="utf-8">
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <!--<h1>上传文件成功!</h1>-->
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12  table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <th>电话</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="user_list" id="vo" key="index">
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                    <th><{$vo.real_name}></th>
+                                    <th><{$vo.job_number}></th>
+                                    <th><{$vo.mobile}></th>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+		</div>
+            </div>
+        </div>
+        <{$page}>
+        <br/>
+    </body>
+</html>

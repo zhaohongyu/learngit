@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.check_tpl_show_breadcrumb_mytask}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.My97DatePicker.WdatePicker" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_mytask}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+        </ol>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Check/myTask')}>" method="post">
+            <div class="col-xs-2">
+                <input class="form-control" type="text" name="search_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" <empty name="search_time">value="<{:formatTime(time(),'Y-m-d',1)}>"<else/>value="<{$search_time}>"</empty>>
+            </div>
+            <input class="btn btn-success" type="submit" value="搜索">
+                <span>选择日期来查看任务情况</span>
+        </form>
+        <p>&nbsp;</p>
+        <empty name="task_status_list">
+            <h4 class="col-md-offset-2 ">
+                <b class="text-danger">未查询到该日期的任务!</b>
+            </h4>
+            <else/>
+            <h4 class="col-md-offset-2 ">
+                <empty name="search_time">全部<else/><{$search_time}></empty>
+                --巡检任务情况
+            </h4>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12 table-responsive">
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>部门</th>
+                                    <th>专业</th>
+                                    <th>点位编码</th>
+                                    <th>点位名称</th>
+                                    <th>设备名称</th>
+                                    <th>巡检时间</th>
+                                    <th>任务完成状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <volist name="task_status_list" id="vo" key="index">
+                                    <if condition="$vo['id'] neq 1 && $vo['name'] neq 'admin' && $vo['real_name'] neq '超级管理员'">
+                                        <tr <eq name='vo.status' value='0'>class="warning"<else/>class="success"</eq>>
+                                            <th><{$vo.dept_name}></th>
+                                            <th><{$vo.specialty_name}></th>
+                                            <th><{$vo.position_code}></th>
+                                            <th><{$vo.position_name}></th>
+                                            <th><abbr title='<{$vo.device_names}>'><{$vo.device_names_short}></abbr></th>
+                                            <th><{:formatTime($vo['start_time'],'Y-m-d H:i',1)}>---<{:formatTime($vo['end_time'],'Y-m-d H:i',1)}></th>
+                                            <th>
+                                                <eq name='vo.status' value='0'>
+                                                    <span class="label label-danger"><i class="glyphicon glyphicon-remove">未完成</i></span>
+                                                    <else/>
+                                                    <span class="label label-success"><i class="glyphicon glyphicon-ok">已完成</i></span>
+                                                </eq>
+                                            </th>
+                                            <th>
+                                                <php>
+                                                    $array=array(
+                                                    "uid" => $vo['uid'],
+                                                    "device_ids" => $vo['device_ids'],
+                                                    "start_time" => $vo['start_time'],
+                                                    "end_time" => $vo['end_time'],
+                                                    "position_id" => $vo['position_id'],
+                                                    "position_name" =>$vo['position_name'],
+                                                    "username" => $vo['username'],
+                                                    "real_name" => $vo['real_name'],
+                                                    "specialty_id" => $vo['specialty_id'],
+                                                    "dept_id" => $vo['dept_id'],
+                                                    "organization_id" => $vo['organization_id'],
+                                                    "dept_name" => $vo['dept_name'],
+                                                    "specialty_name" => $vo['specialty_name'],
+                                                    "device_names" => $vo['device_names'],
+                                                    );
+                                                    $url_addrecord=getUrl('Record/addrecord',$array);
+                                                </php>
+                                                <div class="btn-group-xs">
+                                                    <a class="btn btn-success" href="<{:$url_addrecord}>">模拟录入</a>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </if>
+                                </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <center><{:$page}></center>
+        </empty>
+    </body>
+</html>

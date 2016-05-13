@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dth">
+<html>
+    <head>
+        <title><{$Think.lang.role_tpl_show_breadcrumb_index}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.role_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.role_tpl_show_breadcrumb_index}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Role/add')}>" target="right">【<{$Think.lang.role_tpl_show_breadcrumb_add}>】</a>
+            </li>
+        </ol>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <tbody><tr style="font-weight: bold;">
+                                <th>序号</th>
+                                <th>角色名称</th>
+                                <th>角色备注</th>
+                                <th>操作</th>
+                            </tr>
+                            <volist name="role_list" id="vo" key="index">
+                                    <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                        <th><{$index}></th>
+                                        <th><{$vo.name}></th>
+                                        <th><{$vo.remark}></th>
+                                        <th>
+                                            <if condition="($vo.id eq 1) OR ($vo.name eq 'admin') ">
+                                                <else/>
+                                                <php> 
+                                                    $url_update=getUrl('Role/update',array("id"=>$vo['id']));
+                                                    $url_del=getUrl('Role/del',array("id"=>$vo['id']));
+                                                    $url_distribute=getUrl('Role/distribute',array("id"=>$vo['id']));
+                                                </php>
+                                                <div class="btn-group-xs">
+                                                    <a class="btn btn-success" href="<{:$url_update}>">编辑</a>&nbsp;
+                                                    <a class="btn btn-primary" href="<{:$url_distribute}>">分配权限</a>&nbsp;
+                                                    <a class="btn btn-danger" href="<{:$url_del}>" onclick="if (confirm('删除 <{$vo.name}> 角色会让部分用户失去操作权限,确定删除 <{$vo.name}> 角色吗？')) return true; else return false;">删除</a>
+                                                </div>
+                                            </if>
+                                        </th>
+                                    </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <center><{:$page}></center>
+        <include file="Public:foot" />
+    </body>
+</html>

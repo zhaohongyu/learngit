@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>支持flv、mp4格式的流媒体播放器jwplayer</title>
+        <import file="admin.jwplayer.jwplayer" />
+    </head>
+
+    <body>
+        <div id="jwplayer" style="background: transparent !important; margin:0 auto; width:400px; height:270px; overflow:hidden;">
+            <div id="player"></div>
+        </div>
+        <script type="text/javascript">
+            jwplayer("player").setup({
+                skin: "glow.zip",
+                stretching: "fill",
+                flashplayer: "__PUBLIC__/admin/jwplayer/player.swf",
+                image: "bkaovAYt-480.jpg",
+                width: 400,
+                height: 270,
+                levels: [{file: "__PUBLIC__/upload/电影《老男孩之猛龙过江》宣传曲《小苹果》MV[标清版].flv"}]
+            });
+        </script>
+    </body>
+</html>

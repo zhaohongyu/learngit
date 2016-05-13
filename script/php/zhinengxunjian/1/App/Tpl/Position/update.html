@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title><{$Think.lang.position_tpl_show_breadcrumb_update}>--[ <{$position_info.code}> ]</title>
+    <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+</head>
+<body>
+    <ol class="breadcrumb" style="background-color: #E8F2FC;">
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.position_tpl_show_breadcrumb_manager}></a></li>
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.position_tpl_show_breadcrumb_update}>--[ <{$position_info.code}> ]</a></li>
+        <li>
+            <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+        </li>
+        <li>
+            <php> 
+                $url_back=getUrl('Position/index',array("page"=>$page_now));
+            </php>
+            <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+        </li>
+    </ol>
+    <div>
+        <form class="form-horizontal" role="form"action="<{:getUrl('Position/update')}>" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位编号</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="number" value="<{$position_info.number}>"  placeholder="请输入点位编号" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位编码</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="code" value="<{$position_info.code}>"  placeholder="请输入点位编码" />
+                    <input type="hidden" name="id" value="<{$position_info.id}>"/>
+                    <input type="hidden" name="page" value="<{$page_now}>"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位名称</label>
+                <div class="col-sm-3">
+                    <input type="text" name="name" value="<{$position_info.name}>" placeholder="请输入点位名称"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">专业</label>
+                <div class="col-sm-3">
+                    <input type="text" name="position" value="<{$position_info.position}>" placeholder="点位所在专业要与专业名称对应"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位备注</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="remark" value="<{$position_info.remark}>" placeholder="请输入点位备注"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class="btn btn-primary" type="submit" value="更新点位">
+                </div>
+            </div>
+        </form>
+    </div>
+    <input id="check_code_url" type="hidden" value="<{:getUrl('Position/check_code')}>"/>
+</body>
+</html>

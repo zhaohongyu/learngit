@@ -1,0 +1,113 @@
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.warning_tpl_show_breadcrumb_exception_processed}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import type="css" file="admin.css.other" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.warning_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.warning_tpl_show_breadcrumb_exception_processed}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <php>
+                    $arr=array();
+                    $arr["start_time"]=$start_time;
+                    $arr["end_time"]=$end_time;
+                    if($specialty_id!=""){
+                        $arr["specialty_id"]=$specialty_id;
+                    }
+                    if($real_name!=""){
+                        $arr["real_name"]=$real_name;
+                    }
+                    if($status!=""){
+                        $arr["status"]=$status;
+                    }
+                    if($page_now!=""){
+                        $arr["page"]=$page_now;
+                    }
+                    $url_back=getUrl('Warning/exception',$arr);
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div class="so_main span12 table-responsive">
+            <div class="hr_10"></div>
+            <table border="0" cellspacing="0"  cellpadding="0"  class="right-table list-table ">
+                <tr class="number-tr">
+                    <td colspan="6"><div  class="number_left10">处理信息</div></td>
+                </tr>
+                <tr>
+                    <td width="25%">处理人员</td>
+                    <td width="25%" ><div class="number_left10"><{$exception_info.process_real_name}></div></td>
+                    <td width="25%">处理时间</td>
+                    <td width="25%" ><div class="number_left10"><{:formatTime($exception_info['process_time'],'',2)}></div></td>
+                </tr>
+                <tr>
+                    <td width="25%">处理结果</td>
+                    <td width="75%" colspan="5"><div class="number_left10"><{$exception_info.process_result}></div></td>
+                </tr>
+            </table>
+            <div class="hr_10"></div>
+            <div class="form3">
+                <table border="0" cellspacing="0"  cellpadding="0"  class="right-table list-table table table-condensed table-hover table-bordered ">
+                    <tr class="number-tr">
+                        <!--此页面数据均用js动态赋值-->
+                        <td colspan="3" width="25%">处理状态:</td>
+                        <td>
+                            <div  class="number_left10">
+                                <eq name="exception_info.device_status" value="1">
+                                    <span class="label label-success"><i class="glyphicon glyphicon-ok">已处理</i></span>
+                                    <else/>
+                                    <span class="label label-danger"><i class="glyphicon glyphicon-remove">未处理</i></span>
+                                </eq>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="hr_10"></div>
+                <table border="0" cellspacing="0"  cellpadding="0"  class="right-table list-table ">
+                    <tr class="number-tr">
+                        <td colspan="6"><div class="number_left10">异常信息详情</div></td>
+                    </tr>
+                    <tr>
+                        <td width="25%">巡检点位</td>
+                        <td width="25%" ><div class="number_left10"><{$exception_info.position_name}></div></td>
+                        <td width="25%">设备名称</td>
+                        <td width="25%"><div class="number_left10"><{$exception_info.device_name}></div></td>
+                    </tr>
+                    <tr>
+                        <td width="25%">上报人员</td>
+                        <td width="25%"><div class="number_left10"><{$exception_info.real_name}></div></td>
+                        <td width="25%">上报时间</td>
+                        <td width="25%" colspan="5"><div class="number_left10"><{:formatTime($exception_info['submit_time'],'',2)}></div></td>
+                    </tr>
+                    <tr>
+                        <td width="25%">故障描述</td>
+                        <td width="75%" colspan="5"><div class="number_left10"><{$exception_info.device_describes_exception}></div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+    </body>
+</html>

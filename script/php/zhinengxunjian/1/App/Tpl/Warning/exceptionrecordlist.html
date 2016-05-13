@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.warning_tpl_show_breadcrumb_exception_process}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.My97DatePicker.WdatePicker" />
+        <script>
+            $(function(){
+                $("th abbr").on("click",function(){
+                    //获取缩略信息详情
+                    var $title= $(this).attr("title");
+                    //动态赋值给 id="dt"
+                    $("#dt").html($title);
+                    $("#myModal").modal();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.warning_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.warning_tpl_show_breadcrumb_exception_process}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li class="active">
+                <php>
+                    $arr=array();
+                    $arr["start_time"]=$start_time;
+                    $arr["end_time"]=$end_time;
+                    if($specialty_id!=""){
+                        $arr["specialty_id"]=$specialty_id;
+                    }
+                    if($real_name!=""){
+                        $arr["real_name"]=$real_name;
+                    }
+                    if($page_now!=""){
+                        $arr["page"]=$page_now;
+                    }
+                    if($status!=""){
+                        $arr["status"]=$status;
+                    }
+                    $url_export=getUrl('Warning/exportExceptionToExcel',$arr);
+                </php>
+                <a class="text-right"style="text-decoration: none" href="<{$url_export}>" title="<{$Think.lang.warning_tpl_export_advance}>" >【导出到EXCEL】</a>
+            </li>
+        </ol>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Warning/checkExceptionRecordByCondition')}>" method="post">
+            <div class="col-xs-2">
+                <input class="form-control" type="text" name="start_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" <empty name="start_time">value="<{:formatTime(time(),'Y-m-d',1)}>"<else/>value="<{$start_time}>"</empty>>
+            </div>
+            <div class="col-xs-2">
+                <input class="form-control" type="text" name="end_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" <empty name="end_time">value="<{:formatTime(time(),'Y-m-d',1)}>"<else/>value="<{$end_time}>"</empty>>
+            </div>
+            <div class="col-xs-2">
+                <select class="form-control" name="specialty_id" >
+                    <option value="0">全部专业</option>
+                    <volist name='specialty_list' id='vo' key='index'>
+                        <option value="<{$vo.id}>" <eq name="vo.id" value="$specialty_id">selected <assign name="specialty_name" value="$vo['name']" /></eq>>
+                            <{$vo.name}>
+                        </option>
+                    </volist>
+                </select>
+            </div>
+            <div class="col-xs-2">
+                <select class="form-control" name="status" >
+                    <option value="2" <eq name="status" value="2">selected </eq>>全部</option>
+                    <option value="1" <eq name="status" value="1">selected </eq>>已处理</option>
+                    <option value="0" <eq name="status" value="0">selected </eq>>未处理</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <input class="input-sm form-control" type="text" name="real_name" value="<{$real_name}>" placeholder="输入巡检员姓名来搜索"/>
+            </div>
+            <input class="btn btn-success" type="submit" value="搜索">
+        </form>
+        <p>&nbsp;</p>
+        <!-- <h4 class="col-md-offset-2 ">
+            <span class="label label-primary"><empty name="search_time">全部<else/><{$search_time}></empty></span>&nbsp;
+            <span class="label label-primary"><empty name="specialty_name"><else/><{$specialty_name}></empty></span>&nbsp;
+            <span class="label label-primary"><empty name="real_name"><else/>巡检员:<{$real_name}></empty></span>&nbsp;
+            <span class="label label-primary">异常记录</span>&nbsp;
+        </h4> -->
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>专业</th>
+                                <th>巡检员</th>
+                                <th>巡检点位</th>
+                                <th>设备</th>
+                                <th>检查内容</th>
+                                <!--<th>参考内容</th>-->
+                                <th>描述</th>
+                                <th>上报时间</th>
+                                <th>处理人员</th>
+                                <th>处理结果</th>
+                                <th>处理时间</th>
+                                <th>处理状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="record_list" id="vo" key="index">
+                                <tr <eq name='vo.device_status' value='0'>class="danger"<else/>class="active"</eq>>
+                                    <th><{$vo.specialty_name}></th>
+                                    <th><{$vo.real_name}></th>
+                                    <th><abbr title='<{$vo.position_name}>'><{:formatStr($vo['position_name'], 6)}></abbr></th>
+                                    <th><abbr title='<{$vo.device_name}>'><{:formatStr($vo['device_name'], 6)}></abbr></th>
+                                    <th><abbr title='<{$vo.device_check_standard}>'><{:formatStr($vo['device_check_standard'], 8)}></abbr></th>
+                                    <!--<th><abbr title="<{$vo.device_reference_value}>"><{:formatStr($vo['device_reference_value'], 8)}></abbr></th>-->
+                                    <th><abbr title="<{$vo.device_describes_exception}>"><{:formatStr($vo['device_describes_exception'], 8)}></abbr></th>
+                                    <th><{:formatTime($vo['submit_time'],'Y-m-d H:i',1)}></th>
+                                    <th><{$vo.process_real_name}></th>
+                                    <th><abbr title='<{$vo.process_result}>'><{:formatStr($vo['process_result'], 6)}></abbr></th>
+                                    <th><{:formatTime($vo["process_time"],"Y-m-d H:i",1)}></th>
+                                    <th>
+                                        <eq name="vo.device_status" value="1">
+                                            <span class="label label-success"><i class="glyphicon glyphicon-ok">已处理</i></span>
+                                            <else/>
+                                            <span class="label label-danger"><i class="glyphicon glyphicon-remove">未处理</i></span>
+                                        </eq>
+                                    </th>
+                                    <th>
+                                        <php> 
+                                            $arr=array();
+                                            $arr["id"]=$vo['id'];
+                                            $arr["start_time"]=$start_time;
+                                            $arr["end_time"]=$end_time;
+                                            if($specialty_id!=""){
+                                                $arr["specialty_id"]=$specialty_id;
+                                            }
+                                            if($real_name!=""){
+                                                $arr["real_name"]=$real_name;
+                                            }
+                                            if($page_now!=""){
+                                                $arr["page_now"]=$page_now;
+                                            }
+                                            if($status!=""){
+                                                $arr["status"]=$status;
+                                            }
+                                            $url_cat_exception=getUrl('Warning/catException',$arr);
+                                            $url_process_exception=getUrl('Warning/processException',$arr);
+                                        </php>
+                                        <div class="btn-group-xs">
+                                            <eq name="vo.device_status" value="1">
+                                                <a class="btn btn-success" href="<{:$url_cat_exception}>" >
+                                                    查看
+                                                </a>
+                                                <else/>
+                                                <!-- A trigger modal -->
+                                                <a class="btn btn-primary" href="<{:$url_process_exception}>">
+                                                    处理
+                                                </a>
+                                            </eq>
+                                        </div>    
+                                    </th>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <center><{:$page}></center>
+        <!-- Modal 显示缩略信息详情-->
+        <div style="color:black" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+              <div class="modal-body">
+                <!--显示缩略信息详情-->
+                <div id="dt">
+                    <!--显示缩略信息详情-->
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <include file="Public:foot" />
+    </body>
+</html>

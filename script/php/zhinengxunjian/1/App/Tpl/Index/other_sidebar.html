@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+</head>
+<body>
+    <p></p>
+    <div id="sidebar" class="col-sm-3">
+        <div class="panel-group" id="accordion">
+            <volist name="action_list" id="vo" key="index">
+            <if condition="$vo['name'] eq 'Role' OR $vo['name'] eq 'Dept' OR $vo['name'] eq 'Node' OR $vo['name'] eq 'Organization' OR $vo['name'] eq 'User' OR $vo['name'] eq 'Specialty' OR $vo['name'] eq 'jiegoutu'">
+                <div class="panel panel-primary">
+                <else/>
+                <div class="panel panel-success">
+            </if>
+                    <if condition="$vo['name'] neq 'jiegoutu'">
+                                <if condition="$vo['name'] eq 'online'">
+                                    <!--显示运行状态为一级菜单-->
+                                    <div class="panel-heading">
+                                        <h6 class="panel-title">
+                                            <a style="text-decoration: none;" target='right' href="<{:getUrl('User/online')}>">
+                                                <i class="glyphicon glyphicon-th-large"></i>
+                                                <b class="text-center"><{$vo.title}></b>
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <elseif condition="$vo['name'] eq 'liuliangtongji'"/>
+                                        <!--显示流量统计为一级菜单-->
+                                        <div class="panel-heading">
+                                            <h6 class="panel-title">
+                                                <a style="text-decoration: none;" target='right' href="<{:getUrl('User/liuliangtongji')}>">
+                                                    <i class="glyphicon glyphicon-th-large"></i>
+                                                    <b class="text-center"><{$vo.title}></b>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                    <else/>
+                                        <div class="panel-heading">
+                                            <h6 class="panel-title">
+                                                <a style="text-decoration: none;" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse<{$index}>">
+                                                    <if condition="$vo['name'] eq 'User'">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                        <elseif condition="$vo['name'] eq 'Role'"/>
+                                                        <i class="glyphicon glyphicon-th-large"></i>
+                                                        <elseif condition="$vo['name'] eq 'Check'"/>
+                                                        <i class="glyphicon glyphicon-briefcase"></i>
+                                                        <elseif condition="$vo['name'] eq 'Node'"/>
+                                                        <i class="glyphicon glyphicon-wrench"></i>
+                                                        <elseif condition="$vo['name'] eq 'Dept'"/>
+                                                        <i class="glyphicon glyphicon-cog"></i>
+                                                        <else/>
+                                                        <i class="glyphicon glyphicon-th-large"></i>
+                                                    </if>
+                                                    <b class="text-center"><{$vo.title}></b>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                </if>
+                        <else/>
+                            <!--显示组织结构为一级菜单-->
+                            <div class="panel-heading">
+                                <h6 class="panel-title">
+                                    <a style="text-decoration: none;" target='right' href="<{:getUrl('Organization/jiegoutu')}>">
+                                        <i class="glyphicon glyphicon-wrench"></i>
+                                        <b class="text-center"><{$vo.title}></b>
+                                    </a>
+                                </h6>
+                            </div>
+                    </if>
+                    
+                    <div id="collapse<{$index}>" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class=" nav nav-pills nav-stacked">
+                                <volist name="method_list" id="voo">
+                                    <eq name="voo.pid" value="$vo.id">
+                                        <php>
+                                            $url=$vo['name'].'/'.$voo['name'];
+                                        </php>
+                                        <li>
+                                            <eq name="vo.name" value="Warning">
+                                                <php>
+                                                    $url_countHiddentrouble=$vo['name'].'/'.countHiddentrouble;
+                                                </php>
+                                                <php>
+                                                    $url_countException=$vo['name'].'/'.countException;
+                                                </php>
+                                                <script src="<{:getUrl($url)}>" type='text/javascript' language="javascript"></script>
+                                                    <eq name="voo.name" value="hiddentrouble">
+                                                        <script type='text/javascript' language="javascript">
+                                                            window.onload=countHiddentrouble();
+                                                            function countHiddentrouble(){
+                                                                var url = "<{:getUrl($url_countHiddentrouble)}>";
+                                                                $.ajax({
+                                                                    type: 'POST',
+                                                                    url: url,
+                                                                    data: '',
+                                                                    dataType: 'json',
+                                                                    success: function(data) {
+                                                                        var $countHiddentrouble=document.getElementById("countHiddentrouble");
+                                                                        $countHiddentrouble.innerHTML=data;
+                                                                        if(data===0){
+                                                                            //隐藏该元素
+                                                                            $countHiddentrouble.style.display="none";
+                                                                        }else{
+                                                                            $countHiddentrouble.style.display="inline";
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        </script>
+                                                        <a href="<{:getUrl($url)}>" target="right" onclick="countHiddentrouble()">
+                                                            <{$voo.title}>
+                                                            <span id="countHiddentrouble" class="badge" style="background-color: red;"></span>
+                                                        </a>
+                                                    </eq>
+                                                    <eq name="voo.name" value="exception">
+                                                        <script type='text/javascript' language="javascript">
+                                                            window.onload=countException();
+                                                            function countException(){
+                                                                var url = "<{:getUrl($url_countException)}>";
+                                                                $.ajax({
+                                                                    type: 'POST',
+                                                                    url: url,
+                                                                    data: '',
+                                                                    dataType: 'json',
+                                                                    success: function(data) {
+                                                                        var $countException=document.getElementById("countException");
+                                                                        $countException.innerHTML=data;
+                                                                        if(data===0){
+                                                                            //隐藏该元素
+                                                                            $countException.style.display="none";
+                                                                        }else{
+                                                                            $countException.style.display="inline";
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        </script>
+                                                        <a href="<{:getUrl($url)}>" target="right" onclick="countException()">
+                                                            <{$voo.title}>
+                                                            <span id="countException" class="badge" style="background-color: red;"></span>
+                                                        </a>
+                                                    </eq>
+                                                <else/>
+                                                    <a href="<{:getUrl($url)}>" target="right">
+                                                        <{$voo.title}>
+                                                    </a>
+                                            </eq>
+                                        </li>
+                                    </eq>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+        </div>
+    </div>
+</body>
+</html>

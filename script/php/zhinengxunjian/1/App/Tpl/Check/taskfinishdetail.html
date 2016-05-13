@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.check_tpl_show_breadcrumb_detail}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.css.css01" type="css" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_detail}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <php> 
+                    $url_back=getUrl(
+                        'Check/taskstatus',
+                        array(
+                            "page"=>$page_now,
+                            "specialty_id"=>$specialty_id,
+                            "search_time"=>$search_time,
+                            "task_name"=>$task_name,
+                            "status"=>$status,
+                            "random"=>mt_rand(),
+                        ));
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <div class="d-ul01">
+                <empty name="finish_task_info.task_name">
+                    <else/>
+                        <center>
+                            <button type="button" class="btn btn-primary btn-lg">
+                                <{$finish_task_info.task_name}>
+                            </button>
+                            <b>图&nbsp;例:&nbsp;</b>
+                            <span class="label label-success">已完成</span>&nbsp;
+                            <span class="label label-danger">未完成</span>&nbsp;
+                        </center>
+                </empty>
+                <ul class="ul01">
+                    <volist name="postion_finish_task_info_list" id="vo" key="index">
+                        <empty name="vo.position_info.name">
+                            <else/>
+                                <li>
+                                    <if condition="$vo['status'] eq 0">
+                                            <a title="<{$vo.position_info.name}>" class="label label-danger">
+                                               <{$vo.position_info.name}>
+                                            </a>
+                                        <else/>
+                                            <a title="<{$vo.position_info.name}>" class="label label-success">
+                                               <{$vo.position_info.name}>
+                                            </a>
+                                    </if>
+                                </li>
+                        </empty>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <include file="Public:foot" />
+    </body>
+</html>

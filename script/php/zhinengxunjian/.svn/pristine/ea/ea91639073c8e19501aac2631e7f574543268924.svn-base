@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dth">
+<html>
+    <head>
+        <title><{$Think.lang.organization_tpl_show_breadcrumb_index}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />    
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_index}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Organization/add')}>" target="right">【<{$Think.lang.organization_tpl_show_breadcrumb_add}>】</a>
+            </li>
+            </li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="<{:getUrl('Organization/jiegoutu')}>" target="right">【结构图】</a>
+            </li>
+
+        </ol>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <tbody><tr style="font-weight: bold;">
+                                <th>序号</th>
+                                <th>职位名称</th>
+                                <th>职位描述</th>
+                                <th>所属部门</th>
+                                <!--<th>上级领导</th>-->
+                                <th>是否启用</th>
+                                <th>操作</th>
+                            </tr>
+                            <volist name="job_list" id="vo" key="index">
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                    <th><{$index}></th>
+                                    <th><{$vo.name}></th>
+                                    <th><{$vo.title}></th>
+                                    <th><{$vo.suozaibumen}></th>
+<!--                                    <th>
+                                        <if condition="$vo['shangjilingdao'] eq null && $vo['pid'] eq 0">
+                                            顶级职位
+                                            <else/>
+                                            <{$vo.shangjilingdao}>
+                                        </if>
+                                    </th>-->
+                                    <th>
+                                        <eq name="vo.status" value="1">
+                                            <span class="label label-success"><i class="glyphicon glyphicon-ok">启用</i></span>
+                                            <else/>
+                                            <span class="label label-danger"><i class="glyphicon glyphicon-remove">停用</i></span>
+                                        </eq>
+                                    </th>
+                                    <th>
+                                        <php> 
+                                        $url_update=getUrl('Organization/update',array("id"=>$vo['id']));
+                                        $url_del=getUrl('Organization/del',array("id"=>$vo['id']));
+                                        </php>
+                                        <div class="btn-group-xs">
+                                            <a class="btn btn-success" href="<{:$url_update}>">编辑</a>&nbsp;
+                                            <a class="btn btn-danger" href="<{:$url_del}>" onclick="if (confirm('删除 <{$vo.name}> 职位,会让已存在的用户失去职位,确定删除吗？')) return true; else return false;"  >删除</a>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <center><{:$page}></center>
+        <include file="Public:foot" />
+    </body>
+</html>

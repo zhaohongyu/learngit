@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.position_tpl_show_breadcrumb_index}></title>
+         <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <script>
+            $(function(){
+                var toggle=0;//监测是否请求过,如果请求过不再请求
+                $("tr[class='success'],tr[class='active']").live("click",function(){
+                    //获取点位id
+                    var position_id=$(this).attr("id");//
+                    if(toggle!=position_id){
+                        //使用点位id发送ajax请求去数据库动态获取该点位下的设备信息
+                        var url = $("#get_device_list").val();
+                        $.ajax({
+                            type: 'GET',
+                            url: url,
+                            data: {"position_id": position_id},
+                            dataType: 'json',
+                            success: function(data) {
+                                get_device_list_callback(data);
+                                //更改toggle值 标记为已经请求过
+                                toggle=position_id;
+                            }
+                        });
+                    }
+                });
+            });
+            //显示点位下设备信息的时候 显示缩略信息详情
+            function show_detail(obj){
+                var $title= obj.title;
+                $("#dttt").html($title);
+                $("#myModal").modal();
+            }
+            function get_device_list_callback(data){
+                    //将查询到的信息封装到展现列表中
+                    $("#dt").html(data.data);
+            }
+        </script>
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.position_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.position_tpl_show_breadcrumb_index}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Position/add')}>" target="right">【<{$Think.lang.position_tpl_show_breadcrumb_add}>】</a>
+            </li>
+        </ol>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Position/searchPosition')}>" method="post">
+            <div class="col-xs-3">
+                <select class="form-control" name="search_type" >
+                    <option value="number" <eq name="search_type" value="number">selected</eq>>点位编号</option>
+                    <option value="name" <eq name="search_type" value="name">selected</eq>>点位名称</option>
+                    <option value="code" <eq name="search_type" value="code">selected</eq>>点位编码</option>
+                    <option value="position" <eq name="search_type" value="position">selected</eq>>专业</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <input class="input-sm form-control" type="text" name="search_type_value" value="<{$search_type_value}>"/>
+                <input type="hidden" name="id" value="<{$id}>"/>
+            </div>
+            <div class="col-xs-3">
+                <input class="btn btn-success" type="submit" value="搜索"/>
+            </div>
+        </form>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th> 编号</th>
+                                <th> 点位编码</th>
+                                <th> 点位名称</th>
+                                <!--<th> 点位位置</th>-->
+                                <th>专业</th>
+                                <!--<th> 点位备注</th>-->
+                                <th> 操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="position_list" id="vo" key="index">
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq> data-toggle="collapse" data-target="#dt" id="<{$vo.id}>">
+                                    <td><{$vo.number}></td>
+                                    <td><{$vo.code}></td>
+                                    <td><{$vo.name}></td>
+                                    <td><{$vo.position}></td>
+                                    <!--<td><{$vo.remark}></td>-->
+                                    <td>
+                                        <php> 
+                                            $url_update=getUrl('Position/update',array("id"=>$vo['id'],"page_now"=>$page_now));
+                                            $url_del=getUrl('Position/del',array("id"=>$vo['id'],"page_now"=>$page_now));
+                                            $url_add=getUrl('Device/add',array("position_id"=>$vo['id'],"position_code"=>$vo['code'],"page_now"=>$page_now,"random"=>mt_rand()));
+                                        </php>
+                                        <div class="btn-group-xs">
+                                            <a class="btn btn-success" href="<{:$url_update}>">编辑</a>&nbsp;
+                                            <a class="btn btn-primary" href="<{:$url_add}>">添加设备</a>&nbsp;
+                                            <a class="btn btn-danger" href="<{:$url_del}>" onclick="if (confirm('真的要删除 <{$vo.code}> 点位吗？')) return true; else return false;" >删除</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+		</div>
+            </div>
+        </div>
+        <!--子表信息-->
+        <div id="dt" class="collapse  table-responsive" >
+            <!--显示指定点位下的设备列表-->
+        </div>
+        <!--子表信息-->
+        <!--根据点位编码查询出下属的所有点位信息-->
+        <php> 
+            $url_index=getUrl('Device/index',array("page_now"=>$page_now));
+        </php>
+        <input id="get_device_list" type="hidden" value="<{:$url_index}>"/>
+        <!--子表信息-->
+        <!-- 分页信息-->
+        <center><{:$page}></center>
+        <!-- Modal 显示缩略信息详情-->
+        <div style="color:black" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+              <div class="modal-body">
+                <!--显示缩略信息详情-->
+                <div id="dttt">
+                    <!--显示缩略信息详情-->
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <include file="Public:foot" />
+    </body>
+</html>

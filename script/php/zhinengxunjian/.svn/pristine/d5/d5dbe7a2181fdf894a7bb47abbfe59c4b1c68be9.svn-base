@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <style type="text/css">
+            .con {width: 560px;padding: 20px; margin:0 auto;}
+            .con_p {width:195px;padding: 40px 15px;float: left;margin: 20px 20px;font-family: "微软雅黑";font-size: 18px; color:#039;text-align: center; border: solid 3px #069;box-shadow: 5px 5px 15px #BEB3EE;border-radius:5px;-moz-border-radius:5px; background:#E9E6F9; font-weight:bold; /* Old Firefox */}
+            .con_p a{ color:#039; text-decoration:none;}
+            .con p a:hover{color:#039;text-decoration:none; }
+        </style>
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+        </ol>
+        <div class="con">
+            <volist name='specialty_list' id='vo' key='index'>
+                <php> 
+                    $url_taskstatus=getUrl('Check/taskstatus',array("specialty_id"=>$vo['id'],"status"=>2));
+                </php>
+                <div class="con_p"><a title="<{$vo.name}>" href="<{:$url_taskstatus}>"><{$vo.name}></a></div>
+            </volist>
+        </div>
+        <include file="Public:foot" />
+    </body>
+</html>

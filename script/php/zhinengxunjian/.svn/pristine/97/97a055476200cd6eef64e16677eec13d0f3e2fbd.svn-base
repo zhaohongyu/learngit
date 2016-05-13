@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.check_tpl_show_breadcrumb_detail}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_detail}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <php> 
+                    $url_back=getUrl(
+                        'Check/taskstatusliebiao',
+                        array(
+                            "page"=>$page_now,
+                            "specialty_id"=>$specialty_id,
+                            "search_time"=>$search_time,
+                            "task_name"=>$task_name,
+                            "status"=>$status,
+                            "random"=>mt_rand(),
+                        ));
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <empty name="finish_task_info.task_name">
+            <else/>
+                <center>
+                    <button type="button" class="btn btn-primary btn-lg">
+                        <{$finish_task_info.task_name}>
+                    </button>
+                </center>
+        </empty>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>点位名称</th>
+                                <!-- <th>待检查设备</th> -->
+                                <!-- <th>已检查设备</th> -->
+                                <!-- <th>未检查设备</th> -->
+                                <th>完成情况</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="postion_finish_task_info_list" id="vo" key="index">
+                                <tr <eq name='vo.status' value='0'>class="warning"<else/>class="success"</eq>>
+                                    <th><{$vo.position_info.name}></th>
+                                    <!-- <th><abbr title='<{$vo.to_check_device_names}>'><{$vo.to_check_device_names_short}></abbr></th> -->
+                                    <!-- <th><abbr title='<{$vo.checked_device_names}>'><{$vo.checked_device_names_short}></abbr></th> -->
+                                    <!-- <th><abbr title='<{$vo.not_check_device_names}>'><{$vo.not_check_device_names_short}></abbr></th> -->
+                                    <th>
+                                        <eq name="vo.status" value="1">
+                                            <span class="label label-success"><i class="glyphicon glyphicon-ok">已完成</i></span>
+                                            <else/>
+                                            <span class="label label-danger"><i class="glyphicon glyphicon-remove">未完成</i></span>
+                                        </eq>
+                                    </th>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </body>
+</html>

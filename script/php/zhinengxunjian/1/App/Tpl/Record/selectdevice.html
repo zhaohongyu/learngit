@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>选定要录入信息设备</title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none;" href="javascript:;">巡检工作管理</a></li>
+            <li><a style="text-decoration: none;" href="javascript:;">我的巡检任务</a></li>
+            <li><a style="text-decoration: none;" href="javascript:;">指定巡检设备</a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Check/myTask')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <h4 class="col-md-offset-2 ">选择您要录入记录的设备</h4>
+        <table class="table table-condensed table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>设备编码</th>
+                    <th>设备名称</th>
+                    <th>参考值</th>
+                    <th>巡检标准</th>
+                    <th>是否需要输入值</th>
+                    <th>输入值</th>
+                    <th>巡检频率</th>
+                    <th>需要巡检的次数</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="device_list" id="vo" key="index">
+                    <tr <eq name='index%2' value='0'>class="info"<else/>class="success"</eq>>
+                        <th><{$vo.code}></th>
+                        <th><{$vo.name}></th>
+                        <th><{$vo.reference_value}></th>
+                        <th><abbr title='<{$vo.check_standard}>'><{:formatStr($vo['check_standard'], 14)}></abbr></th>
+                        <th>
+                            <eq name='vo.need_input_value' value='0'>
+                                <span class="label label-success">不需要</span>
+                                <else/>
+                                <span class="label label-danger">需要</span>
+                            </eq>
+                        </th>
+                        <th><{$vo.input_value}></th>
+                        <th><{$vo.frequency}>小时/次</th>
+                        <th><{$vo.times}>次</th>
+                        <th><{$vo.remark}></th>
+                        <th>
+                            <php>
+                                $array=array(
+                                "uid" => $task_info['uid'],
+                                "device_id" => $vo['id'],
+                                "device_ids" => $task_info['device_ids'],
+                                "start_time" => $task_info['start_time'],
+                                "end_time" => $task_info['end_time'],
+                                "position_id" => $task_info['position_id'],
+                                "position_name" =>$task_info['position_name'],
+                                "username" => $task_info['username'],
+                                "real_name" => $task_info['real_name'],
+                                "specialty_id" => $task_info['specialty_id'],
+                                "dept_id" => $task_info['dept_id'],
+                                "organization_id" => $task_info['organization_id'],
+                                "dept_name" => $task_info['dept_name'],
+                                "specialty_name" => $task_info['specialty_name'],
+                                "device_name" => $vo['name'],
+                                );
+                                $url_writeinfo=getUrl('Record/writeinfo',$array);
+                            </php>
+                            <div class="btn-group-xs">
+                                <a class="btn btn-primary" href="<{:$url_writeinfo}>">选定此设备</a>
+                            </div>
+                        </th>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+    </body>
+</html>

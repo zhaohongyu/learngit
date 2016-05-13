@@ -1,0 +1,38 @@
+/***d-ul01***/
+/*.d-ul01{margin:0 auto;width: 800px;padding:20px 0;}*/
+.d-ul01{
+	margin:0 auto;
+	width: 1200px;
+	padding:20px 0; 
+	overflow: hidden;
+}
+.d-ul01 .d-ul-bt{text-align: center;}
+.d-ul01 .d-ul-bt span{width:180px;height:40px;display: inline-block;font:18px/40px "microsoft yahei","宋体";
+    background-color:#428BCA;border:1px solid #ddd;font-weight: bold;}
+.d-ul01 .ul01{
+	overflow: hidden;
+}
+/*.d-ul01 .ul01 li{float:left;padding-right:20px;padding-top:20px;}*/
+.d-ul01 .ul01 li {
+float: left;
+padding-right: 10px;
+padding-top: 20px;
+}
+.d-ul01 .ul01 li a{display:inline-block;width:158px;height:32px;
+    font:14px/32px "microsoft yahei","宋体";text-align: center;text-decoration: none;}
+.d-ul01 .ul01 li a:hover{text-decoration: none;}
+.red-back{background-color:#f00;border:1px solid #ddd;}
+.red-back:hover{background-color:#D9534F;border:1px solid #b00;}
+.yellow-back{background-color: #ff0;border:1px solid #ddd;}
+.yellow-back:hover{border:1px solid #e4c600;background-color:#ff7;}
+.green-back{background-color:#0f0;border:1px solid #ddd;}
+.green-back:hover{border:1px solid #0b0;background-color:#5f5;}
+/**ul01--end***/
+.clear{clear: both;}
+/**d-ul02***/
+.d-ul02{margin:0 auto;width: 800px;padding:20px 0;}
+.d-ul02 .ul01 li{padding-right:20px;padding-top:20px;float: left;}
+.d-ul02 .ul01 li a{display: inline-block;width: 136px;height:38px;font:18px/40px "microsoft yahei","宋体";
+    background-color:#428BCA;border:1px solid #ddd;font-weight: bold;text-align: center;}
+.d-ul02 .ul01 li a:hover{text-decoration: none;color:#c33;border:1px solid #e33;}
+/**d-ul02--end***/

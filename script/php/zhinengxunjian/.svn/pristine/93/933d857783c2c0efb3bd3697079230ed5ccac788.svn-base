@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>API测试返回值</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <script>
+            var login = '{"Body":{"RequestParam":{"UserName":"test","Password":"111111"},"Action":"login"},"Header":{"DeviceId":"43046634771f6e4f321ced3495567406","ClientVersion":"1.0.0","ClientId":"","SimCard":"","ClientType":"iPhone"}}';
+            var logout = '{"Header":{"DeviceId":"q54rq654erqq65468","SimCard":"13522165858","ClientType":"iphone","ClientVersion":"1.0","ClientId":"231dfa5sd1f3a21d2f"},"Body":{"Action":"logout","RequestParam":{"UserToken":"a52bb12d9a4c38edf7e8e538c3cb908e","UserName":"test","UserId":"3"}}}';
+            var addHiddenTrouble = '{"Header":{"DeviceId":"q54rq654erqq65468","SimCard":"13522165858","ClientType":"iphone","ClientVersion":"1.0","ClientId":"231dfa5sd1f3a21d2f"},"Body":{"Action":"addHiddenTrouble","RequestParam":{"UserToken":"f400581adfd56545534acc88a844e088","UserName":"test","UserId":"3","HiddenTroubleDescribesException":"这个设备可能存在隐患","DeviceImageSrc":"/Public/upload/images/2014-07-02/m_53b404ebc1775.JPG,/Public/upload/images/2014-07-02/m_53b4183035d08.JPG","DeviceVideoSrc":"/Public/upload/videos/2014-07-02/53b4183c2afec.flv,/Public/upload/videos/2014-07-02/53b424ea7c727.flv","DeviceId":"8"}}}';
+            var getMyTask = '{"Header":{"DeviceId":"q54rq654erqq65468","SimCard":"13522165858","ClientType":"iphone","ClientVersion":"1.0","ClientId":"231dfa5sd1f3a21d2f"},"Body":{"Action":"getMyTask","RequestParam":{"UserToken":"8abfd104a272baa6ceadbfa6ba2d0a20","UserName":"test","UserId":"3","SearchTime":"2014-07-02","Page":"1"}}}';
+            var getUserInfo = '{"Header":{"DeviceId":"q54rq654erqq65468","SimCard":"13522165858","ClientType":"iphone","ClientVersion":"1.0","ClientId":"231dfa5sd1f3a21d2f"},"Body":{"Action":"getUserInfo","RequestParam":{"UserToken":"62a646ef64d9602ba6c92438db75332a","UserName":"test","UserId":"3"}}}';
+            $(function() {
+                $("input[type='checkbox']").change(function() {
+                    if ($('#login').attr('checked') == 'checked') {
+                        $('#textarea').val(login);
+                    } else if ($('#logout').attr('checked') == 'checked') {
+                        $('#textarea').val(logout);
+                    }else if ($('#addHiddenTrouble').attr('checked') == 'checked') {
+                        $('#textarea').val(addHiddenTrouble);
+                    }else if ($('#getMyTask').attr('checked') == 'checked') {
+                        $('#textarea').val(getMyTask);
+                    }else if ($('#getUserInfo').attr('checked') == 'checked') {
+                        $('#textarea').val(getUserInfo);
+                    }else {
+                        $('#textarea').val('');
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <table width="633" border="0" align="center" cellpadding="0" cellspacing="0">
+            <form action="__SELF__" name="test" method="post">
+                <tr>
+                    <td width="633">
+                        <label for="textarea"></label>
+                        <textarea name="json" id="textarea" cols="100" rows="15" style="font-size:12px;">
+                            <{$json}>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="39"><input name="login" type="checkbox" id="login" value="1"/>&nbsp;登录</td>
+                </tr>
+                <tr>
+                    <td height="39"><input class="btn"name="logout" type="checkbox" id="logout" value="1"/>&nbsp;登出</td>
+                </tr>
+                <tr>
+                    <td height="39"><input class="btn"name="getUserInfo" type="checkbox" id="getUserInfo" value="1"/>&nbsp;获取用户信息</td>
+                </tr>
+                <tr>
+                    <td height="39"><input class="btn"name="getMyTask" type="checkbox" id="getMyTask" value="1"/>&nbsp;获取我的巡检任务</td>
+                </tr>
+                <tr>
+                    <td height="39"><input class="btn"name="addHiddenTrouble" type="checkbox" id="addHiddenTrouble" value="1"/>&nbsp;上传隐患信息</td>
+                </tr>
+                <tr>
+                    <td height="39"><input class="btn btn-large btn-primary"name="btn" type="submit" value="测试api！"/></td>
+                </tr>
+            </form>
+        </table>
+        <empty name="return">
+            <else/>
+            返回值(json形式):<{$return}>
+        </empty>
+        <br><br>
+                <empty  name="array">
+                    <else/>
+                    返回值(数组形式):
+                    <php>
+                        show_msg_not_exit($array,'green');
+                    </php>
+                </empty>
+                </body>
+                </html>

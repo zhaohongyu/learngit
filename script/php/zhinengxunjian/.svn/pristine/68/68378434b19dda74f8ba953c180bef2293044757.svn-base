@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title>选择点位</title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <script>
+            $(function() {
+                var toggle = 0;//监测是否请求过,如果请求过不再请求
+                $("tr[class='success'],tr[class='active']").live("click", function() {
+                    //获取点位id
+                    var position_id = $(this).attr("id");//
+                    if (toggle != position_id) {
+                        //使用点位id发送ajax请求去数据库动态获取该点位下的设备信息
+                        var url = $("#get_device_list").val();
+                        $.ajax({
+                            type: 'GET',
+                            url: url,
+                            data: {"position_id": position_id},
+                            dataType: 'json',
+                            success: function(data) {
+                                get_device_list_callback(data);
+                                //更改toggle值 标记为已经请求过
+                                toggle = position_id;
+                            }
+                        });
+                    }
+                });
+            });
+            function get_device_list_callback(data) {
+                //将查询到的信息封装到展现列表中
+                $("#dt").html(data.data);
+            }
+        </script>
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#">选择点位</a></li>
+            <li>
+                <php>
+                    $url_position_list=getUrl('Check/workset',array('id'=>$id));
+                </php>
+                <a class="text-right"style="text-decoration: none" href="<{$url_position_list}>">【点位列表】</a>
+            </li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+        </ol>
+        <h4 class="col-md-offset-2 ">选择条件来快速搜索要指定的点位</h4>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Check/searchPosition')}>" method="post">
+            <div class="col-xs-3">
+                <select class="form-control" name="search_type" >
+                    <option value="number" <eq name="search_type" value="number">selected</eq>>点位编号</option>
+                    <option value="name" <eq name="search_type" value="name">selected</eq>>点位名称</option>
+                    <option value="code" <eq name="search_type" value="code">selected</eq>>点位编码</option>
+                    <option value="position" <eq name="search_type" value="position">selected</eq>>点位位置</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <input class="input-sm form-control" type="text" name="search_type_value" value="<{$search_type_value}>"/>
+                <input type="hidden" name="id" value="<{$id}>"/>
+            </div>
+            <div class="col-xs-3">
+                <input class="btn btn-success" type="submit" value="搜索"/>
+            </div>
+        </form>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th> 编号</th>
+                                <th> 点位编码</th>
+                                <th> 点位名称</th>
+                                <th> 点位位置</th>
+                                <th> 点位备注</th>
+                                <th> 操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="position_list" id="vo" key="index">
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq> data-toggle="collapse" data-target="#dt" id="<{$vo.id}>">
+                                    <td><{$vo.number}></td>
+                                    <td><{$vo.code}></td>
+                                    <td><{$vo.name}></td>
+                                    <td><{$vo.position}></td>
+                                    <td><{$vo.remark}></td>
+                                    <td>
+                                        <php> 
+                                            $url_distributePosition=getUrl('Check/distributePosition',array("position_id"=>$vo['id'],"position_code"=>$vo['code'],"id"=>$id,"random"=>mt_rand()));
+                                        </php>
+                                        <div class="btn-group-xs">
+                                            <a class="btn btn-primary" href="<{:$url_distributePosition}>">指定此点位下所有设备</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--子表信息-->
+        <div id="dt" class="collapse  table-responsive" >
+            <!--显示指定点位下的设备列表-->
+        </div>
+        <!--子表信息-->
+        <!--根据点位编码查询出下属的所有点位信息-->
+        <php>
+            $url_get_device_list=getUrl('Device/index',array('id'=>$id));
+        </php>
+        <input id="get_device_list" type="hidden" value="<{$url_get_device_list}>"/>
+        <!--子表信息-->
+        <!-- 分页信息-->
+        <center><{:$page}></center>
+    </body>
+</html>

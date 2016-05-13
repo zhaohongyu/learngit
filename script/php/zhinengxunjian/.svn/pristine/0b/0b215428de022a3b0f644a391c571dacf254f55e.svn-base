@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title><{$Think.lang.user_tpl_show_breadcrumb_modifypwd}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <script>
+            $(function(){
+                $("input[type='submit']").live("click",function(){
+                    var oldpassword=$("input[name='oldpassword']").val();
+                    var password=$("input[name='password']").val();
+                    var repassword=$("input[name='repassword']").val();
+                    if(oldpassword===''){
+                        alert("原始密码不能为空");
+                        return false;
+                    }
+                    if(password===''){
+                        alert("新密码不能为空");
+                        return false;
+                    }
+                    if(repassword===''){
+                        alert("确认密码不能为空");
+                        return false;
+                    }
+                    if(password!=repassword){
+                        alert("确认密码与新密码输入不一致,请重新输入");
+                        return false;
+                    }
+                    if(password==oldpassword){
+                        alert("新密码不能与旧密码一致");
+                        return false;
+                    }
+                    return true;
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" href="#"><{$Think.lang.user_tpl_show_breadcrumb_modifypwd}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" class="text-right"style="text-decoration: none" style="text-decoration: none;" href="<{:getUrl('Index/right')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <form class="form-horizontal" role="form" action="<{:getUrl('User/modifypwd')}>" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">原始密码</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="password" name="oldpassword" placeholder="请输原来的密码"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">新密码</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="password" name="password" placeholder="请输入新密码"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">确认新密码</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="password" name="repassword" placeholder="请再输入新密码"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-primary" type="submit" value="确认修改">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

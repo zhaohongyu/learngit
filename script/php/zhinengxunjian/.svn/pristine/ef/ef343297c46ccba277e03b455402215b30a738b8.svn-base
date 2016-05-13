@@ -1,0 +1,193 @@
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.warning_tpl_show_breadcrumb_hidden_process}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import type="css" file="admin.css.other" />
+        <!-- <script type="text/javascript" src="__PUBLIC__/admin/ckplayer6.3/js/offlights.js"></script> -->
+        <!-- <script type="text/javascript" src="__PUBLIC__/admin/ckplayer6.3/ckplayer/ckplayer.js" charset="utf-8"></script> -->
+        <script>
+			/*
+            $(function() {
+                var $url = "<{$hidden_trouble_info.device_video_src}>"; //视频地址
+                var width = "740"; //视频的宽度
+                var height = "450"; //视频的高度
+                videoshow($url, width, height);
+            });
+			*/
+            /**
+             * 显示播放器
+             */
+			/*
+            function videoshow($url, width, height) {
+                var flashvars = {
+                    f: $url,
+                    c: 0,
+                    b: 1
+                };
+                var params = {bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always'};
+                CKobject.embedSWF('__PUBLIC__/admin/ckplayer6.3/ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', width, height, flashvars, params);
+			*/
+                /*
+                 CKobject.embedSWF(播放器路径,容器id,播放器id/name,播放器宽,播放器高,flashvars的值,其它定义也可省略);
+                 下面三行是调用html5播放器用到的
+                 */
+			/*
+                var video = [$url];
+                var support = ['iPad', 'iPhone', 'ios', 'android+false', 'msie10+false'];
+                CKobject.embedHTML5('video', 'ckplayer_a1', width, height, video, flashvars, support);
+            }
+			*/
+        </script>
+        <style>
+            img{
+                width:500px;
+                height:350px;
+            }
+        </style>
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.warning_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.warning_tpl_show_breadcrumb_hidden_process}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <php> 
+                    $arr=array();
+                    $arr["start_time"]=$start_time;
+                    $arr["end_time"]=$end_time;
+                    if($specialty_id!=""){
+                        $arr["specialty_id"]=$specialty_id;
+                    }
+                    if($real_name!=""){
+                        $arr["real_name"]=$real_name;
+                    }
+                    if($status!=""){
+                        $arr["status"]=$status;
+                    }
+                    if($page_now!=""){
+                        $arr["page"]=$page_now;
+                    }
+                    $url_back=getUrl('Warning/hiddentrouble',$arr);
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div class="hr_10"></div>
+            <form class="form-horizontal" role="form"action="<{:getUrl('Warning/doProcessHiddenTroubleInfo')}>" method="post">
+                <table border="0" cellspacing="0"  cellpadding="0"  class="right-table list-table ">
+                    <tr class="number-tr">
+                        <td colspan="6"><div  class="number_left10">填写处理意见</div></td>
+                    </tr>
+                    <tr>
+                        <td width="15%"><textarea class="form-control" name="process_result" id="remark"  rows="5" style="resize:none;" placeholder="请输入您的处理意见"></textarea></td>
+                        <input type="hidden" name="page" value="<{$page_now}>">
+                    </tr>
+                    <tr>
+                        <td width="15%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="15%">
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                  <input class="btn btn-primary" type="submit" value="提交处理">
+                                  <input type="hidden" name="hidden_trouble_id" value="<{$hidden_trouble_id}>">
+                                  <input type="hidden" name="hidden_trouble_status" value="<{$hidden_trouble_info.status}>">
+                                  <input type="hidden" name="start_time" value="<{$start_time}>">
+                                  <input type="hidden" name="end_time" value="<{$end_time}>">
+                                  <input type="hidden" name="specialty_id" value="<{$specialty_id}>">
+                                  <input type="hidden" name="real_name" value="<{$real_name}>">
+                                  <input type="hidden" name="status" value="<{$status}>">
+                                  <input type="hidden" name="page" value="<{$page_now}>">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="so_main span12 table-responsive">
+            <div class="hr_10"></div>
+            <div class="form3">
+                <table  border="0" cellspacing="0"  cellpadding="0"  class="right-table list-table table table-condensed table-hover table-bordered">
+                    <tr class="number-tr">
+                        <td colspan="3" width="25%">处理状态:</td>
+                        <td>
+                            <div  class="number_left10">
+                                <eq name="hidden_trouble_info.status" value="1">
+                                    <span class="label label-success"><i class="glyphicon glyphicon-ok">已处理</i></span>
+                                    <else/>
+                                    <span class="label label-danger"><i class="glyphicon glyphicon-remove">未处理</i></span>
+                                </eq>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="hr_10"></div>
+                <table border="0" cellspacing="0"  cellpadding="0"  class="right-table list-table ">
+                    <tr class="number-tr">
+                        <td colspan="6"><div  class="number_left10">隐患信息详情</div></td>
+                    </tr>
+                    <tr>
+                        <td width="25%">巡检点位</td>
+                        <td width="25%" ><div class="number_left10"><{$hidden_trouble_info.position_name}></div></td>
+                        <td width="25%">设备名称</td>
+                        <td width="25%"><div class="number_left10"><{$hidden_trouble_info.device_name}></div></td>
+                    </tr>
+                    <tr>
+                        <td width="25%">上报人员</td>
+                        <td width="25%"><div class="number_left10"><{$hidden_trouble_info.real_name}></div></td>
+                        <td width="25%">上报时间</td>
+                        <td width="25%" colspan="5"><div class="number_left10"><{:formatTime($hidden_trouble_info['submit_time'],'',2)}></div></td>
+                    </tr>
+                    <tr>
+                        <td width="25%">故障描述</td>
+                        <td width="75%" colspan="5"><div class="number_left10"><{$hidden_trouble_info.hidden_trouble_describes_exception}></div></td>
+                    </tr>
+                    <tr>
+                        <td width="25%">隐患信息图片详情</td>
+                        <td width="75%" colspan="5">
+                            <div  class="">
+                                <eq name="hidden_trouble_info.device_image_src" value="">
+                                        暂无图片信息!
+                                    <else/>
+                                        <volist name="device_image_src_array" id="vo" key="index">
+                                            <img src="<{$vo}>"  alt="<{$hidden_trouble_info.device_name}>" class="img-thumbnail">
+                                        </volist>
+                                </eq>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td width="25%">隐患信息视频详情</td>
+                        <eq name="hidden_trouble_info.device_video_src" value="">
+                                <td width="75%" colspan="5"><div  class="number_left10">暂时未提供视频信息!</div></td>
+                            <else/>
+                                <td width="75%" colspan="5"><div  class="number_left10" id="a1"></div></td>
+                        </eq>
+                    </tr> -->
+                </table>
+        </div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+        <div class="hr_10"></div>
+    </body>
+</html>

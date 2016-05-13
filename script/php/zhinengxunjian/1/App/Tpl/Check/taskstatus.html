@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.My97DatePicker.WdatePicker" />
+        <import file="admin.css.css01" type="css" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_workstatus}></a></li>
+            <li>
+                <php> 
+                    $url_taskstatusliebiao=getUrl(
+                        'Check/taskstatusliebiao',
+                        array(
+                            "page"=>$page_now,
+                            "specialty_id"=>$specialty_id,
+                            "search_time"=>$search_time,
+                            "task_name"=>$task_name,
+                            "status"=>$status,
+                            "random"=>mt_rand(),
+                        ));
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_taskstatusliebiao}>" target="right">【列表显示】</a>
+            </li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Check/taskstatus')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <center>
+            <div class="clear"></div>
+            <!-- <h5>
+                <empty name="search_time"><else/><span class="label label-primary"><{$search_time}></span></empty>
+                <empty name="task_name"><else/>&nbsp;<span class="label label-primary">任务名:<{$task_name}></span><{$task_name}></empty>
+				<empty name="specialty_name"><else/>&nbsp;<span class="label label-primary"><{$specialty_name}></span></empty>
+				<eq name="status" value="0">&nbsp;<span class="label label-danger">未完成</span></eq>
+                <eq name="status" value="1">&nbsp;<span class="label label-success">已完成</span></eq>
+                <eq name="status" value="2">&nbsp;<span class="label label-primary">全部</span></eq>
+                &nbsp;<span class="label label-primary">巡检任务情况</span>
+            </h5> -->
+        </center>
+        <p>&nbsp;</p>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Check/taskstatus')}>" method="post">
+            <div class="col-xs-3">
+                <input class="form-control" type="text" name="search_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" <empty name="search_time">value="<{:formatTime(time(),'Y-m-d',1)}>"<else/>value="<{$search_time}>"</empty>>
+            </div>
+            <div class="col-xs-2">
+                <select class="form-control" name="status" >
+                    <option value="2" <eq name="status" value="2">selected</eq>>全部</option>
+                    <option value="1" <eq name="status" value="1">selected</eq>>已完成</option>
+                    <option value="0" <eq name="status" value="0">selected</eq>>未完成</option>
+                </select>
+            </div>
+            <div class="col-xs-3">
+                <input class="input-sm form-control" type="text" name="task_name" placeholder="请输入任务名称来搜索" value="<{$task_name}>"/>
+            </div>
+            <input type="hidden" name="specialty_id" value="<{$specialty_id}>">
+            <input class="btn btn-success" type="submit" value="搜索"/>
+        </form>
+        <p>&nbsp;</p>
+        <empty name="specialty_name">
+            <else/>
+                <center>
+                    <button type="button" class="btn btn-primary btn-large">
+                        <{$specialty_name}>已领取:<{:count($received_ids)}>未领取:<{:count($not_receive_ids)}>
+                    </button>
+                    <b>图&nbsp;例:&nbsp;</b>
+                    <span class="label label-success">已完成</span>&nbsp;
+                    <span class="label label-danger">未完成</span>&nbsp;
+                    <span class="label label-warning">超时完成</span>&nbsp;
+                    <!--<span class="label label-default">未领取的任务</span>&nbsp;-->
+                </center>
+        </empty>
+        
+        <div class="clear"></div>
+        <div>
+            <div class="d-ul01">
+                <ul class="ul01">
+                    <volist name="task_status_list" id="vo" key="index">
+                        <li>
+                            <php> 
+                                $url_finishtaskdetail=getUrl(
+                                    'Check/finishTaskDetail',
+                                        array(
+                                            "finish_task_id"=>$vo['finish_task_id'],
+                                            "page_now"=>$page_now,
+                                            "specialty_id"=>$specialty_id,
+                                            "search_time"=>$search_time,
+                                            "task_name"=>$task_name,
+                                            "status"=>$status,
+                                            "random"=>mt_rand(),
+                                        ));
+                            </php>
+                            <if condition="$vo['status'] eq 0">
+                                    <a title="<{$vo.task_name}>" class="label label-danger" href="<{$url_finishtaskdetail}>" >
+                                       <{$vo.task_name}>
+                                    </a>
+                                <else/>
+                                    <if condition="$vo['is_overtime'] eq 1">
+                                            <a title="<{$vo.task_name}>" class="label label-success" href="<{$url_finishtaskdetail}>">
+                                               <{$vo.task_name}>
+                                            </a>
+                                        <else/>
+                                            <a title="<{$vo.task_name}>" class="label label-warning" href="<{$url_finishtaskdetail}>">
+                                               <{$vo.task_name}>
+                                            </a>
+                                    </if>
+                            </if>
+                        </li>
+                    </volist>
+                    <!--未领取任务按照未完成算-->
+                    <volist name="task_list" id="vo" key="index">
+                        <li>
+                            <a title="<{$vo.task_name}>" class="label label-danger">
+                               <{$vo.task_name}>
+                            </a>
+                        </li>
+                    </volist>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <p>&nbsp;</p>
+        <div>
+                <center><{:$page}></center>
+        </div>
+        <p>&nbsp;</p>
+        
+<!--    2014-9-2 13:19:11
+        <div class="clear"></div>
+        <div>
+            未领取的任务,当作未完成
+            <div class="d-ul01">
+                <ul class="ul01">
+                    <volist name="task_list" id="vo" key="index">
+                        <li>
+                            <a title="<{$vo.task_name}>" class="label label-default">
+                               <{$vo.task_name}>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+-->
+        <include file="Public:foot" />
+    </body>
+</html>

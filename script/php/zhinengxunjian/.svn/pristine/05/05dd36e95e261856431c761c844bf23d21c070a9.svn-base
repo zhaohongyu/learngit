@@ -1,0 +1,6 @@
+<php>$broswer=getUserBrower();</php>
+<if condition="$broswer eq 'IE9.0'">
+    <include file="Index:ie9_sidebar" />
+    <else/>
+        <include file="Index:other_sidebar" />
+</if>

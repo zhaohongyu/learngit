@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title><{$Think.lang.node_tpl_show_breadcrumb_update}>--[ <{$node_info.title}> ]</title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.node_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.node_tpl_show_breadcrumb_update}>--[ <{$node_info.title}> ]</a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Node/index',array('page'=>$page_now))}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <form class="form-horizontal" role="form"action="<{:getUrl('Node/update')}>" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否启用节点</label>
+                    <div class="col-sm-3">
+                        <label class="btn btn-success">
+                            <input type="radio" name="status" value="1" <eq name="node_info.status" value="1">checked</eq> />
+                            启用
+                        </label>
+                        <neq name="node_info.pid" value="0">
+                            <label class="btn btn-danger">
+                            <input type="radio" name="status" value="0" <eq name="node_info.status" value="0">checked</eq> />
+                            停用
+                            </label>
+                        </neq>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">节点名称</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="name"  value='<{$node_info.name}>' placeholder="请输入节点名称" readonly/>
+                        <input type="hidden" name="id" value="<{$node_info.id}>"/>
+                        <input type="hidden" name="page" value="<{$page_now}>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">节点描述</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="title" value='<{$node_info.title}>' placeholder="请输入节点描述"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">节点备注</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="remark" value='<{$node_info.remark}>' placeholder="请输入节点备注"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">父级节点</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="pid" readonly>
+                            <eq name="node_info.pid" value="0">
+                                <option value="0" selected="selected" >
+                                    顶级节点
+                                </option>
+                                <else/>
+                                <volist name='node_list' id='vo' key='index'>
+                                    <eq name="node_info.pid" value="$vo.id">
+                                        <option value="<{$vo.id}>" selected="selected" >
+                                            <{$vo.title}>
+                                        </option>
+                                    </eq>   
+                                </volist>
+                            </eq>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-primary" type="submit" value="更新节点">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dth">
+<html>
+    <head>
+        <title><{$Think.lang.node_tpl_show_breadcrumb_index}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.node_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.node_tpl_show_breadcrumb_index}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Node/add',array('page'=>$page_now))}>" target="right">【<{$Think.lang.node_tpl_show_breadcrumb_add}>】</a>
+            </li>
+        </ol>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12 table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <tbody><tr style="font-weight: bold;">
+                                <!-- <th>序号</th> -->
+                                <th>节点名称</th>
+                                <th>节点描述</th>
+                                <!-- <th>上级节点</th> -->
+                                <!-- <th>节点等级</th> -->
+                                <th>节点备注</th>
+                                <th>是否启用</th>
+                                <th>操作</th>
+                            </tr>
+                            <volist name="node_list" id="vo" key="index">
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                    <!-- <th><{$index}></th> -->
+                                    <th><{$vo.name}></th>
+                                    <th><{$vo.title}></th>
+                                    <!-- <th><{$vo.pid}></th> -->
+                                    <!-- <th><{$vo.level}></th> -->
+                                    <th><{$vo.remark}></th>
+                                    <th>
+                                        <eq name="vo.status" value="1">
+                                            <span class="label label-success"><i class="glyphicon glyphicon-ok">启用</i></span>
+                                            <else/>
+                                            <span class="label label-danger"><i class="glyphicon glyphicon-remove">停用</i></span>
+                                        </eq>
+                                    </th>
+                                    <th>
+                                        <eq name='vo.name' value='Node'>
+                                            <else/>
+                                            <!--这里硬编码了,暂时先这样-->
+                                            <neq name='vo.pid' value="27">
+                                                <php> 
+                                                $url_update=getUrl('Node/update',array("id"=>$vo['id'],"page"=>$page_now));
+                                                $url_del=getUrl('Node/del',array("id"=>$vo['id'],"page"=>$page_now));
+                                                </php>
+                                                <div class="btn-group-xs">
+                                                    <a class="btn btn-success" href="<{:$url_update}>">编辑</a>&nbsp;
+                                                    <eq name='vo.pid' value='0'>
+                                                        <else/>
+                                                        <a class="btn btn-danger" href="<{:$url_del}>" onclick="if (confirm('如果 <{$vo.title}> 节点含有子节点,会删除失败,请删除子节点后在删除,确定删除吗？')) return true; else return false;"  >删除</a>
+                                                    </eq>
+                                                </div>
+                                            </neq>
+                                        </eq>
+                                    </th>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <center><{:$page}></center>
+        <include file="Public:foot" />
+    </body>
+</html>

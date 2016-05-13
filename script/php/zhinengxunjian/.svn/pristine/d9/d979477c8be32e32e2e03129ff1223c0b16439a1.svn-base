@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title><{$Think.lang.position_tpl_show_breadcrumb_add}></title>
+    <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+    <script>
+        $(function(){
+            $("input[name='code']").live("focus",function(){
+                //清空提示语
+                $("#code_msg").html('');
+            });
+            $("input[name='code']").live("blur",function(){
+                //清除隐藏域当中的值
+                $("input[name='code_status']").val('');
+                var code=$(this).val();
+                var url = $("#check_code_url").val();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {"code": code},
+                    dataType: 'json',
+                    success: function(data) {
+                        check_code_callback(data);
+                    }
+                });
+            });
+        });
+        /**
+         * 检查点位编码回调函数
+         */
+        function check_code_callback(data){
+             //处理返回数据 0==>点位编码必须填写 1==>点位编码可以使用 2==>点位编码已经存在
+             var status=data.status;
+             var html='';
+             if(0==status||2==status){
+                 html="<b style='color:red;'>"+data.info+"</b>";
+             }else{
+                 html="<b style='color:green;'>"+data.info+"</b>";
+             }
+             //给隐藏域赋值标记账号状态
+             $("input[name='code_status']").val(status);
+             //给点位提示
+             $("#code_msg").html(html);
+        }
+    </script>
+</head>
+<body>
+    <ol class="breadcrumb" style="background-color: #E8F2FC;">
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.position_tpl_show_breadcrumb_manager}></a></li>
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.position_tpl_show_breadcrumb_add}></a></li>
+        <li>
+            <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+        </li>
+        <li>
+            <a style="text-decoration: none;" href="<{:getUrl('Position/index')}>" target="right">【返回】</a>
+        </li>
+    </ol>
+    <div>
+        <form class="form-horizontal" role="form"action="<{:getUrl('Position/add')}>" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位编号</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="number"  placeholder="请输入点位编号"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位编码</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="code"  placeholder="请输入点位编码"/>
+                    <input type="hidden" name="code_status"/>
+                    <i>
+                        &nbsp;
+                        <span id="code_msg"></span>
+                    </i>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位名称</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="name" placeholder="请输入点位名称"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">专业</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="position" placeholder="点位所在专业要与专业名称对应"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">点位备注</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="remark" placeholder="请输入点位备注"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class="btn btn-primary" type="submit" value="添加点位">
+                </div>
+            </div>
+        </form>
+    </div>
+    <input id="check_code_url" type="hidden" value="<{:getUrl('Position/check_code')}>"/>
+</body>
+</html>

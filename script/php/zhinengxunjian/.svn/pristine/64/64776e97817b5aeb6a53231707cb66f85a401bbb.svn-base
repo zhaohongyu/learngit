@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title><{$Think.lang.check_tpl_show_breadcrumb_workset}></title>
+    <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+    <import file="admin.My97DatePicker.WdatePicker" />
+    <script>
+        $(function(){
+            $("select[name='specialty_id']").live("change",function(){
+                $("#positionList").html('');
+                var specialty_id=$(this).val();//获得专业id
+                var url = $("#getPositionList").val();
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {"specialty_id": specialty_id},
+                    dataType: 'json',
+                    success: function(data) {
+                        //将查询到的点位信息展示到页面
+                        if(data.status==1){
+                            $("#positionList").html(data.data);
+                        }else{
+                            $("#positionList").html('');
+                            alert(data.info);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a class="text-right"style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_workset}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" style="text-decoration: none;" href="<{:getUrl('Check/taskList',array('page'=>$page_now))}>" target="right">【返回】</a>
+            </li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+    </ol>
+    <div>
+        <form class="form-horizontal" role="form"action="<{:getUrl('Check/taskSet')}>" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">任务编号</label>
+                <div class="col-sm-3">
+<!--                  <input class="form-control" type="text" name="task_code" placeholder="请输入任务编号" onKeyUp="if (isNaN(value))
+                                    execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  maxlength="2" />-->
+                    <input class="form-control" type="text" name="task_code" placeholder="请输入任务编号"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">任务名称</label>
+                <div class="col-sm-3">
+                  <input class="form-control" type="text" name="task_name" placeholder="请输入任务名称"/>
+                  <input type="hidden" name="page" value="<{$page_now}>"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">巡检时间段</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="start_time" onClick="WdatePicker({dateFmt: 'HH:mm'})" value="<{:formatTime(time(),'H:i',1)}>">
+                    <br/>
+                    <input class="form-control" type="text" name="end_time" onClick="WdatePicker({dateFmt: 'HH:mm'})" value="<{:formatTime(time()+3600,'H:i',1)}>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">专业</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="specialty_id">
+                        <option value="">请选择专业</option>
+                        <volist name='specialty_list' id='vo' key='index'>
+                            <option value="<{$vo.id}>"><{$vo.name}></option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选择点位</label>
+                <div class="col-sm-4">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>点位编号</th>
+                                <th>点位名称</th>
+                            </tr>
+                        </thead>
+                        <tbody id="positionList">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input class="btn btn-primary" type="submit" value="提交任务">
+                </div>
+            </div>
+        </form>
+        <input id="getPositionList" type="hidden" value="<{:getUrl('Check/getPositionList')}>"/>
+    </div>
+</body>
+</html>

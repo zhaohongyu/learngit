@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title><{$Think.lang.organization_tpl_show_breadcrumb_update}>--[<{$organization_info.name}>]</title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />    
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.organization_tpl_show_breadcrumb_update}>--[ <{$organization_info.name}> ]</a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Organization/index')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <form class="form-horizontal" role="form"action="<{:getUrl('Organization/update')}>" method="post">
+                <div class="form-group" data-toggle="buttons">
+                    <label class="col-sm-2 control-label">是否启用职位</label>
+                    <div class="col-sm-3">
+                        <label class="btn btn-success">
+                            <input type="radio" name="status" value="1" <eq name="organization_info.status" value="1">checked</eq> />
+                            启用
+                        </label>
+                        <neq name="organization_info.pid" value="0">
+                            <label class="btn btn-danger">
+                            <input type="radio" name="status" value="0" <eq name="organization_info.status" value="0">checked</eq> />
+                            停用
+                            </label>
+                        </neq>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="name" value="<{$organization_info.name}>"  placeholder="请输入职位名称"/>
+                        <input type="hidden" name="id" value="<{$organization_info.id}>"/>
+                        <input type="hidden" name="pid" value="<{$organization_info.pid}>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">职位描述</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="title" value="<{$organization_info.title}>" placeholder="请输入职位描述"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">上级职位</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="pid" readonly>
+                            <eq name="organization_info.pid" value="0">
+                                <option value="0" selected="selected">
+                                    顶级职位
+                                </option>
+                                <else/>
+                                    <volist name='organization_list' id='vo' key='index'>
+                                        <eq name="parent_level" value="$vo.level">
+                                            <option value="<{$vo.id}>" 
+                                                <eq name="organization_info.pid" value="$vo.id">
+                                                    selected
+                                                </eq>
+                                            >
+                                                <{$vo.name}>
+                                            </option>
+                                        </eq>
+                                    </volist>
+                                    <!-- <volist name='organization_list' id='vo' key='index'>
+                                        <option value="<{$vo.id}>" 
+                                            <eq name="organization_info.pid" value="$vo.id">
+                                                selected
+                                            </eq>
+                                        >
+                                            <{$vo.name}>
+                                        </option>
+                                    </volist> -->
+                            </eq>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属部门</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="dept_id">
+                            <volist name='dept_list' id='vo' key='index'>
+                                <option value="<{$vo.id}>" <eq name="vo.id" value="$dept_info.id">selected</eq>>
+                                    <{$vo.name}>
+                                </option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-primary" type="submit" value="更新职位">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

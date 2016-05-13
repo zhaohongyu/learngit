@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dth XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/Dth/xhtml1-strict.dth">
+<html>
+<head>
+    <title><{$Think.lang.role_tpl_show_breadcrumb_distribute}>--[<{$role_info.name}>]</title>
+    <!--引入公共文件bootstrap-->
+    <include file="Public:bootstrap" />
+    <script>
+        $(function(){
+            $("[type='button']").toggle(
+                function(){
+                    var $id =$(this).attr("id");
+                    $("[id='p_"+$id+"']").attr("checked",'true');//全选
+                    $("[id='c_"+$id+"']").attr("checked",'true');//全选
+                    $(this).attr("value","取消全选");
+                },
+                function(){
+                    var $id =$(this).attr("id");
+                    $("[id='p_"+$id+"']").removeAttr("checked");//取消全选
+                    $("[id='c_"+$id+"']").removeAttr("checked");//取消全选
+                    $(this).attr("value","全选");
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+    <ol class="breadcrumb" style="background-color: #E8F2FC;">
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.role_tpl_show_breadcrumb_manager}></a></li>
+        <li><a style="text-decoration: none" href="#"><{$Think.lang.role_tpl_show_breadcrumb_distribute}>--[<{$role_info.name}>]</a></li>
+        <li>
+            <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+        </li>
+        <li>
+            <a style="text-decoration: none" href="<{:getUrl('Role/index')}>">【返回】</a>
+        </li>
+    </ol>
+    <div class="span12 table-responsive">
+        <form class="form-horizontal" role="form" action="<{:getUrl('Role/distribute')}>" method="post">
+            <table class="table table-condensed table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>权限</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="p_node_info" id="v" key="k">
+                        <if condition="$user_info['username'] eq 'admin' || $user_info['id'] eq 1">
+                            <tr <eq name='k%2' value='0'>class="success"<else/>class="active"</eq>>
+                                <th><{$k}></th>
+                                <th>
+                                    <li>
+                                        <input class="btn btn-primary btn-sm" type="button" id="<{$k}>" value="全选">
+                                        <br/>
+                                        <br/>
+                                        <if condition="in_array($v['id'],$role_node_ids)">
+                                            <input id="p_<{$k}>" pc="cb" type="checkbox" name="node_id[]" value="<{$v.id}>" checked/>
+                                            <else />
+                                            <input id="p_<{$k}>" pc="cb" type="checkbox" name="node_id[]" value="<{$v.id}>"/>
+                                        </if>
+                                        <input type="hidden" name="role_id" value="<{$role_info.id}>"/>
+                                        <{$v.title}>
+                                    </li>
+                                    <p></p>
+                                    <li>
+                                        <ul>
+                                            <volist name="c_node_info" id="vv" key="kk">
+                                                <eq name="vv.pid" value="$v.id">
+                                                    <li>
+                                                        <if condition="in_array($vv['id'],$role_node_ids)">
+                                                            <input id="c_<{$k}>" type="checkbox" name="node_id[]" value="<{$vv.id}>" checked/>
+                                                            <else />
+                                                            <input id="c_<{$k}>" type="checkbox" name="node_id[]" value="<{$vv.id}>"/>
+                                                        </if>
+                                                        <{$vv.title}>
+                                                    </li>
+                                                    <p>&nbsp;</p>
+                                                </eq>
+                                            </volist>
+                                        </ul>
+                                    </li>
+                                </th>
+                                <th>
+                                    <dl class="dl-horizontal">
+                                        <dt class="text-primary"><{$v.title}>：</dt>
+                                        <dd class="text-info"><{$v.remark}></dd>
+                                    </dl>
+                                     <volist name="c_node_info" id="vv" key="kk">
+                                        <eq name="vv.pid" value="$v.id">
+                                                <dl class="dl-horizontal">
+                                                    <dt class="text-danger"><{$vv.title}>：</dt>
+                                                    <dd class="text-info"><{$vv.remark}></dd>
+                                                </dl>
+                                        </eq>
+                                    </volist>
+                                </th>
+                            </tr>
+                        <else />
+                            <if condition="$v['name'] neq 'Node'">
+                                <tr <eq name='k%2' value='0'>class="success"<else/>class="active"</eq>>
+                                    <th><{$k}></th>
+                                    <th>
+                                        <li>
+                                            <input class="btn btn-primary btn-sm" type="button" id="<{$k}>" value="全选">
+                                            <br/>
+                                            <br/>
+                                            <if condition="in_array($v['id'],$role_node_ids)">
+                                                <input id="p_<{$k}>" pc="cb" type="checkbox" name="node_id[]" value="<{$v.id}>" checked/>
+                                                <else />
+                                                <input id="p_<{$k}>" pc="cb" type="checkbox" name="node_id[]" value="<{$v.id}>"/>
+                                            </if>
+                                            <input type="hidden" name="role_id" value="<{$role_info.id}>"/>
+                                            <{$v.title}>
+                                        </li>
+                                        <p></p>
+                                        <li>
+                                            <ul>
+                                                <volist name="c_node_info" id="vv" key="kk">
+                                                    <eq name="vv.pid" value="$v.id">
+                                                        <li>
+                                                            <if condition="in_array($vv['id'],$role_node_ids)">
+                                                                <input id="c_<{$k}>" type="checkbox" name="node_id[]" value="<{$vv.id}>" checked/>
+                                                                <else />
+                                                                <input id="c_<{$k}>" type="checkbox" name="node_id[]" value="<{$vv.id}>"/>
+                                                            </if>
+                                                            <{$vv.title}>
+                                                        </li>
+                                                        <p>&nbsp;</p>
+                                                    </eq>
+                                                </volist>
+                                            </ul>
+                                        </li>
+                                    </th>
+                                    <th>
+                                        <dl class="dl-horizontal">
+                                            <dt class="text-primary"><{$v.title}>：</dt>
+                                            <dd class="text-info"><{$v.remark}></dd>
+                                        </dl>
+                                         <volist name="c_node_info" id="vv" key="kk">
+                                            <eq name="vv.pid" value="$v.id">
+                                                    <dl class="dl-horizontal">
+                                                        <dt class="text-danger"><{$vv.title}>：</dt>
+                                                        <dd class="text-info"><{$vv.remark}></dd>
+                                                    </dl>
+                                            </eq>
+                                        </volist>
+                                    </th>
+                                </tr>
+                            </if>
+                        </if>
+                    </volist>
+                    <tr>
+                        <th colspan="<{$count}>" align="center">
+                            <div class="col-sm-offset-5 col-sm-10">
+                                <input class="btn btn-primary" type="submit" value="确认分配">
+                            </div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

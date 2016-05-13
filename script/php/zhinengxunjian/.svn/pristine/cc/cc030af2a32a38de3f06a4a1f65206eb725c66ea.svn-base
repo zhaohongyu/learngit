@@ -1,0 +1,95 @@
+<meta charset="UTF-8">
+<div>
+    <div style="font-size:14px;font-family:Verdana,&quot;宋体&quot;,Helvetica,sans-serif;line-height:1.66;padding:8px 10px;margin:0;overflow:auto">
+        <table width="610" border="0" align="center" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td bgcolor="#f0f0f0" style="height:5px"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#f0f0f0">
+                        <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" style=" border:1px solid #a1afb8">
+                            <tbody>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" style="font-size:14px; line-height:24px;">
+                                        <table border="0" cellspacing="0" cellpadding="0" width="520" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="520" height="50" style="font-size:14px"> <strong>尊敬的
+                                                            <span style="color:#E75C00">系统管理员</span>
+                                                            ，您好！</strong> 
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        您好,以下是异常信息详情,请您及时处理。
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        巡&nbsp;&nbsp;检&nbsp;员:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        巡检点位:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        设&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        检查内容:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        异常描述:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=" text-indent:2em;font-size:14px; line-height:30px">
+                                                        上报时间:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="20"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="10"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" style=" font-size:12px; padding:10px 25px;text-align:right;  "></td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" style=" font-size:12px; padding:5px 20px; text-align:right; color:#999;  ">(注：此为系统邮件，请勿直接回复。)</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#FFFFFF" style="font-size:12px; padding:20px; text-align:center; line-height:22px; color:#999">
+                                        Copyright © 2000-2014 智能巡检系统 All Rights Reserved
+                                        <br>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#f0f0f0" style=" height:5px"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

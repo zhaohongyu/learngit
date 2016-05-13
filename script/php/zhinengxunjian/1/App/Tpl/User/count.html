@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.user_tpl_show_breadcrumb_count}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.My97DatePicker.WdatePicker" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.user_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.user_tpl_show_breadcrumb_count}></a></li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('User/index')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <form class="form-horizontal" role="form" action="<{:getUrl('User/count')}>" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选择查询起始时间</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="start_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})" <empty name="start_time">value="<{$firstday}>"<else/>value="<{$start_time}>"</empty>>
+                    <input type="hidden" name="id" value="<{$user_info.id}>"/>
+                    <br/>
+                    <input class="form-control" type="text" name="end_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})" <empty name="start_time">value="<{$lastday}>"<else/>value="<{$end_time}>"</empty>>
+                </div>
+            </div>
+            <input class="btn btn-success col-xs-offset-2" type="submit" value="搜索">
+        </form>
+        <p>&nbsp;</p>
+        <p class="col-xs-offset-2" style="color: blue;">查询区间:<{$flowStatistics.section}></p>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12  table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <th>部门</th>
+                                <th>职务</th>
+                                <th>专业</th>
+                                <th>上行流量</th>
+                                <th>下行流量</th>
+                                <th>流量总和</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                <th><{$user_info.real_name}></th>
+                                <th><{$user_info.job_number}></th>
+                                <th>
+                                    <{$user_info.dept_name}>
+                                </th>
+                                <th>
+                                    <{$user_info.organization_name}>
+                                </th>
+                                <th>
+                                    <{$user_info.specialty_name}>
+                                </th>
+                                <th>
+                                    <{$flowStatistics.countUpstreamFlow}> M
+                                </th>
+                                <th>
+                                    <{$flowStatistics.countDownstreamFlow}> M
+                                </th>
+                                <th>
+                                    <{$flowStatistics.total}> M
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+		</div>
+            </div>
+        </div>
+    </body>
+</html>

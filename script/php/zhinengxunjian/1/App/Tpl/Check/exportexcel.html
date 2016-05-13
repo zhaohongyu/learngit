@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.check_complete_exportexcel}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.My97DatePicker.WdatePicker" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.check_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="javascript:;"><{$Think.lang.check_complete_exportexcel}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <php> 
+                    $url_back=getUrl(
+                        'Check/taskstatusliebiao',
+                        array(
+                            "page"=>$page_now,
+                            "specialty_id"=>$specialty_id,
+                            "search_time"=>$search_time,
+                            "task_name"=>$task_name,
+                            "status"=>$status,
+                            "random"=>mt_rand(),
+                        ));
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <b class="col-xs-offset-2">建议导出三天内的记录,导出数据过多会很慢,后台计算时间过长。</b>
+        <br/>
+        <br/>
+        <b class="col-xs-offset-2">如需导出一个月内的数据,建议以周为单位进行导出,这样有利于减小服务器负荷。</b>
+        <p>&nbsp;</p>
+        <div style="clear: both;"></div>
+        <button type="button" class="btn btn-primary btn-large col-xs-offset-2">
+            <{$specialty_name}>
+        </button>
+        <p>&nbsp;</p>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Check/exportExcel')}>" method="post">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选择导出起始时间</label>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" name="start_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" value="<{$search_time}>">
+                    <input type="hidden" name="page" value="<{$page_now}>"/>
+                    <input type="hidden" name="specialty_id" value="<{$specialty_id}>"/>
+                    <input type="hidden" name="search_time" value="<{$search_time}>"/>
+                    <input type="hidden" name="task_name" value="<{$task_name}>"/>
+                    <input type="hidden" name="status" value="<{$status}>"/>
+                    <br/>
+                    <input class="form-control" type="text" name="end_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" value="<{$search_time}>">
+                </div>
+            </div>
+            <input class="btn btn-success col-xs-offset-2" type="submit" value="确认导出">
+        </form>
+    </body>
+</html>

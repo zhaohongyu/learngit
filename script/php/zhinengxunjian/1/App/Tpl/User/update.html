@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title><{$Think.lang.user_tpl_show_breadcrumb_update}>--[ <{$user_info.username}> ]</title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.user_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.user_tpl_show_breadcrumb_update}>--[ <{$user_info.username}> ]</a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('User/index')}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div>
+            <form class="form-horizontal" role="form"action="<{:getUrl('User/update')}>" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户帐号</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="username" value="<{$user_info.username}>" placeholder="请输入用户的登录账号" readonly/>
+                        <input type="hidden" name="id" value="<{$user_info.id}>"/>
+                        <input type="hidden" name="password" value="<{$user_info.password}>"/>
+                        <input type="hidden" name="repassword" value="<{$user_info.password}>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户姓名</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="real_name" value="<{$user_info.real_name}>" placeholder="请输入用户的真实姓名"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户工号</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="job_number" value="<{$user_info.job_number}>" placeholder="请输入用户工号"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户电话</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="mobile" value="<{$user_info.mobile}>" placeholder="请输入用户电话"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">职位</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="organization_id">
+                            <option value="">请选择所属职位</option>
+                            <volist name='organization_list' id='vo' key='index'>
+                                <option value="<{$vo.id}>" <eq name="user_info.organization_id" value="$vo.id">selected="selected"</eq>><{$vo.name}></option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属部门</label>
+                    <div class="col-sm-3">
+                        <select class="form-control"name="dept_id">
+                            <option value="">请选择所属部门</option>
+                            <volist name='dept_list' id='vo' key='index'>
+                                <option value="<{$vo.id}>" <eq name="user_info.dept_id" value="$vo.id">selected="selected"</eq>><{$vo.name}></option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所属角色</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="role_id">
+                            <option value="">请选择所属角色</option>
+                            <volist name='role_list' id='vo' key='index'>
+                                <eq name='vo.name' value='admin'> 
+                                    <else/>
+                                    <option value="<{$vo.id}>" <eq name="user_info.role_id" value="$vo.id">selected="selected"</eq> ><{$vo.remark}></option>
+                                </eq>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">所在专业</label>
+                    <div class="col-sm-3">
+                        <select class="form-control" name="specialty_id">
+                            <option value="">请选择所在专业</option>
+                            <volist name='specialty_list' id='vo' key='index'>
+                                <option value="<{$vo.id}>" <eq name="user_info.specialty_id" value="$vo.id">selected="selected"</eq>  ><{$vo.name}></option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input class="btn btn-primary" type="submit" value="更新用户">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.notcie_tpl_show_breadcrumb_noticelist}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import type="css" file="admin.css.member,admin.css.common,admin.css.style" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.notcie_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.notcie_tpl_show_breadcrumb_detail}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <php> 
+                    $url_back=getUrl(
+                        'Notice/noticelist',
+                        array(
+                            "page"=>$page_now,
+                            "random"=>mt_rand(),
+                        ));
+                </php>
+                <a style="text-decoration: none;" href="<{:$url_back}>" target="right">【返回】</a>
+            </li>
+        </ol>
+        <div class="col-xs-offset-1">
+            <div class="wrapper">
+                <div class="box">
+                    <div class="box_r_t">
+                        <dl class="txt_cont">
+                            <dt><b><{$notice_info.title}></b><br/>
+                                <span class="font_12 font_999">时间：<{:formatTime($notice_info['release_time'],'Y-m-d H:i',1)}> ｜ </span> <span class="font_12 font_999">发布者: <{$notice_info.release_real_name}> </span><br/>
+                                <!--<span class="j"><{$notice_info.content}></span></dt>-->
+                            <dd id="content">
+                                <{$notice_info.content}>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.user_tpl_show_count}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.user_tpl_show_count}></a></li>
+            <li>
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a style="text-decoration: none;" href="<{:getUrl('Index/right')}>" target="right">【返回主页】</a>
+            </li>
+        </ol>
+        <div>
+            <center>
+                当前在线人数:
+                &nbsp;
+                <if condition="$countOnline eq '' OR $countOnline eq 0 " >
+                        0
+                    <else/>
+                        <span id="countOnline" class="badge" style="background-color: blue;">
+                            <{$countOnline}>
+                        </span>
+                </if>
+                &nbsp;人
+            </center>
+        </div>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12  table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <!--<th>部门</th>-->
+                                <th>职务</th>
+                                <th>专业</th>
+                                <th>电话</th>
+                                <th>所属角色</th>
+                                 <th>登录时间</th> 
+                                <!--<th>操作时间</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="onlne_user_list" id="vo" key="index">
+                                <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                    <th><{$vo.real_name}></th>
+                                    <th><{$vo.job_number}></th>
+<!--                                    <th>
+                                        <{$vo.dept_name}>
+                                    </th>-->
+                                    <th>
+                                        <{$vo.organization_name}>
+                                    </th>
+                                    <th>
+                                        <{$vo.specialty_name}>
+                                    </th>
+                                    <th><{$vo.mobile}></th>
+                                    <th>
+                                        <{$vo.role_remark}>
+                                    </th>
+                                     <th>
+                                        <{:formatTime($vo['login_time'],'',2)}>
+                                    </th> 
+<!--                                    <th>
+                                        <{:formatTime($vo['update_time'],'',2)}>
+                                    </th>-->
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+		</div>
+            </div>
+        </div>
+        <!-- 分页信息-->
+        <center><{:$page}></center>
+        <p>&nbsp;</p>
+        <div>
+            <center>
+                离线人数:
+                &nbsp;
+                <if condition="$countOffline eq '' OR $countOffline eq 0 " >
+                        0
+                    <else/>
+                        <span id="countOnline" class="badge" style="background-color: blue;">
+                            <{$countOffline}>
+                        </span>
+                </if>
+                &nbsp;人
+            </center>
+        </div>
+        <p>&nbsp;</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12  table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>工号</th>
+                                <!--<th>部门</th>-->
+                                <th>职务</th>
+                                <th>专业</th>
+                                <th>电话</th>
+                                <th>所属角色</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="user_all" id="vo" key="index">
+                                <if condition="in_array($vo['id'],$offline)" >
+                                    <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                        <th><{$vo.real_name}></th>
+                                        <th><{$vo.job_number}></th>
+    <!--                                    <th>
+                                            <{$vo.dept_name}>
+                                        </th>-->
+                                        <th>
+                                            <{$vo.organization_name}>
+                                        </th>
+                                        <th>
+                                            <{$vo.specialty_name}>
+                                        </th>
+                                        <th><{$vo.mobile}></th>
+                                        <th>
+                                            <{$vo.role_remark}>
+                                        </th>
+                                    </tr>
+                                </if>
+                            </volist>
+                        </tbody>
+                    </table>
+		</div>
+            </div>
+        </div>
+        <include file="Public:foot" />
+    </body>
+</html>

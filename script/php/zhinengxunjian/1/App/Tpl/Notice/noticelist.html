@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-cn">
+    <head>
+        <title><{$Think.lang.notcie_tpl_show_breadcrumb_noticelist}></title>
+        <!--引入公共文件bootstrap-->
+        <include file="Public:bootstrap" />
+        <import file="admin.My97DatePicker.WdatePicker" />
+    </head>
+    <body>
+        <ol class="breadcrumb" style="background-color: #E8F2FC;">
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.notcie_tpl_show_breadcrumb_manager}></a></li>
+            <li><a style="text-decoration: none" href="#"><{$Think.lang.notcie_tpl_show_breadcrumb_noticelist}></a></li>
+            <li class="active">
+                <a class="text-right"style="text-decoration: none" href="javascript:;" onclick="window.location.reload(true);">【刷新本页】</a>
+            </li>
+            <li>
+                <a class="text-right"style="text-decoration: none" target="right" href="<{:getUrl("Notice/releasenotice")}>">【发布通知】</a>
+            </li>
+        </ol>
+        <form class="form-horizontal" role="form" action="<{:getUrl('Notice/noticelist')}>" method="post">
+            <div class="col-xs-2">
+                <input class="form-control" type="text" name="search_time" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})" <empty name="search_time">value="<{:formatTime(time(),'Y-m-d',1)}>"<else/>value="<{$search_time}>"</empty>>
+            </div>
+            <input class="btn btn-success" type="submit" value="搜索">
+        </form>
+        <p>&nbsp;</p>
+        <empty name="notice_list">
+            <h4 class="col-md-offset-2 ">
+                <b class="text-danger">未查询到该日期的通告!</b>
+            </h4>
+            <else/>
+            <!-- <h4 class="col-md-offset-2 ">
+                <empty name="search_time">全部<else/><{$search_time}></empty>
+                --通告
+            </h4> -->
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12 table-responsive">
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>发布时间</th>
+                                    <th>发布者</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <volist name="notice_list" id="vo" key="index">
+                                        <tr <eq name='index%2' value='0'>class="success"<else/>class="active"</eq>>
+                                            <th><{$vo.title}></th>
+                                            <th><{:formatTime($vo['release_time'],'Y-m-d H:i',1)}></th>
+                                            <th><{$vo.release_real_name}></th>
+                                            <td>
+                                                <php> 
+                                                    $url_detail=getUrl('Notice/noticeDetail',array("id"=>$vo['id'],"page_now"=>$page_now));
+                                                    $url_edit=getUrl('Notice/noticeEdit',array("id"=>$vo['id'],"page_now"=>$page_now));
+                                                    $url_del=getUrl('Notice/noticeDel',array("id"=>$vo['id'],"page_now"=>$page_now,"random"=>mt_rand()));
+                                                </php>
+                                                <div class="btn-group-xs">
+                                                    <a class="btn btn-success" href="<{:$url_detail}>">详情</a>&nbsp;
+                                                    <a class="btn btn-primary" href="<{:$url_edit}>">编辑</a>&nbsp;
+                                                    <a class="btn btn-danger" href="<{:$url_del}>" onclick="if (confirm('真的要删除 <{$vo.title}> 这条通告吗？')) return true; else return false;" >删除</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <center><{:$page}></center>
+        </empty>
+        <include file="Public:foot" />
+    </body>
+</html>
