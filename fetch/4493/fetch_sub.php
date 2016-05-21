@@ -12,6 +12,9 @@ function myfetchsub($data) {
     $t1      = time();
     $fetch   = new Fetch();
     $n       = 0;
+    if(empty($sub_url)){
+        return false;
+    }
     while ($n < 50) {
         $res = $fetch->fetch_4493_single($sub_url);
         if (empty($res)) {
@@ -43,7 +46,7 @@ function myfetchsub($data) {
     /* 插入数据 */
     if ($mysqli->query($sql) === TRUE) {
         $t2  = time();
-        $log = date('Y-m-d H:i:s') . " 抓取页面{$sub_url},插入数据成功,耗时" . ($t2 - $t1) . '秒,插入了' . $mysqli->affected_rows . "条记录.";
+        $log = date('Y-m-d H:i:s') . " fetch {$sub_url},insert success,use " . ($t2 - $t1) . ' second,insert ' . $mysqli->affected_rows . " rows.";
         file_put_contents('./sql.log', $sql . "\r\n", FILE_APPEND);
         file_put_contents('./log.log', $log . "\r\n", FILE_APPEND);
     }

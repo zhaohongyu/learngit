@@ -32,13 +32,19 @@ class Fetch {
     }
 
     public function fetch_4493_single($target_url) {
-        $this->my_load_file($target_url);
-        $obj  = $this->html->find('div.picsboxcenter', 0)->find('p img', 0);
         $href = '';
-        if (is_object($obj)) {
-            $href = $obj->getAttribute('src');
+        if(is_object($this->html)){
+            $this->my_load_file($target_url);
+            $_obj = $this->html->find('div.picsboxcenter', 0);
+            if(is_object($_obj)){
+                $obj  = $_obj->find('p img', 0);
+                $href = '';
+                if (is_object($obj)) {
+                    $href = $obj->getAttribute('src');
+                }
+            }
+            $this->html->clear();
         }
-        $this->html->clear();
         return $href;
     }
 

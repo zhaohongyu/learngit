@@ -25,9 +25,9 @@ function M() {
     return $db;
 }
 
-$limit       = 20;
-$offset      = 52;
-$sql         = "select * from `test`.`img` where id < 39705  limit {$offset},{$limit}";
+$limit       = 39705;
+$offset      = 75;
+$sql         = "select * from `test`.`img` where id < 39705 order by id asc limit {$offset},{$limit}";
 $record_list = M()->select($sql);
 
 
