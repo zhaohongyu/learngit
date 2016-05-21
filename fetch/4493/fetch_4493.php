@@ -2,38 +2,14 @@
 
 require 'Fetch.php';
 
-function myfetch($target_url) {
+function myfetch($target_url, $type) {
     $t1    = time();
     $fetch = new Fetch();
     $all   = $fetch->fetch_4493($target_url);
-    foreach ($all as $k => $v) {
-        $sub_url = $v['href'];
-        $n       = 0;
-        while ($n < 50) {
-            $res = $fetch->fetch_4493_single($sub_url);
-            if (empty($res)) {
-                break;
-            }
-            $tmp[$n]['sub_url'] = $sub_url;
-            $tmp[$n]['img_url'] = $res;
-            $sub_url            = $fetch->get_4493_sub_next_page($sub_url);
-            $n++;
-            sleep(5);
-        }
-        if (empty(!$tmp)) {
-            $all[$k]['sub_img'] = $tmp;
-        }
-    }
-
-    $sql = 'insert into `test`.`img` (`title`, `date`, `like`, `href`, `img_url`,`code`) values ';
+    $sql   = 'insert into `test`.`img` (`title`, `date`, `like`, `href`, `img_url`,`code`,`type`) values ';
     foreach ($all as $key => $value) {
         $random_code = md5(uniqid(time()));
-        $sql .= "( '{$value['title']}', '{$value['date']}', {$value['like']}, '{$value['href']}', '{$value['cover']}','{$random_code}'),";
-        if (is_array($value['sub_img']) && !empty($value['sub_img'])) {
-            foreach ($value['sub_img'] as $v) {
-                $sql .= "( '{$value['title']}', '{$value['date']}', {$value['like']}, '{$v['sub_url']}', '{$v['img_url']}','{$random_code}'),";
-            }
-        }
+        $sql .= "( '{$value['title']}', '{$value['date']}', {$value['like']}, '{$value['href']}', '{$value['cover']}','{$random_code}',{$type}),";
     }
     $sql = rtrim($sql, ',');
 
