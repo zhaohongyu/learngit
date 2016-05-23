@@ -23,12 +23,12 @@ class Fetch {
         }
         $list = array();
         foreach ($this->html->find('div.piclist ul li') as $post) {
-            $item['href']  = $this->get_referer($target_url) . $post->find('a', 0)->getAttribute('href');// 套图链接
-            $item['cover'] = $post->find('a img', 0)->getAttribute('src');// 缩略图地址
-            $item['title'] = mb_convert_encoding($post->find('a span', 0)->innertext, 'UTF-8', 'GB2312');// 标题
-            $item['date']  = $post->find('.b1', 0)->innertext;// 上传日期
-            $item['like']  = $post->find('.b2', 0)->innertext;// 喜欢人数
-            $list[]        = $item;
+            $item['href']    = $this->get_referer($target_url) . $post->find('a', 0)->getAttribute('href');// 套图链接
+            $item['img_url'] = $post->find('a img', 0)->getAttribute('src');// 缩略图地址
+            $item['title']   = mb_convert_encoding($post->find('a span', 0)->innertext, 'UTF-8', 'GB2312');// 标题
+            $item['date']    = $post->find('.b1', 0)->innertext;// 上传日期
+            $item['like']    = $post->find('.b2', 0)->innertext;// 喜欢人数
+            $list[]          = $item;
         }
         $this->html->clear();
         return $list;
