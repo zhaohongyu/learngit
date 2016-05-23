@@ -35,9 +35,9 @@ function imgDetailList($request, $response, $args) {
             if (empty($res)) {
                 break;
             }
-            $tmp[$n]['href']    = $sub_url;
-            $tmp[$n]['img_url'] = $res;
-            $sub_url            = $fetch->get_4493_sub_next_page($sub_url);
+            $tmp[$n]['href']   = $sub_url;
+            $tmp[$n]['imgUrl'] = $res;
+            $sub_url           = $fetch->get_4493_sub_next_page($sub_url);
             $n++;
         }
         if (empty($tmp)) {
