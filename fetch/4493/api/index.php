@@ -75,36 +75,36 @@ function imgSubList($request, $response, $args) {
 function imgCategoryList($request, $response, $args) {
     $category = array(
         array(
-            'category_en'    => 'siwameitui',
-            'category_title' => '丝袜美腿',
+            'categoryEn'    => 'siwameitui',
+            'categoryTitle' => '丝袜美腿',
         ),
         array(
-            'category_en'    => 'xingganmote',
-            'category_title' => '性感美女',
+            'categoryEn'    => 'xingganmote',
+            'categoryTitle' => '性感美女',
         ),
         array(
-            'category_en'    => 'weimeixiezhen',
-            'category_title' => '唯美写真',
+            'categoryEn'    => 'weimeixiezhen',
+            'categoryTitle' => '唯美写真',
         ),
         array(
-            'category_en'    => 'wangluomeinv',
-            'category_title' => '网络美女',
+            'categoryEn'    => 'wangluomeinv',
+            'categoryTitle' => '网络美女',
         ),
         array(
-            'category_en'    => 'gaoqingmeinv',
-            'category_title' => '高清美女',
+            'categoryEn'    => 'gaoqingmeinv',
+            'categoryTitle' => '高清美女',
         ),
         array(
-            'category_en'    => 'motemeinv',
-            'category_title' => '模特美女',
+            'categoryEn'    => 'motemeinv',
+            'categoryTitle' => '模特美女',
         ),
         array(
-            'category_en'    => 'tiyumeinv',
-            'category_title' => '体育美女',
+            'categoryEn'    => 'tiyumeinv',
+            'categoryTitle' => '体育美女',
         ),
         array(
-            'category_en'    => 'dongmanmeinv',
-            'category_title' => '动漫美女',
+            'categoryEn'    => 'dongmanmeinv',
+            'categoryTitle' => '动漫美女',
         ),
     );
     $res_data = response_format(0, '获取数据成功', $category);
