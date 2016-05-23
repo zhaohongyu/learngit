@@ -92,4 +92,12 @@ class Fetch {
         return $next_url;
     }
 
+    private function ip_generate() {
+        $ip0 = mt_rand(1, 255);
+        $ip1 = mt_rand(1, 255);
+        $ip2 = mt_rand(1, 255);
+        $ip3 = mt_rand(1, 255);
+        return "{$ip0}.{$ip1}.{$ip2}.{$ip3}";
+    }
+
 }
