@@ -57,14 +57,19 @@ class Fetch {
     }
 
     public function my_load_file($target_url) {
-        $option   = array(
+        $referer         = "Referer:{$this->get_referer($target_url)}\r\n";
+        $USERAGENT       = "User-Agent:Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1\r\n";
+        $ip              = $this->ip_generate();
+        $x_forwarded_for = "X-FORWARDED-FOR:{$ip}\r\n";
+        $clinet_ip       = "CLIENT-IP:{$ip}\r\n";
+        $option          = array(
             'http' => array(
-                'header'  => "Referer:" . $this->get_referer($target_url),
+                'header'  => $referer . $USERAGENT . $x_forwarded_for . $clinet_ip,
                 'timeout' => 8,// 单位秒
             ),
         );
-        $cnt      = 0;
-        $conn_res = false;
+        $cnt             = 0;
+        $conn_res        = false;
         while (
             $cnt < 3
             && ($conn_res = $this->html->load_file($target_url, false, stream_context_create($option))) === FALSE) {
@@ -85,6 +90,14 @@ class Fetch {
         $page++;
         $next_url = substr($target_url, 0, $pos_start + 1) . $page . '.htm';
         return $next_url;
+    }
+
+    private function ip_generate() {
+        $ip0 = mt_rand(1, 255);
+        $ip1 = mt_rand(1, 255);
+        $ip2 = mt_rand(1, 255);
+        $ip3 = mt_rand(1, 255);
+        return "{$ip0}.{$ip1}.{$ip2}.{$ip3}";
     }
 
 }
