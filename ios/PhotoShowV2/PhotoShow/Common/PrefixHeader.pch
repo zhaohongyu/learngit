@@ -1,0 +1,24 @@
+//
+//  PrefixHeader.pch
+//  PhotoShow
+//
+//  Created by 沈健 on 16/5/22.
+//  Copyright © 2016年 shenjian. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "ConstantHeader.h"
+
+#import "NSString+Dictionary.h"
+#import "UIBarButtonItem+Extension.h"
+#import "UIColor+hexColor.h"
+#import "UIImage+XFR.h"
+#import "UIView+Extension.h"
+#import "Foundation+Log.m"
+#import "YYModel.h"
+#import "NSDate+shj.h"
+
+
+#endif /* PrefixHeader_pch */
