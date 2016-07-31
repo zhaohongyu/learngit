@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BB1929E1D4DC5F700606789 /* PSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1929D1D4DC5F700606789 /* PSImageView.m */; };
 		8C4173F41D28EAD0006DA0D8 /* PSListBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4173F31D28EAD0006DA0D8 /* PSListBaseViewController.m */; };
 		8C4173F81D28EBA6006DA0D8 /* PSListBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4173F61D28EBA6006DA0D8 /* PSListBaseCell.m */; };
 		8C4173F91D28EBA6006DA0D8 /* PSListBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4173F71D28EBA6006DA0D8 /* PSListBaseCell.xib */; };
@@ -110,6 +111,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BB1929C1D4DC5F700606789 /* PSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageView.h; sourceTree = "<group>"; };
+		7BB1929D1D4DC5F700606789 /* PSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageView.m; sourceTree = "<group>"; };
 		8C4173F21D28EAD0006DA0D8 /* PSListBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSListBaseViewController.h; sourceTree = "<group>"; };
 		8C4173F31D28EAD0006DA0D8 /* PSListBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSListBaseViewController.m; sourceTree = "<group>"; };
 		8C4173F51D28EBA6006DA0D8 /* PSListBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSListBaseCell.h; sourceTree = "<group>"; };
@@ -578,6 +581,8 @@
 				8C4173F51D28EBA6006DA0D8 /* PSListBaseCell.h */,
 				8C4173F61D28EBA6006DA0D8 /* PSListBaseCell.m */,
 				8C4173F71D28EBA6006DA0D8 /* PSListBaseCell.xib */,
+				7BB1929C1D4DC5F700606789 /* PSImageView.h */,
+				7BB1929D1D4DC5F700606789 /* PSImageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -860,6 +865,7 @@
 				8C41742D1D2906C6006DA0D8 /* MJRefreshBackFooter.m in Sources */,
 				8C41742F1D2906C6006DA0D8 /* MJRefreshFooter.m in Sources */,
 				8C45B24C1CF610E9008BBC02 /* YYClassInfo.m in Sources */,
+				7BB1929E1D4DC5F700606789 /* PSImageView.m in Sources */,
 				8C41743B1D2906C6006DA0D8 /* MJRefreshConst.m in Sources */,
 				8C41746A1D2916CE006DA0D8 /* SDWebImagePrefetcher.m in Sources */,
 				8C4174331D2906C6006DA0D8 /* MJRefreshAutoStateFooter.m in Sources */,

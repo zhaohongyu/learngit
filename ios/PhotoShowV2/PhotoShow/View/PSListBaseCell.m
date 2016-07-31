@@ -10,10 +10,13 @@
 #import "PSListModel.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+MultiFormat.h"
+#import "PSImageView.h"
 
 @interface PSListBaseCell()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+//@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet PSImageView *imgView;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
