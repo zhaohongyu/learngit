@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7BB1929E1D4DC5F700606789 /* PSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1929D1D4DC5F700606789 /* PSImageView.m */; };
+		7BB1DB401D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1DB3F1D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		8C4173F41D28EAD0006DA0D8 /* PSListBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4173F31D28EAD0006DA0D8 /* PSListBaseViewController.m */; };
 		8C4173F81D28EBA6006DA0D8 /* PSListBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4173F61D28EBA6006DA0D8 /* PSListBaseCell.m */; };
 		8C4173F91D28EBA6006DA0D8 /* PSListBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4173F71D28EBA6006DA0D8 /* PSListBaseCell.xib */; };
@@ -113,6 +114,8 @@
 /* Begin PBXFileReference section */
 		7BB1929C1D4DC5F700606789 /* PSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageView.h; sourceTree = "<group>"; };
 		7BB1929D1D4DC5F700606789 /* PSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageView.m; sourceTree = "<group>"; };
+		7BB1DB3E1D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		7BB1DB3F1D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		8C4173F21D28EAD0006DA0D8 /* PSListBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSListBaseViewController.h; sourceTree = "<group>"; };
 		8C4173F31D28EAD0006DA0D8 /* PSListBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSListBaseViewController.m; sourceTree = "<group>"; };
 		8C4173F51D28EBA6006DA0D8 /* PSListBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSListBaseCell.h; sourceTree = "<group>"; };
@@ -318,6 +321,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BB1DB3D1D4E27F100BD3DDE /* ALAssetsLibrary-CustomPhotoAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				7BB1DB3E1D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				7BB1DB3F1D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+			);
+			path = "ALAssetsLibrary-CustomPhotoAlbum";
+			sourceTree = "<group>";
+		};
 		8C4173F11D28EA8B006DA0D8 /* ListVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +615,7 @@
 		8C5C1C531CF21B6200F7506E /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				7BB1DB3D1D4E27F100BD3DDE /* ALAssetsLibrary-CustomPhotoAlbum */,
 				8C4174401D2916CE006DA0D8 /* SDWebImage */,
 				8C4173FD1D2906C6006DA0D8 /* MJRefresh */,
 				8C8F67571CF8E7810019E4A9 /* DACircularProgress */,
@@ -893,6 +906,7 @@
 				8C75296F1CF3726D0048701C /* UIBarButtonItem+Extension.m in Sources */,
 				8C4174671D2916CE006DA0D8 /* SDWebImageDownloader.m in Sources */,
 				8C41746D1D2916CE006DA0D8 /* UIImage+MultiFormat.m in Sources */,
+				7BB1DB401D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				8C4174391D2906C6006DA0D8 /* MJRefreshStateHeader.m in Sources */,
 				8C4174661D2916CE006DA0D8 /* SDWebImageDecoder.m in Sources */,
 				8C8F67541CF8DFB90019E4A9 /* MWTapDetectingView.m in Sources */,

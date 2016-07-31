@@ -13,6 +13,8 @@
 #import "HYBNetworking.h"
 #import "PSPhotoShowModel.h"
 #import "MWPhotoBrowser.h"
+#import "ALAssetsLibrary+CustomPhotoAlbum.h"
+#import "MBProgressHUD+SJ.h"
 
 #define Kcellmargin 10
 #define kListBaseUrl @"http://www.tngou.net/tnfs/api/list"
@@ -25,6 +27,13 @@
 
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) NSMutableArray *thumbs;
+
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+
+@property (nonatomic, assign) NSUInteger *currentCatImageIndex;// 当前正在查看的照片索引
+
+@property (nonatomic, strong) ALAssetsLibrary *assetslibrary;
+
 @end
 
 @implementation PSListBaseViewController
@@ -43,6 +52,27 @@
 //    }
 //    return _photoBrowser;
 //}
+
+-(ALAssetsLibrary *)assetslibrary{
+    if(!_assetslibrary){
+        _assetslibrary = [[ALAssetsLibrary alloc] init];
+    }
+    return _assetslibrary;
+}
+
+-(UILongPressGestureRecognizer *)longPressGestureRecognizer{
+    if(!_longPressGestureRecognizer){
+        _longPressGestureRecognizer =[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestures:)];
+        /* numberOfTouchesRequired这个属性保存了有多少个手指点击了屏幕,因此你要确保你每次的点击手指数目是一样的,默认值是为 0. */
+        _longPressGestureRecognizer.numberOfTouchesRequired = 1;
+        /* Maximum 100 pixels of movement allowed before the gesture is recognized */
+        /*最大100像素的运动是手势识别所允许的*/
+        _longPressGestureRecognizer.allowableMovement = 100.0f;
+        /*这个参数表示,两次点击之间间隔的时间长度。*/
+        _longPressGestureRecognizer.minimumPressDuration = 1.0;
+    }
+    return _longPressGestureRecognizer;
+}
 
 - (NSMutableArray *)photosArray{
     if (!_photosArray) {
@@ -81,8 +111,8 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     return self;
     
-//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-//    return [super initWithCollectionViewLayout:flowLayout];
+    //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    //    return [super initWithCollectionViewLayout:flowLayout];
 }
 
 - (void)viewDidLoad {
@@ -115,7 +145,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [HYBNetworking enableInterfaceDebug:YES];
     [HYBNetworking cacheGetRequest:YES shoulCachePost:YES];
-
+    
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:@(self.currentPage) forKey:@"page"];
     [params setValue:@(10) forKey:@"rows"];
@@ -296,6 +326,8 @@ static NSString * const reuseIdentifier = @"Cell";
 //}
 
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
+    self.currentCatImageIndex = index;
+    [photoBrowser.view addGestureRecognizer:self.longPressGestureRecognizer];// 长按手势识别
     NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
 }
 
@@ -316,6 +348,51 @@ static NSString * const reuseIdentifier = @"Cell";
     // If we subscribe to this method we must dismiss the view controller ourselves
     NSLog(@"Did finish modal presentation");
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void) handleLongPressGestures:(UILongPressGestureRecognizer *)paramSender{
+    if ([paramSender isEqual:self.longPressGestureRecognizer]){
+        
+        if (paramSender.state == UIGestureRecognizerStateBegan) {
+            
+            // 保存照片
+            MWPhoto *toSaveImageMWPhoto = self.photos[(int)self.currentCatImageIndex];
+            [self mySaveImage:toSaveImageMWPhoto.underlyingImage];
+            
+        }
+        
+        NSLog(@"receive long press");
+    }
+}
+
+- (void)mySaveImage:(UIImage *)image{
+    __block NSString *msg = nil ;
+    [self.assetslibrary saveImage:image toAlbum:@"PhotoShow" completion:^(NSURL *assetURL, NSError *error) {
+        if(!error){
+            msg = @"保存图片成功" ;
+            NSLog(@"%@",msg);
+            
+            [MBProgressHUD showSuccess:msg];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                // 移除遮盖
+                [MBProgressHUD hideHUD];
+            });
+            
+        }
+    } failure:^(NSError *error) {
+        msg = @"保存图片失败" ;
+        NSLog(@"%@",msg);
+        
+        [MBProgressHUD showError:msg];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 移除遮盖
+            [MBProgressHUD hideHUD];
+        });
+        
+    }];
 }
 
 @end
