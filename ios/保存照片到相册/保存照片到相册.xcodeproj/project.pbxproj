@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B5A493E1D4DF0CE0046AB18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A493D1D4DF0CE0046AB18 /* main.m */; };
+		7B5A49471D4DF0CE0046AB18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A49451D4DF0CE0046AB18 /* Main.storyboard */; };
+		7B5A49491D4DF0CE0046AB18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A49481D4DF0CE0046AB18 /* Assets.xcassets */; };
+		7B5A494C1D4DF0CE0046AB18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A494A1D4DF0CE0046AB18 /* LaunchScreen.storyboard */; };
+		7BB1DAF81D4DF3C000BD3DDE /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BB1DAF71D4DF3C000BD3DDE /* apple.jpg */; };
+		7BB1DB131D4DFB3E00BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1DB121D4DFB3E00BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		7BB1DB181D4DFB7800BD3DDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1DB151D4DFB7800BD3DDE /* AppDelegate.m */; };
+		7BB1DB191D4DFB7800BD3DDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1DB171D4DFB7800BD3DDE /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7B5A49391D4DF0CE0046AB18 /* 保存照片到相册.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "保存照片到相册.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B5A493D1D4DF0CE0046AB18 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B5A49461D4DF0CE0046AB18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B5A49481D4DF0CE0046AB18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B5A494B1D4DF0CE0046AB18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B5A494D1D4DF0CE0046AB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BB1DAF71D4DF3C000BD3DDE /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
+		7BB1DB111D4DFB3E00BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		7BB1DB121D4DFB3E00BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
+		7BB1DB141D4DFB7800BD3DDE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7BB1DB151D4DFB7800BD3DDE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7BB1DB161D4DFB7800BD3DDE /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7BB1DB171D4DFB7800BD3DDE /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B5A49361D4DF0CE0046AB18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7B5A49301D4DF0CE0046AB18 = {
+			isa = PBXGroup;
+			children = (
+				7B5A493B1D4DF0CE0046AB18 /* 保存照片到相册 */,
+				7B5A493A1D4DF0CE0046AB18 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B5A493A1D4DF0CE0046AB18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B5A49391D4DF0CE0046AB18 /* 保存照片到相册.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B5A493B1D4DF0CE0046AB18 /* 保存照片到相册 */ = {
+			isa = PBXGroup;
+			children = (
+				7BB1DB0E1D4DFB3E00BD3DDE /* Classes */,
+				7B5A493C1D4DF0CE0046AB18 /* Supporting Files */,
+			);
+			path = "保存照片到相册";
+			sourceTree = "<group>";
+		};
+		7B5A493C1D4DF0CE0046AB18 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B5A49551D4DF3980046AB18 /* image */,
+				7B5A49451D4DF0CE0046AB18 /* Main.storyboard */,
+				7B5A49481D4DF0CE0046AB18 /* Assets.xcassets */,
+				7B5A494A1D4DF0CE0046AB18 /* LaunchScreen.storyboard */,
+				7B5A494D1D4DF0CE0046AB18 /* Info.plist */,
+				7B5A493D1D4DF0CE0046AB18 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7B5A49551D4DF3980046AB18 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				7BB1DAF71D4DF3C000BD3DDE /* apple.jpg */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		7BB1DB0E1D4DFB3E00BD3DDE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7BB1DB0F1D4DFB3E00BD3DDE /* Vender */,
+				7BB1DB141D4DFB7800BD3DDE /* AppDelegate.h */,
+				7BB1DB151D4DFB7800BD3DDE /* AppDelegate.m */,
+				7BB1DB161D4DFB7800BD3DDE /* ViewController.h */,
+				7BB1DB171D4DFB7800BD3DDE /* ViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7BB1DB0F1D4DFB3E00BD3DDE /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				7BB1DB101D4DFB3E00BD3DDE /* ALAssetsLibrary-CustomPhotoAlbum */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		7BB1DB101D4DFB3E00BD3DDE /* ALAssetsLibrary-CustomPhotoAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				7BB1DB111D4DFB3E00BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				7BB1DB121D4DFB3E00BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+			);
+			path = "ALAssetsLibrary-CustomPhotoAlbum";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B5A49381D4DF0CE0046AB18 /* 保存照片到相册 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B5A49501D4DF0CE0046AB18 /* Build configuration list for PBXNativeTarget "保存照片到相册" */;
+			buildPhases = (
+				7B5A49351D4DF0CE0046AB18 /* Sources */,
+				7B5A49361D4DF0CE0046AB18 /* Frameworks */,
+				7B5A49371D4DF0CE0046AB18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "保存照片到相册";
+			productName = "保存照片到相册";
+			productReference = 7B5A49391D4DF0CE0046AB18 /* 保存照片到相册.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B5A49311D4DF0CE0046AB18 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "赵洪禹";
+				TargetAttributes = {
+					7B5A49381D4DF0CE0046AB18 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 7B5A49341D4DF0CE0046AB18 /* Build configuration list for PBXProject "保存照片到相册" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7B5A49301D4DF0CE0046AB18;
+			productRefGroup = 7B5A493A1D4DF0CE0046AB18 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B5A49381D4DF0CE0046AB18 /* 保存照片到相册 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B5A49371D4DF0CE0046AB18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B5A494C1D4DF0CE0046AB18 /* LaunchScreen.storyboard in Resources */,
+				7B5A49491D4DF0CE0046AB18 /* Assets.xcassets in Resources */,
+				7BB1DAF81D4DF3C000BD3DDE /* apple.jpg in Resources */,
+				7B5A49471D4DF0CE0046AB18 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B5A49351D4DF0CE0046AB18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B5A493E1D4DF0CE0046AB18 /* main.m in Sources */,
+				7BB1DB131D4DFB3E00BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
+				7BB1DB191D4DFB7800BD3DDE /* ViewController.m in Sources */,
+				7BB1DB181D4DFB7800BD3DDE /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7B5A49451D4DF0CE0046AB18 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B5A49461D4DF0CE0046AB18 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7B5A494A1D4DF0CE0046AB18 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B5A494B1D4DF0CE0046AB18 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7B5A494E1D4DF0CE0046AB18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7B5A494F1D4DF0CE0046AB18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B5A49511D4DF0CE0046AB18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "保存照片到相册/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.-------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7B5A49521D4DF0CE0046AB18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "保存照片到相册/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.-------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B5A49341D4DF0CE0046AB18 /* Build configuration list for PBXProject "保存照片到相册" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B5A494E1D4DF0CE0046AB18 /* Debug */,
+				7B5A494F1D4DF0CE0046AB18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B5A49501D4DF0CE0046AB18 /* Build configuration list for PBXNativeTarget "保存照片到相册" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B5A49511D4DF0CE0046AB18 /* Debug */,
+				7B5A49521D4DF0CE0046AB18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7B5A49311D4DF0CE0046AB18 /* Project object */;
+}
