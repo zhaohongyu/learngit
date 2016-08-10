@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B9FFED61D59D2FA004C9F3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FFED51D59D2FA004C9F3D /* main.m */; };
+		7B9FFED91D59D2FA004C9F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FFED81D59D2FA004C9F3D /* AppDelegate.m */; };
+		7B9FFEDC1D59D2FA004C9F3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FFEDB1D59D2FA004C9F3D /* ViewController.m */; };
+		7B9FFEDF1D59D2FA004C9F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9FFEDD1D59D2FA004C9F3D /* Main.storyboard */; };
+		7B9FFEE11D59D2FA004C9F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9FFEE01D59D2FA004C9F3D /* Assets.xcassets */; };
+		7B9FFEE41D59D2FA004C9F3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9FFEE21D59D2FA004C9F3D /* LaunchScreen.storyboard */; };
+		7B9FFEEC1D59D370004C9F3D /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9FFEEB1D59D370004C9F3D /* GoogleMobileAds.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7B9FFED11D59D2FA004C9F3D /* 谷歌广告.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "谷歌广告.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B9FFED51D59D2FA004C9F3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B9FFED71D59D2FA004C9F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7B9FFED81D59D2FA004C9F3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7B9FFEDA1D59D2FA004C9F3D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7B9FFEDB1D59D2FA004C9F3D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7B9FFEDE1D59D2FA004C9F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B9FFEE01D59D2FA004C9F3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B9FFEE31D59D2FA004C9F3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B9FFEE51D59D2FA004C9F3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B9FFEEB1D59D370004C9F3D /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		7B9FFEEE1D5AC02E004C9F3D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B9FFECE1D59D2FA004C9F3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9FFEEC1D59D370004C9F3D /* GoogleMobileAds.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7B9FFEC81D59D2FA004C9F3D = {
+			isa = PBXGroup;
+			children = (
+				7B9FFEEB1D59D370004C9F3D /* GoogleMobileAds.framework */,
+				7B9FFED31D59D2FA004C9F3D /* 谷歌广告 */,
+				7B9FFED21D59D2FA004C9F3D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B9FFED21D59D2FA004C9F3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B9FFED11D59D2FA004C9F3D /* 谷歌广告.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B9FFED31D59D2FA004C9F3D /* 谷歌广告 */ = {
+			isa = PBXGroup;
+			children = (
+				7B9FFED71D59D2FA004C9F3D /* AppDelegate.h */,
+				7B9FFED81D59D2FA004C9F3D /* AppDelegate.m */,
+				7B9FFEDA1D59D2FA004C9F3D /* ViewController.h */,
+				7B9FFEDB1D59D2FA004C9F3D /* ViewController.m */,
+				7B9FFEDD1D59D2FA004C9F3D /* Main.storyboard */,
+				7B9FFEE01D59D2FA004C9F3D /* Assets.xcassets */,
+				7B9FFEE21D59D2FA004C9F3D /* LaunchScreen.storyboard */,
+				7B9FFEE51D59D2FA004C9F3D /* Info.plist */,
+				7B9FFED41D59D2FA004C9F3D /* Supporting Files */,
+			);
+			path = "谷歌广告";
+			sourceTree = "<group>";
+		};
+		7B9FFED41D59D2FA004C9F3D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B9FFED51D59D2FA004C9F3D /* main.m */,
+				7B9FFEEE1D5AC02E004C9F3D /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B9FFED01D59D2FA004C9F3D /* 谷歌广告 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B9FFEE81D59D2FA004C9F3D /* Build configuration list for PBXNativeTarget "谷歌广告" */;
+			buildPhases = (
+				7B9FFECD1D59D2FA004C9F3D /* Sources */,
+				7B9FFECE1D59D2FA004C9F3D /* Frameworks */,
+				7B9FFECF1D59D2FA004C9F3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "谷歌广告";
+			productName = "谷歌广告";
+			productReference = 7B9FFED11D59D2FA004C9F3D /* 谷歌广告.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B9FFEC91D59D2FA004C9F3D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = zhaohongyu;
+				TargetAttributes = {
+					7B9FFED01D59D2FA004C9F3D = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 7B9FFECC1D59D2FA004C9F3D /* Build configuration list for PBXProject "谷歌广告" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7B9FFEC81D59D2FA004C9F3D;
+			productRefGroup = 7B9FFED21D59D2FA004C9F3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B9FFED01D59D2FA004C9F3D /* 谷歌广告 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B9FFECF1D59D2FA004C9F3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9FFEE41D59D2FA004C9F3D /* LaunchScreen.storyboard in Resources */,
+				7B9FFEE11D59D2FA004C9F3D /* Assets.xcassets in Resources */,
+				7B9FFEDF1D59D2FA004C9F3D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B9FFECD1D59D2FA004C9F3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9FFEDC1D59D2FA004C9F3D /* ViewController.m in Sources */,
+				7B9FFED91D59D2FA004C9F3D /* AppDelegate.m in Sources */,
+				7B9FFED61D59D2FA004C9F3D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7B9FFEDD1D59D2FA004C9F3D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B9FFEDE1D59D2FA004C9F3D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7B9FFEE21D59D2FA004C9F3D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B9FFEE31D59D2FA004C9F3D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7B9FFEE61D59D2FA004C9F3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B9FFEE71D59D2FA004C9F3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B9FFEE91D59D2FA004C9F3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "谷歌广告/PrefixHeader.pch";
+				INFOPLIST_FILE = "谷歌广告/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zhaohongyu.googlead.----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7B9FFEEA1D59D2FA004C9F3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "谷歌广告/PrefixHeader.pch";
+				INFOPLIST_FILE = "谷歌广告/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zhaohongyu.googlead.----";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B9FFECC1D59D2FA004C9F3D /* Build configuration list for PBXProject "谷歌广告" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B9FFEE61D59D2FA004C9F3D /* Debug */,
+				7B9FFEE71D59D2FA004C9F3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B9FFEE81D59D2FA004C9F3D /* Build configuration list for PBXNativeTarget "谷歌广告" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B9FFEE91D59D2FA004C9F3D /* Debug */,
+				7B9FFEEA1D59D2FA004C9F3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7B9FFEC91D59D2FA004C9F3D /* Project object */;
+}
