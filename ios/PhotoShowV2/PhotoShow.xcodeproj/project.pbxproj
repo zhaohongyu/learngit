@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BABD0E21D5B46ED00F7C2D4 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BABD0E11D5B46ED00F7C2D4 /* GoogleMobileAds.framework */; };
 		7BB1929E1D4DC5F700606789 /* PSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1929D1D4DC5F700606789 /* PSImageView.m */; };
 		7BB1DB401D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1DB3F1D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		8C4173F41D28EAD0006DA0D8 /* PSListBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4173F31D28EAD0006DA0D8 /* PSListBaseViewController.m */; };
@@ -112,6 +113,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BABD0E11D5B46ED00F7C2D4 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		7BB1929C1D4DC5F700606789 /* PSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageView.h; sourceTree = "<group>"; };
 		7BB1929D1D4DC5F700606789 /* PSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageView.m; sourceTree = "<group>"; };
 		7BB1DB3E1D4E27F100BD3DDE /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BABD0E21D5B46ED00F7C2D4 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +618,7 @@
 		8C5C1C531CF21B6200F7506E /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				7BABD0E11D5B46ED00F7C2D4 /* GoogleMobileAds.framework */,
 				7BB1DB3D1D4E27F100BD3DDE /* ALAssetsLibrary-CustomPhotoAlbum */,
 				8C4174401D2916CE006DA0D8 /* SDWebImage */,
 				8C4173FD1D2906C6006DA0D8 /* MJRefresh */,
@@ -1036,6 +1040,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoShow/Vendors",
+				);
 				INFOPLIST_FILE = PhotoShow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.shenjian.PhotoShow;
@@ -1050,6 +1058,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoShow/Vendors",
+				);
 				INFOPLIST_FILE = PhotoShow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.shenjian.PhotoShow;

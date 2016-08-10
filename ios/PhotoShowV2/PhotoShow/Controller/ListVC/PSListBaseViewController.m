@@ -15,11 +15,12 @@
 #import "MWPhotoBrowser.h"
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import "MBProgressHUD+SJ.h"
+@import GoogleMobileAds;
 
 #define Kcellmargin 10
 #define kListBaseUrl @"http://www.tngou.net/tnfs/api/list"
 
-@interface PSListBaseViewController ()<MWPhotoBrowserDelegate>
+@interface PSListBaseViewController ()<MWPhotoBrowserDelegate,GADBannerViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, assign) int currentPage;
 //@property (nonatomic, strong) MWPhotoBrowser *photoBrowser;
@@ -33,6 +34,8 @@
 @property (nonatomic, assign) NSUInteger *currentCatImageIndex;// 当前正在查看的照片索引
 
 @property (nonatomic, strong) ALAssetsLibrary *assetslibrary;
+
+@property (nonatomic, weak) GADBannerView *adBannerView;// 横幅广告
 
 @end
 
@@ -121,7 +124,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PSListBaseCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     [self addMJRefresh];
-    
+    [self showAdBannerView];// 显示横幅广告
 }
 
 - (void)didReceiveMemoryWarning {
@@ -394,5 +397,38 @@ static NSString * const reuseIdentifier = @"Cell";
         
     }];
 }
+
+#pragma mark -
+
+#pragma mark GADBannerView横幅式广告代理
+
+//:在 loadRequest 时发送：已成功。这是将发送者添加到视图层次的好机会（如果到目前为止已隐藏视图层次），例如
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    NSLog(@"adViewDidReceiveAd:bannerView");
+}
+
+//当 loadRequest: 失败时发送，通常是网络故障、应用配置错误或缺少广告库存导致的。您可能希望记录这些事件以进行调试
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+}
+
+
+/**
+ *显示横幅式广告
+ */
+-(void)showAdBannerView{
+    GADBannerView *bannerView = [[GADBannerView alloc] init];
+    self.adBannerView = bannerView;
+    self.adBannerView.delegate = self;
+    // Replace this ad unit ID with your own ad unit ID.
+    self.adBannerView.adUnitID = @"ca-app-pub-4200152447911751/2208902825";
+    self.adBannerView.rootViewController = self;
+    self.adBannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[ kGADSimulatorID ];
+    [self.adBannerView loadRequest:request];
+    [self.collectionView addSubview:self.adBannerView];
+}
+
 
 @end
