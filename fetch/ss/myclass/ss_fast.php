@@ -49,9 +49,19 @@ class ss_fast extends Base {
     }
 
     public function parseHtml($response_html) {
+
+        if (empty($response_html)) {
+            return null;
+        }
+
         preg_match("/<tbody>([\s\S]*?)<\/tbody>/", $response_html, $matches1);
         preg_match("/<tr>([\s\S]*?)<\/tr>/", $matches1[1], $matches2);
         preg_match_all("/<td>([\s\S]*?)<\/td>/", $matches2[1], $matches3);
+
+        if (empty($matches3[1])) {
+            return null;
+        }
+        
         $ss_info_arr  = $matches3[1];
         $domain       = $ss_info_arr[2];
         $encrypt_type = $ss_info_arr[4];
