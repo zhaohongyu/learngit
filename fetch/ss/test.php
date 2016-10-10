@@ -15,6 +15,6 @@ if (empty($SsInfo)) {
 
 $conf_path   = "/data/work/Surge/custom_rule.conf";
 $server_name = "remoteserver";
-$conf        = "{$server_name} = custom," . $SsInfo->domain . "," . $SsInfo->encrypt_type . "," . $SsInfo->password . ",http://nat.pw/ss.module";
+$conf        = "{$server_name} = custom," . $SsInfo->domain . "," . $SsInfo->port . "," . $SsInfo->encrypt_type . "," . $SsInfo->password . ",http://nat.pw/ss.module";
 delTargetLine($conf_path, $server_name);// 删除原有的记录
 insertAfterTarget($conf_path, $conf, "donghui");// 添加上新的记录

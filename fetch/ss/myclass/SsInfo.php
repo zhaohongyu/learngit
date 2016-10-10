@@ -16,6 +16,13 @@ class SsInfo {
     public $domain = null;
 
     /**
+     * 端口
+     *
+     * @var string
+     */
+    public $port = null;
+
+    /**
      * 加密方式
      *
      * @var string
@@ -33,55 +40,15 @@ class SsInfo {
      * Ss_info constructor.
      *
      * @param string $domain
+     * @param string $port
      * @param string $encrypt_type
      * @param string $password
      */
-    public function __construct($domain, $encrypt_type, $password) {
+    public function __construct($domain, $port, $encrypt_type, $password) {
         $this->domain       = $domain;
+        $this->port         = $port;
         $this->encrypt_type = $encrypt_type;
         $this->password     = $password;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDomain() {
-        return $this->domain;
-    }
-
-    /**
-     * @param string $domain
-     */
-    public function setDomain($domain) {
-        $this->domain = $domain;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEncryptType() {
-        return $this->encrypt_type;
-    }
-
-    /**
-     * @param string $encrypt_type
-     */
-    public function setEncryptType($encrypt_type) {
-        $this->encrypt_type = $encrypt_type;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword() {
-        return $this->password;
-    }
-
-    /**
-     * @param string $password
-     */
-    public function setPassword($password) {
-        $this->password = $password;
     }
 
 }

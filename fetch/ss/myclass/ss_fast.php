@@ -70,9 +70,10 @@ class ss_fast extends Base {
 
         $ss_info_arr  = $matches3[1];
         $domain       = $ss_info_arr[2];
+        $port         = $ss_info_arr[3];
         $encrypt_type = $ss_info_arr[4];
         $password     = $ss_info_arr[5];
-        return new SsInfo($domain, $encrypt_type, $password);
+        return new SsInfo($domain, $port, $encrypt_type, $password);
     }
 
     public function getSsInfo() {
