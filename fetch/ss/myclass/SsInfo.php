@@ -1,7 +1,5 @@
 <?php
 
-namespace ss\myclass;
-
 /**
  * Created by PhpStorm.
  * User: zhaohongyu

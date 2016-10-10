@@ -8,6 +8,7 @@
  */
 
 require_once('./myclass/Base.php');
+require_once('./myclass/SsInfo.php');
 
 class ss_fast extends Base {
 
@@ -48,6 +49,14 @@ class ss_fast extends Base {
     }
 
     public function parseHtml($response_html) {
+        preg_match("/<tbody>([\s\S]*?)<\/tbody>/", $response_html, $matches1);
+        preg_match("/<tr>([\s\S]*?)<\/tr>/", $matches1[1], $matches2);
+        preg_match_all("/<td>([\s\S]*?)<\/td>/", $matches2[1], $matches3);
+        $ss_info_arr  = $matches3[1];
+        $domain       = $ss_info_arr[2];
+        $encrypt_type = $ss_info_arr[4];
+        $password     = $ss_info_arr[5];
+        return new SsInfo($domain, $encrypt_type, $password);
     }
 
     public function getSsInfo() {
@@ -57,6 +66,5 @@ class ss_fast extends Base {
         }
         return $this->parseHtml($response_html);
     }
-
 
 }
