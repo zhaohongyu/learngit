@@ -48,16 +48,6 @@ class ss_fast extends Base {
     }
 
     public function parseHtml($response_html) {
-        $this->simple_html_dom = new simple_html_dom($response_html);
-        $table                 = $this->simple_html_dom->find('table');
-        echo '<pre>';
-        foreach ($table as $table_info) {
-            $tbody = $table->find('tbody', 0);
-            var_dump($table_info);
-            echo "------------------------------------------------------------------------------------<br/>";
-
-        }
-
     }
 
     public function getSsInfo() {
