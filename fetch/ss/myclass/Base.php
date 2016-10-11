@@ -57,4 +57,11 @@ abstract class Base {
         throw new Exception("没有重写" . __FUNCTION__ . "方法", -2);
     }
 
+    /**
+     * 更新配置文件
+     */
+    public static function updateConf() {
+        throw new Exception("没有重写" . __FUNCTION__ . "方法", -2);
+    }
+
 }
