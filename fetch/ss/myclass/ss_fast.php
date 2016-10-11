@@ -32,6 +32,8 @@ class ss_fast extends Base {
 
         // Set options
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);// 连接服务器前等待多久
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60);// 从服务器接收缓冲完成前需要等待多长时间
 
         // Set headers
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
