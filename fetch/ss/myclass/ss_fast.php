@@ -7,9 +7,9 @@
  * Time: 18:44
  */
 
-require_once('./myclass/Base.php');
-require_once('./myclass/SsInfo.php');
-require_once('./myclass/file_line_operate.php');
+require_once(FCPATH . 'myclass/Base.php');
+require_once(FCPATH . 'myclass/SsInfo.php');
+require_once(FCPATH . 'myclass/file_line_operate.php');
 
 class ss_fast extends Base {
 
