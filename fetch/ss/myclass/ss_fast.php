@@ -7,9 +7,10 @@
  * Time: 18:44
  */
 
-require_once(FCPATH . 'myclass/Base.php');
-require_once(FCPATH . 'myclass/SsInfo.php');
-require_once(FCPATH . 'myclass/file_line_operate.php');
+spl_autoload_register(function ($class) {
+    $require_path = dirname(__FILE__) . '/' . $class . '.php';
+    require_once $require_path;
+});
 
 class ss_fast extends Base {
 
