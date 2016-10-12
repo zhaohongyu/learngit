@@ -12,6 +12,8 @@ spl_autoload_register(function ($class) {
     require_once $require_path;
 });
 
+require_once(FCPATH . 'myclass/file_line_operate.php');
+
 class ss_fast extends Base {
 
     public function __construct($fetch_url = '', $user_cookie = '') {
