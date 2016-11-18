@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            padding:0;
+            margin:0;
+        }
+
+        #id1 {
+            background-color: red;
+            color: #FFF;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            /*border-top:1px solid #333;*/
+            /*border-bottom:1px solid #333;*/
+            padding-top:1px;
+            padding-bottom:1px;
+        }
+
+        #id2 {
+            font: normal 14px/1.5 Verdana, sans-serif;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 2px solid blue;
+        }
+
+        a.content:after {
+            content: attr(custome_attr);
+        }
+
+    </style>
+</head>
+<body>
+
+
+<a class="content" href="http://www.zhangxinxu.com/" custome_attr="这里是自定义属性值111">此标签的href值是：</a>
+
+
+<div id="id1">
+    <h1 id="id2">Margins of ID1 and ID2 collapse vertically.<br/>元素ID1与ID2的margins在垂直方向折叠.</h1>
+</div>
+
+</body>
+</html>

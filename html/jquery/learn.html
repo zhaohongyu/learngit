@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+
+        .test {
+            background-color: red;
+            font-size: large;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div style="height: 50px;"></div>
+
+<div id="div1">111</div>
+
+
+<ul></ul>
+
+
+<button>Change colors</button>
+<span></span>
+<div>1</div>
+<div>2</div>
+
+<div>3</div>
+<div>4</div>
+<div id="stop">Stop here</div>
+<div>5</div>
+
+<div>6</div>
+<div>7</div>
+
+
+<hr>
+
+<form></form>
+
+<script>
+
+    $(function () {
+
+
+        $("#div1").data("testdata", "hello");
+        console.log($("#div1").data("testdata"));
+        $("#div1").data("testdata", 86);
+        console.log($("#div1").data("testdata"));
+
+        var div0 = $('div').get(0);
+        console.log(div0);
+
+
+        var myDivCount2 = $('div').length;
+        console.log(myDivCount2);
+
+
+        $('button').click(function () {
+
+
+            $('div').each(function (index, domEle) {
+
+                // domEle === this
+
+                $(domEle).css('backgroundColor', 'yellow');
+
+                if ($(this).is('#stop')) {
+                    $('span').text('Stopped at div index #' + index);
+                    return false;
+                }
+
+
+            });
+
+        });
+
+
+        $("<input/>", {
+            type: "text",
+            val: "Test",
+            focusin: function () {
+                $(this).addClass("active");
+            },
+                focusout: function () {
+                $(this).removeClass("active");
+            }
+        }).appendTo("form");
+
+        $('<div/>', {
+            'class': 'test',
+            text: 'Click Me',
+            click: function () {
+                $(this).toggleClass('test');
+            }
+        }).appendTo('body');
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+    <style>
+
+        body {
+            color: #CFD7E8;
+            font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, Helvetica, STHeiti;
+            font-size: 24px;
+            background-color: #02031A;
+        }
+
+        .header {
+            height: 100px;
+            background-color: #003C51;
+        }
+
+        .header .top-center {
+            margin: 0 auto;
+            width: 75%;
+            height: 100%;
+            background-color: #005A7A;
+            text-align: center;
+        }
+
+        .middle {
+            margin: 10px auto;
+            width: 75%;
+            height: 400px;
+            background-color: #676767;
+            text-align: center;
+        }
+
+        .middle .middle1 {
+            height: 30%;
+            background-color: #007A7E;
+        }
+
+        .middle .middle2 {
+            display: inline-block;
+            height: 20%;
+            width: 100%;
+            background-color: #002C95;
+        }
+
+        .middle2 span{
+            vertical-align: middle;
+        }
+
+        .bottom {
+            margin: 0 auto;
+            width: 75%;
+            background-color: #4D4D4D;
+            text-align: center;
+            line-height: 50px;
+        }
+
+
+        .dib-baseline {
+            display: inline-block; width: 150px; height: 150px;
+            border: 1px solid #cad5eb; background-color: #f0f3f9;
+        }
+
+        .juzhong{
+            background-color: #7a43b6;
+            width: 600px;
+            height: 500px;
+            position: absolute;top: 0;right: 0;bottom: 0;left: 0;
+            margin: auto;
+            display: ;
+        }
+
+        .test {width:25em; margin:2em auto;}
+        .box { padding:2em; border:1px solid #beceeb; border-radius:2px; background-color:#f0f3f9; }
+        .rel { position:relative; }
+        .ok { color:green; font-size:6em; position:absolute; right:-10px; top:-1em; }
+
+    </style>
+</head>
+<body>
+
+<div class="test">
+    <div class="box">CSS relative相对定位的最小化影响原则</div>
+    <div class="rel"><strong class="ok">√</strong></div>
+</div>
+
+<div class="juzhong">
+    垂直居中
+</div>
+
+
+<span class="dib-baseline" style="">&nbsp;</span>
+<span class="dib-baseline" style="">x-baseline</span>
+
+<div style="background-color:#E5EDFF; line-height: 240px;font-size:0"><img
+        data-src="http://image.zhangxinxu.com/image/study/s/s256/mm1.jpg" height="191" style="vertical-align: middle;"
+        src="http://image.zhangxinxu.com/image/study/s/s256/mm1.jpg"></div>
+
+<div class="header">
+    <div class="top-center">这里是topCenter</div>
+</div>
+
+<div class="middle">
+
+    <div class="middle1">middle1</div>
+
+    <div class="middle2"><span>middle2</span></div>
+
+</div>
+
+<div class="bottom">bottom</div>
+
+
+</body>
+</html>
