@@ -20,7 +20,7 @@ if ($is_img_link) {
 }
 
 if (empty($blob)) {
-    response_json(-2, '二维码识别失败了');
+    response_json(-2, '根据您请求的图片链接或者base64数据不能转换成二进制数据');
 }
 
 // 2. 设置图片类型[blob]
@@ -31,7 +31,7 @@ $qrcode = new QrReader($blob, $sourcetype);
 $text   = $qrcode->text();
 
 if (empty($text)) {
-    response_json(-3, '二维码识别失败了');
+    response_json(-3, '没能找到您上传的图片中的二维码信息');
 }
 
 response_json(0, '识别成功', array(
