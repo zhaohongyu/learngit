@@ -12,6 +12,6 @@ function Hello() {
 };
 module.exports = Hello;
 
-module.exports.world = function() {
+module.exports.world = function () {
     console.log('Hello World');
 }
