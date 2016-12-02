@@ -6,6 +6,9 @@ var hello = new Hello();
 hello.setName('HanMM');
 hello.sayHello();
 
+
+Hello.world();
+
 //阻塞
 //var fs = require("fs");
 //
