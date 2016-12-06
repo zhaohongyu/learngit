@@ -1,0 +1,4 @@
+{
+    "rethinkdbPort":32775,
+    "rethinkdbDB":"tv_shows"
+}

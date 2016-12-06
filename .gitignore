@@ -11,3 +11,4 @@ nodejs/electron/ocr/dist
 nodejs/electron/test/dist
 nodejs/electron/sound-machine/dist
 nodejs/electron/helloWorld/dist
+nodejs/rethinkdb/node_modules
