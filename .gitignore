@@ -3,3 +3,11 @@ nbproject
 .idea
 httpreq/httpreq.iml
 httpreq/out/
+nodejs/electron/ocr/node_modules
+nodejs/electron/test/node_modules
+nodejs/electron/sound-machine/node_modules
+nodejs/electron/helloWorld/node_modules
+nodejs/electron/ocr/dist
+nodejs/electron/test/dist
+nodejs/electron/sound-machine/dist
+nodejs/electron/helloWorld/dist

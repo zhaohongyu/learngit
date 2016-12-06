@@ -1,0 +1,11 @@
+{
+  "name": "ocr",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "menu": "^0.2.5"
+  }
+}

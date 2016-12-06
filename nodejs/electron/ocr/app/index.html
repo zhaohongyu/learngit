@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>OCR验证码识别</title>
+    <!-- Bootstrap -->
+    <link href="./plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="ocr_file" class="col-sm-2 control-label">选择文件</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="ocr_file" placeholder="请选择要识别的文件">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">开始识别</button>
+        </div>
+    </div>
+</form>
+
+<img id="select_img" />
+
+<script>
+    // 重命名 Electron 提供的 require
+    window.nodeRequire = require;
+    delete window.require;
+    delete window.exports;
+    delete window.module;
+</script>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script>
+
+    $('#ocr_file').on('change', function () {
+
+        $('#select_img').attr('src',$(this).val());
+    });
+
+
+</script>
+</body>
+</html>

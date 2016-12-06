@@ -1,0 +1,11 @@
+{
+  "name": "sound-machine",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "nconf": "^0.8.4"
+  }
+}
