@@ -14,9 +14,19 @@ function myconnect(err, conn) {
     // getAll(conn);
     // getByName(conn, "Laura Roslin");
     // getByPk(conn, "9453f784-251c-4810-ac00-729315f7cdf6");
-    update(conn);
+    // update(conn);
+    del(conn);
+
 }
 r.connect(connParam, myconnect);
+
+// 删除
+function del(connection) {
+    r.table('authors').filter(r.row('posts').count().lt(3)).delete().run(connection, function (err, result) {
+        if (err) throw err;
+        console.log(JSON.stringify(result, null, 2));
+    });
+}
 
 // 更新
 function update(connection) {
@@ -40,7 +50,7 @@ function update(connection) {
         if (err) throw err;
         console.log(JSON.stringify(result, null, 2));
     });
-    
+
 }
 
 // 根据主键查询
