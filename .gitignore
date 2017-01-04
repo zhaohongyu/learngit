@@ -15,3 +15,4 @@ nodejs/rethinkdb/node_modules
 nodejs/test-mocha/node_modules
 nodejs/test-webpack/node_modules
 nodejs/async/node_modules
+nodejs/captcha/node_modules
