@@ -1,0 +1,70 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "获取图片验证码",
+    "version": "0.0.1"
+  },
+  "host": "localhost:9000",
+  "paths": {
+    "/user/captcha": {
+      "get": {
+        "summary": "获取图片验证码",
+        "operationId": "a2841b2e-6b51-4b93-aa29-e355e711910d",
+        "consumes": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "default": "{}"
+            }
+          }
+        ],
+        "tags": [
+          "图片验证码"
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/checkCaptcha": {
+      "post": {
+        "summary": "验证图片验证码是否有效",
+        "operationId": "05646c4d-7f4c-4310-8882-4ad7dff757ed",
+        "consumes": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "default": "{\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2MjIyNjQ2MzA5MDM2MzYzNzc2IiwiY2FwdGNoYSI6IkI0eHEiLCJpYXQiOjE0ODM1OTQ0OTEsImV4cCI6MTQ4MzU5NTA5MX0.s2Rtb4VWF2tQ2w1VLD9gaWWNuTxbMwKvVMkTGnoLu0Y\",\"sessionId\":\"6222646309036363776\",\"captcha\":\"ev1f\"}"
+            }
+          }
+        ],
+        "tags": [
+          "图片验证码"
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {}
+}

@@ -1,0 +1,70 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "获取手机短信验证码",
+    "version": "0.0.0"
+  },
+  "host": "localhost:9000",
+  "paths": {
+    "/user/sendVerificationCode": {
+      "post": {
+        "summary": "发送短信验证码",
+        "operationId": "3c1b3683-b784-4cb8-a74d-85de3300d82f",
+        "consumes": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "default": "{\"phone\":\"18600833853\"}"
+            }
+          }
+        ],
+        "tags": [
+          "手机验证码"
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/checkVerificationCode": {
+      "post": {
+        "summary": "验证短信验证码是否有效",
+        "operationId": "88c8e92d-ef3a-4fec-937c-00b2e491b481",
+        "consumes": [
+          "application/json; charset=utf-8"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "default": "{\"phone\":\"18600833853\",\"verificationCode\":\"729562\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4NjAwODMzODUzIiwidmVyaWZpY2F0aW9uQ29kZSI6IjcyOTU2MiIsImlhdCI6MTQ4MzUzMjYxNCwiZXhwIjoxNDgzNjE5MDE0fQ.VHz_JNZg0nXle48LzTTguanLfjnF9Z13V2LVAQCszpk\"}"
+            }
+          }
+        ],
+        "tags": [
+          "手机验证码"
+        ],
+        "responses": {
+          "default": {
+            "description": "stub description for swagger compliance"
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {}
+}
