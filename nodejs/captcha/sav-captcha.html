@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试SVG验证码</title>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="captcha"></div>
+
+<script>
+
+    var url = 'http://127.0.0.1:8181/captcha';
+
+    $(function () {
+        getCaptcha2();
+    });
+
+    $('#captcha').on('click', function () {
+        getCaptcha2();
+    });
+
+    function getCaptcha() {
+        $.ajax({
+            method  : 'get',
+            url     : url,
+            data    : {
+                ramdom: Math.random()
+            },
+            timeout : 20000,
+            success : function (data, status, xhr) {
+                console.log(xhr.getResponseHeader("Content-Type"));
+                console.log(xhr.getResponseHeader("token"));
+                $('#captcha').html(data.documentElement);
+            },
+            complete: function () {
+                // 隐藏loading
+            },
+            error   : function () {
+            }
+        });
+    }
+
+    function getCaptcha2() {
+        $.get(url, function (data, status, xhr) {
+            console.log(xhr.getResponseHeader("token"));
+            $('#captcha').html(data.documentElement);
+        });
+    }
+
+</script>
+
+</body>
+</html>
