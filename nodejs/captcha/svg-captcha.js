@@ -17,11 +17,11 @@ http.createServer(function (request, response) {
         });
         response.end(captcha.data);
 
-    }
-
-    if (request.url == '/sav-captcha.html') {
+    } else if (request.url == '/sav-captcha.html') {
         var html = fs.readFileSync("./sav-captcha.html", "utf-8");
         response.end(html);
+    } else {
+        response.end('Hello World');
     }
 
 }).listen(8181);
