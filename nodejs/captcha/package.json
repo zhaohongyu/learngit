@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "captchapng": "0.0.1",
     "ccap": "^0.6.10",
-    "http": "^0.0.0"
+    "http": "^0.0.0",
+    "svg-captcha": "^1.2.1"
   }
 }
