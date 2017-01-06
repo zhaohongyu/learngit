@@ -10,9 +10,9 @@ var express      = require('express'),
     cookieName = 'locale';
 
 i18n.configure({
-    locales      : ['en-US', 'zh-CN'],  // setup some locales - other locales default to en_US silently
+    locales      : ['en', 'cn'],  // setup some locales - other locales default to en_US silently
     cookie       : cookieName,
-    defaultLocale: 'zh-CN',
+    defaultLocale: 'cn',
     directory    : __dirname + '/locale',  // i18n 翻译文件目录
     updateFiles  : false,
     indent       : "\t",
@@ -46,7 +46,7 @@ function setLocale(req, res, next) {
     }
     // 没有语言偏好的时候网站使用的语言为中文
     else {
-        locale = 'zh_CN';
+        locale = 'cn';
     }
     // 如果cookie中保存的语言偏好与此处使用的语言偏好不同，更新cookie中的语言偏好设置
     if (req.signedCookies[cookieName] !== locale) {
@@ -56,6 +56,10 @@ function setLocale(req, res, next) {
     req.setLocale(locale);
     next();
 }
+
+app.use(express.static(__dirname + '/public'));
+app.use('/cn', express.static(__dirname + '/public/cn'));
+app.use('/en', express.static(__dirname + '/public/en'));
 
 // serving homepage
 app.get('/', function (req, res) {
