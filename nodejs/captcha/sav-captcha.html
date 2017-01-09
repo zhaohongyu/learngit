@@ -14,24 +14,22 @@
     var url = 'http://127.0.0.1:8181/captcha';
 
     $(function () {
-        getCaptcha2();
+        getCaptcha();
     });
 
     $('#captcha').on('click', function () {
-        getCaptcha2();
+        getCaptcha();
     });
 
     function getCaptcha() {
         $.ajax({
             method  : 'get',
             url     : url,
-            data    : {
-                ramdom: Math.random()
-            },
             timeout : 20000,
             success : function (data, status, xhr) {
                 console.log(xhr.getResponseHeader("Content-Type"));
-                console.log(xhr.getResponseHeader("token"));
+                console.log(xhr.getAllResponseHeaders());
+                console.log(xhr.getResponseHeader('token'));
                 $('#captcha').html(data.documentElement);
             },
             complete: function () {
@@ -44,6 +42,7 @@
 
     function getCaptcha2() {
         $.get(url, function (data, status, xhr) {
+            console.log(xhr.getAllResponseHeaders());
             console.log(xhr.getResponseHeader("token"));
             $('#captcha').html(data.documentElement);
         });

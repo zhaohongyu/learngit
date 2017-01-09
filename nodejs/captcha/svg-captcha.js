@@ -12,8 +12,10 @@ http.createServer(function (request, response) {
         var captcha = svgCaptcha.create();
         console.log(captcha);
         response.writeHead(200, {
-            'Content-Type': 'image/svg+xml',
-            'token'       : Math.random()
+            'Access-Control-Allow-Origin'  : '*',
+            'Access-Control-Expose-Headers': 'token',
+            'Content-Type'                 : 'image/svg+xml',
+            'token'                        : Math.random()
         });
         response.end(captcha.data);
 
