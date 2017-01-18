@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试ajax发送请求</title>
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="btn">点我点我发送请求</div>
+
+<script>
+
+    var url = 'http://localhost:9000/event/create';
+    var auth = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjIwMzkwMjUxMDUxMTMwODgiLCJ1c2VybmFtZSI6Imhvbmd5dV96aGFvQGV2ZW50b3duLmNvbSIsImlhdCI6MTQ4NDY0Njc1NSwiZXhwIjoxNDg1MjUxNTU1fQ.WzSWNo3pAh4wTJqqiJpPCn9Nq_HzlY0soxeRZ2wXLhk";
+    var reqData = '{"title":"\u6d4b\u8bd5\u6d3b\u52a81111","content":"\u6d4b\u8bd5\u6d3b\u52a81111\u7684\u5185\u5bb9","logoUrl":"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png","bannerUrl":"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png","startTime":"2017-01-18T15:29:58.000Z","endTime":"2017-01-19T15:29:58.000Z","isPublic":true,"askPromotion":true,"smsNotice":true,"userId":"6222039025105113088","groupId":"123456789","organizerIds":["22b204f0-1364-4334-896f-8c6f1137e8d6"],"categories":[1,2],"keyWords":["\u5317\u4eac\u4f1a\u5510\u7f51","\u4f1a\u9e3d\u7f51"],"country":"\u5317\u4eac","province":"\u5317\u4eac","city":"\u5317\u4eac","zipCode":"100010","detailedAddress":"\u5317\u4eac\u5e02\u671d\u9633\u533a\u671d\u9633\u8def\u6cf0\u79be\u6587\u5316\u5927\u53a6A\u5ea74\u5c42\u4f1a\u5510\u7f51","lng":11.111,"lat":39.111,"onlineAddress":false,"geohash":"wxaddjd","paymentAccountId":"123456789","paymentAccountType":"online","paymentPriceUnit":"yuan","basePrice":100.05,"percent":1,"maxFee":500.21,"formCollectionItemModel":"ticketBuyers","tickets":[{"name":"\u7b2c\u516b\u5c4a\u4e92\u8054\u7f51\u5439\u725b\u76ae\u5927\u4f1a\u95e8\u79681","describe":"\u8fd9\u91cc\u662f\u7968\u7684\u5907\u6ce8","defaultPrice":100,"needAudit":true,"startSalesTime":"2017-01-18T07:29:58.000Z","endSalesTime":"2017-01-18T07:29:58.000Z","totalCount":88,"minCount":1,"maxCount":100,"ladderPriceSetting":[{"startTime":"2017-01-18T07:29:58.000Z","endTime":"2017-01-19T07:29:58.000Z","price":66},{"startTime":"2017-01-18T07:29:58.000Z","endTime":"2017-01-19T07:29:58.000Z","price":44}],"isContainFee":true,"ticketServiceFee":80,"isMemberOnlyTicket":false,"isAllowGroupPurchase":false,"groupPurchaseTicketSetting":{"minGroupCount":10,"discountPrice":20,"giveNumber":5,"isAllowDiscount":false}},{"name":"\u7b2c\u516b\u5c4a\u4e92\u8054\u7f51\u5439\u725b\u76ae\u5927\u4f1a\u95e8\u79682","describe":"\u8fd9\u91cc\u662f\u7968\u7684\u5907\u6ce82","defaultPrice":100,"needAudit":true,"startSalesTime":"2017-01-18T07:29:58.000Z","endSalesTime":"2017-01-18T07:29:58.000Z","totalCount":88,"minCount":1,"maxCount":100,"ladderPriceSetting":[{"startTime":"2017-01-18T07:29:58.000Z","endTime":"2017-01-19T07:29:58.000Z","price":66},{"startTime":"2017-01-18T07:29:58.000Z","endTime":"2017-01-19T07:29:58.000Z","price":44}],"isContainFee":true,"ticketServiceFee":80,"isMemberOnlyTicket":false,"isAllowGroupPurchase":false,"groupPurchaseTicketSetting":{"minGroupCount":10,"discountPrice":20,"giveNumber":5,"isAllowDiscount":false}}],"collectItems":[{"name":"\u8868\u5355\u6536\u96c6\u98791","maxSize":0,"isRequired":true,"sort":0,"isDel":false,"isOnly":true,"fieldId":""},{"name":"\u8868\u5355\u6536\u96c6\u98792","maxSize":0,"isRequired":true,"sort":0,"isDel":false,"isOnly":true,"fieldId":""}]}';
+
+    $('#btn').on('click', function () {
+        sendReq();
+    });
+
+    function sendReq() {
+        $.ajax({
+            method    : 'POST',
+            url       : url,
+            timeout   : 20000,
+            data      : reqData,
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", auth);
+                request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            },
+            success   : function (data, status, xhr) {
+                $('#btn').html(data.toString());
+            },
+            complete  : function () {
+                // 隐藏loading
+            },
+            error     : function () {
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>
