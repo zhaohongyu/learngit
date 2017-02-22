@@ -20,3 +20,4 @@ nodejs/swagger-ui/node_modules
 nodejs/i18n/node_modules
 nodejs/qrcode/node_modules
 nodejs/barcode/node_modules
+nodejs/pdf/node_modules
