@@ -7,16 +7,23 @@ const CarInfo          = require('./enties/CarInfo');
 const SendRequest      = require('./service/SendRequest');
 const CarInfoClass     = CarInfo.CarInfo;
 const CarapplyarrClass = CarInfo.Carapplyarr;
+const DateUtil         = require('./utils/DateUtil');
+const delay            = 15;// 秒
 
-(async function () {
+function Cron() {}
 
-    const entercarlist = await SendRequest.entercarlist();
+Cron.prototype.myApply = Promise.coroutine(function*(val) {
+    yield Promise.delay(delay * 1000);
 
-    if (_.isEmpty(entercarlist)) { return; }
+    const entercarlist = yield SendRequest.entercarlist();
+
+    if (_.isEmpty(entercarlist)) {
+        return this.myApply(DateUtil.currentDateTime());
+    }
 
     if (entercarlist.rescode !== "200") {
         console.log('获取车辆列表失败了,错误信息是:', JSON.stringify(entercarlist));
-        return;
+        return this.myApply(DateUtil.currentDateTime());
     }
 
     const datalist = entercarlist.datalist;
@@ -40,8 +47,12 @@ const CarapplyarrClass = CarInfo.Carapplyarr;
         }
 
         // todo 申请操作
-        const addcartype = await SendRequest.addcartype(newCar);
+        const addcartype = yield SendRequest.addcartype(newCar);
 
     }
 
-})();
+    return this.myApply(DateUtil.currentDateTime());
+});
+
+const cron = new Cron();
+cron.myApply(0);
