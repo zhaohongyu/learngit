@@ -97,3 +97,52 @@ exports.entercarlist = async function () {
 
     }
 };
+
+// 当前时间能否进行进京证申请,根据返回页面来判断
+exports.isCanRequest = function (response) {
+    const data = response.data;
+    if (exports.isContains(data, "由于办理电子进京证申请排队人数过多")) {
+        return false;
+    }
+    return true;
+};
+
+// 判断是否包含某字符串
+exports.isContains = function (str, substr) {
+    return str.indexOf(substr) >= 0;
+};
+
+exports.sendNotice = async function (desp) {
+    try {
+
+        const url = 'http://sc.ftqq.com/SCU4078T15fb92b84446c8258ece24ab0be49f5f5836a1082920e.send';
+
+        const response = await axios.get(url, {
+            params: {
+                "text": "进京证申请提醒",
+                "desp": desp,
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+
+        if (error instanceof Error) {
+
+            console.log('发送通知接口sendNotice出错了,报错信息是:');
+
+            if (error.response) {
+                console.log(error.response.data.responseText);
+            }
+
+            if (error.request) {
+                console.log(error.request);
+                console.log('服务器未响应');
+            }
+
+            console.log(error);
+
+        }
+
+    }
+};

@@ -8,9 +8,58 @@ const SendRequest      = require('./service/SendRequest');
 const CarInfoClass     = CarInfo.CarInfo;
 const CarapplyarrClass = CarInfo.Carapplyarr;
 const DateUtil         = require('./utils/DateUtil');
-const delay            = 15;// 秒
+const delay            = 60 * 5;// 秒
 
 function Cron() {}
+
+Cron.prototype.canApply = Promise.coroutine(function*(val) {
+    try {
+        console.log('当前时间是:', val);
+        yield Promise.delay(delay * 1000);
+
+        let carapplyData   = {
+            "applyid"        : "013201705182104374760241",
+            "carid"          : "22857",
+            "cartype"        : "02",
+            "engineno"       : "C64813",
+            "enterbjend"     : "2017-05-25",
+            "enterbjstart"   : "2017-05-19",
+            "existpaper"     : "",
+            "licenseno"      : "冀B332F1",
+            "loadpapermethod": "",
+            "remark"         : "d5e0666bc377f063bf1b8618cd1bcafe",
+            "status"         : "1",
+            "syscode"        : "",
+            "syscodedesc"    : "",
+            "userid"         : "27b37efca29347cd9c1a476ab4818a37"
+        };
+        let newCarapplyarr = new CarapplyarrClass(carapplyData);
+
+        let carInfoData = {
+            "carid"      : "332004",
+            "userid"     : "209E053891214D80ABD3ECBBBE69D8F6",
+            "licenseno"  : "冀B332F1",
+            "applyflag"  : "1",
+            "carapplyarr": [newCarapplyarr]
+        };
+        let newCar      = new CarInfoClass(carInfoData);
+
+        const addcartypeRes = yield SendRequest.addcartype(newCar);
+
+        if (!SendRequest.isCanRequest(addcartypeRes)) {
+            return this.canApply(DateUtil.currentDateTime());
+        }
+
+        let logMsg = '可以进行进京证申请了,时间是:' + DateUtil.currentDateTime();
+        console.log(logMsg);
+        yield SendRequest.sendNotice(logMsg);
+
+    }
+    catch (error) {
+        console.log('canApply 出错了,报错信息是:', error.message);
+        return this.canApply(DateUtil.currentDateTime());
+    }
+});
 
 Cron.prototype.myApply = Promise.coroutine(function*(val) {
     try {
@@ -62,4 +111,5 @@ Cron.prototype.myApply = Promise.coroutine(function*(val) {
 });
 
 const cron = new Cron();
-cron.myApply(0);
+// cron.myApply(0);
+cron.canApply(0);
