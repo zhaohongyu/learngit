@@ -112,7 +112,7 @@ exports.isContains = function (str, substr) {
     return str.indexOf(substr) >= 0;
 };
 
-exports.sendNotice = async function (desp) {
+exports.sendWxNotice = async function (desp) {
     try {
 
         const url = 'http://sc.ftqq.com/SCU4078T15fb92b84446c8258ece24ab0be49f5f5836a1082920e.send';

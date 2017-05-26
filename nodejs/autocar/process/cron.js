@@ -52,7 +52,7 @@ Cron.prototype.canApply = Promise.coroutine(function*(val) {
 
         let logMsg = '可以进行进京证申请了,时间是:' + DateUtil.currentDateTime();
         console.log(logMsg);
-        yield SendRequest.sendNotice(logMsg);
+        yield SendRequest.sendWxNotice(logMsg);
 
     }
     catch (error) {
