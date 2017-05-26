@@ -12,6 +12,21 @@ const delay            = 60 * 5;// 秒
 
 function Cron() {}
 
+Cron.prototype.canApplyV2 = Promise.coroutine(function*(val) {
+    try {
+        console.log('当前时间是:', val);
+
+        let logMsg = '可以进行进京证申请了,时间是:' + DateUtil.currentDateTime();
+        console.log(logMsg);
+        yield SendRequest.sendSlackNotice(logMsg);
+
+    }
+    catch (error) {
+        console.log('canApply 出错了,报错信息是:', error.message);
+        return this.canApplyV2(DateUtil.currentDateTime());
+    }
+});
+
 Cron.prototype.canApply = Promise.coroutine(function*(val) {
     try {
         console.log('当前时间是:', val);
@@ -112,4 +127,5 @@ Cron.prototype.myApply = Promise.coroutine(function*(val) {
 
 const cron = new Cron();
 // cron.myApply(0);
-cron.canApply(0);
+// cron.canApply(0);
+cron.canApplyV2(0);

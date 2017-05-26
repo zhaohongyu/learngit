@@ -129,7 +129,47 @@ exports.sendWxNotice = async function (desp) {
 
         if (error instanceof Error) {
 
-            console.log('发送通知接口sendNotice出错了,报错信息是:');
+            console.log('发送通知接口sendWxNotice出错了,报错信息是:');
+
+            if (error.response) {
+                console.log(error.response.data.responseText);
+            }
+
+            if (error.request) {
+                console.log(error.request);
+                console.log('服务器未响应');
+            }
+
+            console.log(error);
+
+        }
+
+    }
+};
+
+exports.sendSlackNotice = async function (desp) {
+    try {
+
+        const url = 'https://hooks.slack.com/services/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';
+
+        const response = await axios({
+            method : 'post',
+            url    : url,
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            data   : {
+                "username": "进京证申请提醒",
+                "text"    : desp
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+
+        if (error instanceof Error) {
+
+            console.log('发送通知接口sendSlackNotice出错了,报错信息是:');
 
             if (error.response) {
                 console.log(error.response.data.responseText);
