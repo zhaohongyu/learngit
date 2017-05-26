@@ -8,7 +8,7 @@ const SendRequest      = require('./service/SendRequest');
 const CarInfoClass     = CarInfo.CarInfo;
 const CarapplyarrClass = CarInfo.Carapplyarr;
 const DateUtil         = require('./utils/DateUtil');
-const delay            = 60 * 5;// 秒
+const delay            = 60 * 2;// 秒
 
 function Cron() {}
 
