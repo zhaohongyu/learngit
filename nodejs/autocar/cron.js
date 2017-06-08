@@ -16,7 +16,7 @@ function Cron() {}
 
 Cron.prototype.canApplyV2 = Promise.coroutine(function*(val) {
     try {
-        console.log('当前时间是:', val);
+        console.log('当前时间是:', val, ',使用的delay = ', delay);
         yield Promise.delay(delay * 1000);
 
         let carapplyData   = {
@@ -49,7 +49,7 @@ Cron.prototype.canApplyV2 = Promise.coroutine(function*(val) {
         const addcartypeRes = yield SendRequest.addcartype(newCar);
 
         if (!SendRequest.isCanRequest(addcartypeRes)) {
-            delay = defaultDelay;
+            delay = defaultDelay * (Math.random());
             return this.canApplyV2(DateUtil.currentDateTime());
         }
 
