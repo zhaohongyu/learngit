@@ -8,7 +8,9 @@ const SendRequest      = require('./service/SendRequest');
 const CarInfoClass     = CarInfo.CarInfo;
 const CarapplyarrClass = CarInfo.Carapplyarr;
 const DateUtil         = require('./utils/DateUtil');
-const delay            = 60 * 2;// 秒
+const quotient         = 1.3;
+const defaultDelay     = 60 * 2;// 秒
+let delay              = 60 * 2;// 秒
 
 function Cron() {}
 
@@ -47,12 +49,17 @@ Cron.prototype.canApplyV2 = Promise.coroutine(function*(val) {
         const addcartypeRes = yield SendRequest.addcartype(newCar);
 
         if (!SendRequest.isCanRequest(addcartypeRes)) {
+            delay = defaultDelay;
             return this.canApplyV2(DateUtil.currentDateTime());
         }
 
         let logMsg = '可以进行进京证申请了,时间是:' + DateUtil.currentDateTime();
         console.log(logMsg);
         yield SendRequest.sendSlackNotice(logMsg);
+
+        // 每一次能申请后,将时间乘以延长系数quotient
+        delay = delay * quotient;
+        return this.canApplyV2(DateUtil.currentDateTime());
 
     }
     catch (error) {
