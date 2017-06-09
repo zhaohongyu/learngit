@@ -150,7 +150,7 @@ exports.sendWxNotice = async function (desp) {
 exports.sendSlackNotice = async function (desp) {
     try {
 
-        const url = 'https://hooks.slack.com/services/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';
+        const url = 'https://hooks.slack.com/services/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';
 
         const response = await axios({
             method : 'post',
