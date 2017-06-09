@@ -53,7 +53,7 @@ Cron.prototype.canApplyV2 = Promise.coroutine(function*(val) {
             return this.canApplyV2(DateUtil.currentDateTime());
         }
 
-        let logMsg = '可以进行进京证申请了,时间是:' + DateUtil.currentDateTime();
+        let logMsg = '可以进行进京证申请了,时间是:' + DateUtil.currentDateTime() + "<zcblbjjj://aa|打开北京交警>";
         console.log(logMsg);
         yield SendRequest.sendSlackNotice(logMsg);
 
