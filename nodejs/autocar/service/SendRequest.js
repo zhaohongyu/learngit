@@ -101,6 +101,15 @@ exports.entercarlist = async function () {
 // 当前时间能否进行进京证申请,根据返回页面来判断
 exports.isCanRequest = function (response) {
     const data = response.data;
+
+    if (exports.isContains(data, "如果您需要办理进京证")) {
+        return false;
+    }
+
+    if (exports.isContains(data, "非服务时间暂时无法办理")) {
+        return false;
+    }
+
     if (exports.isContains(data, "由于办理电子进京证申请排队人数过多")) {
         return false;
     }
