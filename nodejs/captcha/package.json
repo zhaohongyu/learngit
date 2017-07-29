@@ -3,6 +3,7 @@
     "captchapng": "0.0.1",
     "ccap": "^0.6.10",
     "http": "^0.0.0",
-    "svg-captcha": "^1.2.1"
+    "svg-captcha": "^1.2.1",
+    "trek-captcha": "^0.3.0"
   }
 }
