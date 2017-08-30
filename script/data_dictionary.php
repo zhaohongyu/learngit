@@ -7,7 +7,7 @@ header("Content-type: text/html; charset=utf-8");
 $host     = "192.168.100.60";
 $username = "root";
 $password = "";
-$database = isset($_GET['database']) ? $_GET['database'] : "event_dove_admin";
+$database = isset($_GET['database']) ? $_GET['database'] : "event_dove";
 
 $tables = [];
 $title  = "$database-数据字典";
@@ -51,11 +51,17 @@ $dictionary_html_1
         <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <style type="text/css">
+            #myScrollspy{
+                  height: 100%;
+                  overflow-y: scroll;
+                  overflow-x: hidden;
+                  width: 350px;
+                  position: fixed;
+                  left:0;
+                  top:0;
+             }
             ul.nav-tabs{
-                width: 280px;
-                margin-top: 20px;
-                border-radius: 4px;
-                border: 1px solid #ddd;
+                border-right: 1px solid #ddd;
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
             }
             ul.nav-tabs li{
@@ -82,15 +88,16 @@ $dictionary_html_1
                 border-radius: 0 0 4px 4px;
             }
             ul.nav-tabs.affix{
-                top: 30px; /* Set the top position of pinned element */
+                top: 0px;
+                position:static;
             }
         </style>
     </head>
     <body data-spy="scroll" data-target="#myScrollspy">
-    <div class="container">
-    <div class="row">
-        <div class="col-xs-3" id="myScrollspy">
-            <ul class="nav nav-tabs nav-stacked affix" data-spy="affix" data-offset-top="125">
+    <div class="container-fluid">
+    <div class="row-fluid">
+        <div id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked affix" data-spy="affix">
 html_1;
 
 foreach ($tables as $k => $v) {
@@ -102,7 +109,7 @@ $dictionary_html_2
     = <<<html_2
             </ul>
        </div>
-       <div class='col-xs-9'>
+       <div style="margin-left: 350px;">
 html_2;
 
 foreach ($tables as $k => $v) {
